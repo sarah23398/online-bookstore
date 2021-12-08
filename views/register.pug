@@ -1,0 +1,42 @@
+html
+  head
+    link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css' integrity='sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO' crossorigin='anonymous')
+    script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js' integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo' crossorigin='anonymous')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js' integrity='sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49' crossorigin='anonymous')
+    script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js' integrity='sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy' crossorigin='anonymous')
+    link(rel='stylesheet', href='/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/css/styles.css')
+
+body
+  script(src='script.js')
+
+  .container
+    .row
+      .col-sm
+        h4(style='padding-top: 20px;') Register
+        form(action="/register" method="post")
+          .form-group
+            label(for='exampleInput') Name
+            input#exampleInput.form-control(type='text' name="username" aria-describedby='inputGroupPrepend' placeholder='Enter name' required)
+          .form-group
+            label(for='exampleInput') Email
+            input#exampleInput.form-control(type='text' name="email" aria-describedby='inputGroupPrepend' placeholder='Enter email' required)
+          .form-group
+            label(for='exampleInput') Phone number
+            input#exampleInput.form-control(type='text' name="email" aria-describedby='inputGroupPrepend' placeholder='Enter phone number' required)
+          .form-group
+            label(for='exampleInput') Credit card number
+            input#exampleInput.form-control(type='text' name="email" aria-describedby='inputGroupPrepend' placeholder='Enter credit card number' required)
+          .form-group
+            label(for='exampleInput') Address
+            input#exampleInput.form-control(type='text' name="email" aria-describedby='inputGroupPrepend' placeholder='Enter address' required)
+          .form-group
+            label(for='exampleInputPassword1') Password
+            input#exampleInputPassword1.form-control(type='password' name="password" placeholder='Enter password' required)
+          button.btn.btn-primary(type='submit') Register
+
+          //- if isLoggedIn == 0
+          //-   p You are already logged in. Sign out in order to register a new account.
+
+          //- if isDisplay
+          //-   p Username already exists. Please try a different username.
