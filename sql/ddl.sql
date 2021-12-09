@@ -71,7 +71,7 @@ create table book
 	 edition		numeric(2,0),
 	 description	varchar(255),
 	 price			numeric(5,2),
-	 print_length	varchar(10),
+	 print_length	numeric(4,0),
 	 stock			numeric(3,0),
 	 publisher_fee	numeric(5,2),
 	 primary key (ISBN),
