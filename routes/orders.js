@@ -6,4 +6,8 @@ router.get('/', function(req, res, next) {
   res.render('orders', { title: 'Orders' });
 });
 
+router.get('/:id', function(req, res, next) {
+  let id = req.params.id;
+});
+
 module.exports = router;
