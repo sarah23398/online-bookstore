@@ -11,6 +11,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/:id', function(req, res, next){
   let id = req.params.id;
+  res.render('book');
 })
 
 module.exports = router;
