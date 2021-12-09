@@ -11,9 +11,34 @@ body
   script(src='script.js')
   include user-header.pug
 
+  p
   .container
     .row
       .col-sm
-        h4(style='padding-top: 20px;') Order
-        p Order ID: order.id
-        p Order:
+        h4 Track an Order
+        form(action='/search/results' method="post")
+          .form-group
+            label(for='exampleInputEmail1') Order ID
+            input#exampleInputEmail1.form-control(name='title' aria-describedby='emailHelp' placeholder='Enter order ID')
+          button.btn.btn-primary(type='submit') Track
+        br
+        h4 Orders
+        .card.bg-light.mb-3
+          .card-header Order ID:
+          .card-body
+            a.card-text.font-weight-bold Purchase
+            p
+            a.card-text 3 of Hunger Games
+            p
+            a.card-text 4 of Scythe
+            p
+            a.card-text.font-weight-bold Details
+            p
+            a.card-text Order date:
+            p
+            a.card-text Total cost:
+            p
+            a.card-text Credit card number:
+            p
+            a.card-text Address:
+            p
