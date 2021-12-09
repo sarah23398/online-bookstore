@@ -31,7 +31,10 @@ body
             input#exampleInputEmail1.form-control(name='genre' aria-describedby='emailHelp' placeholder='Enter genre')
           .form-group
             label(for='exampleInputEmail1') Price
-            input#exampleInputEmail1.form-control(name='genre' aria-describedby='emailHelp' placeholder='Enter price')
+            input#exampleInputEmail1.form-control(name='price' aria-describedby='emailHelp' placeholder='Enter price')
+          .form-group
+            label(for='exampleInputEmail1') Publisher
+            input#exampleInputEmail1.form-control(name='publisher' aria-describedby='emailHelp' placeholder='Enter publisher')
           button.btn.btn-primary(type='submit') Add
     .row
       .col-sm
@@ -52,6 +55,10 @@ body
             p
             a.card-text Price:
             p
+            a.card-text Publisher:
+            p
             button.btn.btn-primary(type='submit') Remove
+        br
+        br
 
 
