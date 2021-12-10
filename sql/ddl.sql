@@ -16,11 +16,10 @@ create table shipment
 	 estimated_arrival		date,
 	 arrival_date			date,
 	 current_address		varchar(60),
-	 order_id				varchar(8),
 	 primary key (tracking_no)
 	);
 
-create table cust_order
+create table "order"
 	(ID					varchar(8),
 	 tracking_no		varchar(8),
 	 customer_id		varchar(8),
@@ -36,7 +35,6 @@ create table cust_order
 	 	on delete cascade
 	);
 
-alter table shipment add constraint fk_shipment_order foreign key (order_id) references cust_order (ID);
 
 create table genre
 	(ID		varchar(8),
@@ -84,7 +82,7 @@ create table finances
 	 ISBN			varchar(13),
 	 quantity		numeric(3,0),
 	 primary key (order_id, ISBN),
-	 foreign key (order_id) references cust_order (ID)
+	 foreign key (order_id) references "order" (ID)
 	 	on delete cascade,
 	 foreign key (ISBN) references book
 	 	on delete cascade
@@ -100,7 +98,7 @@ create table written_by
 	 	on delete cascade
 	);
 
-create table genre_contains
+create table "contains"
 	(genre_id	varchar(8),
 	 ISBN		varchar(13),
 	 primary key(genre_id, ISBN),
