@@ -14,6 +14,7 @@ const ordersRouter = require('./routes/orders');
 const publishersRouter = require('./routes/publishers');
 const reportsRouter = require('./routes/reports');
 const cartRouter = require('./routes/cart');
+const { reset } = require('nodemon');
 
 const app = express();
 
@@ -42,6 +43,14 @@ app.use('/orders', ordersRouter);
 app.use('/publishers', publishersRouter);
 app.use('/reports', reportsRouter);
 app.use('/cart', cartRouter);
+
+app.post('/login', function(req, res) {
+  if (req.body.email === "owner@gmail.com" && req.body.password === "owner") {
+    res.status(200);
+  } else {
+    res.status(400);
+  }
+})
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
