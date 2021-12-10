@@ -1,17 +1,28 @@
-function loginOwner() {
-    const email = document.getElementById('email');
-    const password = document.getElementById('password');
-    console.log('hello')
+function loginOwner(e) {
+  e.preventDefault();
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
     fetch('/login/owner', {
-        method: 'post',
+        method: 'POST',
         headers: {
-          "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+          "Content-Type": "application/json"
         },
-        body: {
-            email: email,
-            password: password
-        }
+        body: JSON.stringify({
+            'email': email,
+            'password': password
+        })
       })
       .then((response) => {
-          console.log(response);
-      })};
+        if(response.status == 401){
+          alert('Invalid email and/or password');
+        }
+        else{
+          location.href="/books";
+        }
+      })
+      .catch((err)=>{
+        console.error(err)
+      })
+};
+
+document.getElementById('ownerLogin').addEventListener('click', loginOwner)

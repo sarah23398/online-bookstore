@@ -15,11 +15,11 @@ body
         h4(style='padding-top: 20px;') Log In
         form
           .form-group
-            label(for='exampleInput') Email
-            input#exampleInput.form-control(type='text' name="email" aria-describedby='inputGroupPrepend' placeholder='Enter email' required)
+            label(for='email') Email
+            input#email.form-control(type='text' name="email" aria-describedby='inputGroupPrepend' placeholder='Enter email' required)
           .form-group
-            label(for='exampleInputPassword1') Password
-            input#exampleInputPassword1.form-control(type='password' name="password" placeholder='Enter password' required)
-          button.btn.btn-primary(type='submit') Log In as User
+            label(for='password') Password
+            input#password.form-control(type='password' name="password" placeholder='Enter password' required)
+          button#userLogin.btn.btn-primary Log In as User
           p
-          button.btn.btn-primary(type='submit' onclick='loginOwner()') Log In as Owner
+          button#ownerLogin.btn.btn-primary Log In as Owner
