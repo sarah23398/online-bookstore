@@ -17,54 +17,11 @@ body
       .col-sm
         h4 Reports
         p
-        h5 Sales per author report
-        table.table
-          thead
-            tr
-              th(scope='col') Sales
-              th(scope='col') Author
-          tbody
-            tr
-              td 1
-              td Mark
-            tr
-              td 2
-              td Jacob
-            tr
-              td 3
-              td Larry
-        h5 Sales vs expenditures report
-        table.table
-          thead
-            tr
-              th(scope='col') Sale
-              th(scope='col') Expenditure
-          tbody
-            tr
-              td 1
-              td Mark
-            tr
-              td 2
-              td Jacob
-            tr
-              td 3
-              td Larry
-        h5 Sales per genre report
-        table.table
-          thead
-            tr
-              th(scope='col') Sales
-              th(scope='col') Genre
-          tbody
-            tr
-              td 1
-              td Mark
-            tr
-              td 2
-              td Jacob
-            tr
-              td 3
-              td Larry
+        a.link-primary(href='/reports/:id') Sales per author report
+        p
+        a.link-primary(href='/reports/:id') Sales vs expenditures report
+        p
+        a.link-primary(href='/reports/:id') Sales per genre report
 
 
 

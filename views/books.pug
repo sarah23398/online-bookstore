@@ -33,6 +33,9 @@ body
             label(for='exampleInputEmail1') Price
             input#exampleInputEmail1.form-control(name='price' aria-describedby='emailHelp' placeholder='Enter price')
           .form-group
+            label(for='exampleInputEmail1') Number of pages
+            input#exampleInputEmail1.form-control(name='number-of-pages' aria-describedby='emailHelp' placeholder='Enter number of pages')
+          .form-group
             label(for='exampleInputEmail1') Publisher
             input#exampleInputEmail1.form-control(name='publisher' aria-describedby='emailHelp' placeholder='Enter publisher')
           button.btn.btn-primary(type='submit') Add
@@ -42,23 +45,15 @@ body
         br
         h4 All Books
         p
-    .row
-      .col-sm
-        .card.bg-light.mb-3
-          .card-header Book
-          .card-body
-            a.card-text Author:
-            p
-            a.card-text ISBN:
-            p
-            a.card-text Genre:
-            p
-            a.card-text Price:
-            p
-            a.card-text Publisher:
-            p
-            button.btn.btn-primary(type='submit') Remove
+        a.link-primary(href='/books/:id') Book #1: Green Eggs and Ham
+        p
+        a.link-primary(href='/books/:id') Book #2: Zero to One
+        p
+        a.link-primary(href='/books/:id') Book #3: Scythe
         br
         br
+        br
+        br
+
 
 

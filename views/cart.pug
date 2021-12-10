@@ -42,13 +42,19 @@ body
         p
         p Total cost:
         p
+        p Destination address:
+        p
         p Credit card number:
         p
-        p Address:
-        p
+        p Billing address:
         br
 
         h5 Update (optional)
+        form(action='/search/results' method="post")
+          .form-group
+            label(for='exampleInputEmail1') Update destination address for order
+            input#exampleInputEmail1.form-control(name='title' aria-describedby='emailHelp' placeholder='Enter destination address')
+          button.btn.btn-primary(type='submit') Update
         form(action='/search/results' method="post")
           .form-group
             label(for='exampleInputEmail1') Update credit card number for order
@@ -56,8 +62,8 @@ body
           button.btn.btn-primary(type='submit') Update
         form(action='/search/results' method="post")
           .form-group
-            label(for='exampleInputEmail1') Update address for order
-            input#exampleInputEmail1.form-control(name='title' aria-describedby='emailHelp' placeholder='Enter address')
+            label(for='exampleInputEmail1') Update billing address for order
+            input#exampleInputEmail1.form-control(name='title' aria-describedby='emailHelp' placeholder='Enter billing address')
           button.btn.btn-primary(type='submit') Update
         br
 
