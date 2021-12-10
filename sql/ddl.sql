@@ -38,7 +38,7 @@ create table "order"
 
 create table genre
 	(ID		varchar(8),
-	 name	varchar(15),
+	 name	varchar(20),
 	 primary key(ID)
 	);
 	
