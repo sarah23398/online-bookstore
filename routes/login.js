@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
 router.post('/owner', function(req, res, next) {
   console.log(req.body);
     if(req.body.email === OWNER_EMAIL && req.body.password === OWNER_PASSWORD){
-      res.status(200);
+      res.status(200).send();
     }
     else{
       console.log(req.body.email)
