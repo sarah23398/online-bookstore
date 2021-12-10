@@ -44,7 +44,7 @@ app.use('/publishers', publishersRouter);
 app.use('/reports', reportsRouter);
 app.use('/cart', cartRouter);
 
-app.post('/login/auth', function(req, res) {
+app.post('/login', function(req, res) {
   if (req.body.email === "owner@gmail.com" && req.body.password === "owner") {
     res.status(200);
   } else {

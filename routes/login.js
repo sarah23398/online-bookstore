@@ -6,7 +6,7 @@ router.get('/', function(req, res, next) {
     res.render('login', { title: 'Login' });
   });
 
-router.post('/auth', function(req, res, next) {
+router.post('/', function(req, res, next) {
     const email = document.getElementById('email');
     const password = document.getElementById('password');
     req.body = {
