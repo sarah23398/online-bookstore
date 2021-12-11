@@ -26,16 +26,9 @@ body
         br
         br
         h4 All Books
-        p
-        a.link-primary(href='/books/:id') Book #1: Green Eggs and Ham
-        p
-        a.link-primary(href='/books/:id') Book #2: Zero to One
-        p
-        a.link-primary(href='/books/:id') Book #3: Scythe
-        br
-        br
-        br
-        br
+          each book in books
+            a.link-primary(href='/books/#{book.id}') #{book.title}
+            br
 
 
 

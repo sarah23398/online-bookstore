@@ -50,10 +50,8 @@ body
           .form-group
             label(for='bookPublisher') Publisher
             select.custom-select#bookPublisher
-              option(selected='') Select publisher
-              option(value='1') One
-              option(value='2') Two
-              option(value='3') Three
+              each p in publishers
+                option(value=p.id) #{p.name}
           br
           h5 Publish date
           input#start(type='date' name='trip-start' value='2018-07-22' min='1000-01-01' max='2021-12-11')
