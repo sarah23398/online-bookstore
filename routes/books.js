@@ -46,4 +46,12 @@ router.get('/:isbn', function(req, res, next){
   })  
 })
 
+router.post('/add', function(req, res, next) {
+  if(req.body.email === OWNER_EMAIL && req.body.password === OWNER_PASSWORD){
+    res.status(200).send();
+  }
+  else{
+    res.status(401).send('Incorrect email and/or password');
+  }
+});
 module.exports = router;
