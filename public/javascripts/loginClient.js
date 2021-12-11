@@ -33,6 +33,11 @@ function addBook(e) {
     const genre = document.getElementById('genre').value;
     const price = document.getElementById('price').value;
     const publisher = document.getElementById('publisher').value;
+    const publishDate = document.getElementById('publish-date').value;
+    const edition = document.getElementById('edition').value;
+    const description = document.getElementById('description').value;
+    const printLength = document.getElementById('print-length').value;
+    const stock = document.getElementById('stock').value;
     fetch('/books/add', {
         method: 'POST',
         headers: {
@@ -44,7 +49,12 @@ function addBook(e) {
             'isbn': isbn, 
             'genre': genre, 
             'price': price,
-            'publisher': publisher
+            'publisher': publisher,
+            'publishDate': publishDate,
+            'edition': edition, 
+            'description': description, 
+            'printLength': printLength,
+            'stock': stock
         })
       })
       .then((response) => {
