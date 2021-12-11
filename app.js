@@ -15,6 +15,7 @@ const ordersRouter = require('./routes/orders');
 const publishersRouter = require('./routes/publishers');
 const reportsRouter = require('./routes/reports');
 const cartRouter = require('./routes/cart');
+const authorsRouter = require('./routes/authors');
 const { reset } = require('nodemon');
 
 const app = express();
@@ -62,6 +63,7 @@ app.use('/orders', ordersRouter);
 app.use('/publishers', publishersRouter);
 app.use('/reports', reportsRouter);
 app.use('/cart', cartRouter);
+app.use('/authors', authorsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

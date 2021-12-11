@@ -9,6 +9,11 @@ router.get('/', function(req, res, next) {
     res.render('books', { title: 'Books' });
   });
 
+router.get('/add', function(req, res, next){
+  let id = req.params.id;
+  res.render('add-book');
+})
+
 router.get('/:id', function(req, res, next){
   let id = req.params.id;
   res.render('book');
