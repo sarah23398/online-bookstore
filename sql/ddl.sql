@@ -4,7 +4,7 @@ create table customer
 	 email      		varchar(50),
 	 password			varchar(20),
 	 phone				varchar(11),
-	 address			varchar(60),
+	 address			varchar(80),
 	 bank_account		varchar(20),
 	 primary key (ID)
 	);
@@ -15,7 +15,7 @@ create table shipment
 	 shipping_status		varchar(10),
 	 estimated_arrival		date,
 	 arrival_date			date,
-	 current_address		varchar(60),
+	 current_address		varchar(80),
 	 primary key (tracking_no)
 	);
 
@@ -25,8 +25,8 @@ create table "order"
 	 customer_id		varchar(8),
 	 order_date			timestamp,
 	 bank_account		varchar(20),
-	 billing_address	varchar(60),
-	 destination		varchar(60),
+	 billing_address	varchar(80),
+	 destination		varchar(80),
 	 status				varchar(10),
 	 primary key(ID),
 	 foreign key (tracking_no) references shipment
@@ -56,7 +56,7 @@ create table publisher
 	 name			varchar(40),
 	 email			varchar(50),
 	 phone			varchar(11),
-	 address		varchar(60),
+	 address		varchar(80),
 	 bank_account	varchar(20),
 	 primary key (ID)
 	);
