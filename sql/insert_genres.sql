@@ -13,3 +13,4 @@ INSERT INTO public.genre(id, name) VALUES ('12', 'Graphic Novel');
 INSERT INTO public.genre(id, name) VALUES ('13', 'Historical Fiction');
 INSERT INTO public.genre(id, name) VALUES ('14', 'Horror');
 INSERT INTO public.genre(id, name) VALUES ('15', 'Literary Fiction');
+INSERT INTO public.genre(id, name) VALUES ('16', 'Non-Fiction');
