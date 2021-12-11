@@ -5,7 +5,7 @@ INSERT INTO public.publisher(
 			'https://example.org',
 			'18881209384',
 			'8467 Main St., Montreal, QC, Canada, H7J 9P7',
-		    '9203847565784857');
+		    '92038475657848574321');
 
 INSERT INTO public.publisher(
 	id, name, email, phone, address, bank_account)
@@ -14,7 +14,7 @@ INSERT INTO public.publisher(
 			'https://snicket.org',
 			'18667890954',
 			'956 Hunters Ave., Vancouver, BC, Canada, V7H 9L1',
-		    '9485748501267346');
+		    '94857485012673461234');
 
 INSERT INTO public.publisher(
 	id, name, email, phone, address, bank_account)
@@ -23,7 +23,7 @@ INSERT INTO public.publisher(
 			'https://poke.mon',
 			'18009556789',
 			'123 Pikachu Ave., Toronto, ON, Canada, M5J 2L9',
-		    '1234567890122134');
+		    '12345678901221349876');
 
 INSERT INTO public.publisher(
 	id, name, email, phone, address, bank_account)
@@ -32,4 +32,4 @@ INSERT INTO public.publisher(
 			'https://dundermifflin.com',
 			'12378497465',
 			'394 Electric Cir., Scranton, PA, United States, 18503',
-		    '4762928374650192');
+		    '47629283746501927564');

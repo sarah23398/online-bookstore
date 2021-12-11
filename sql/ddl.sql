@@ -5,7 +5,7 @@ create table customer
 	 password			varchar(20),
 	 phone				varchar(11),
 	 address			varchar(60),
-	 bank_account		varchar(16),
+	 bank_account		varchar(20),
 	 primary key (ID)
 	);
 	
@@ -24,7 +24,7 @@ create table "order"
 	 tracking_no		varchar(8),
 	 customer_id		varchar(8),
 	 order_date			timestamp,
-	 bank_account		varchar(16),
+	 bank_account		varchar(20),
 	 billing_address	varchar(60),
 	 destination		varchar(60),
 	 status				varchar(10),
@@ -57,7 +57,7 @@ create table publisher
 	 email			varchar(50),
 	 phone			varchar(11),
 	 address		varchar(60),
-	 bank_account	varchar(16),
+	 bank_account	varchar(20),
 	 primary key (ID)
 	);
 
