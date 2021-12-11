@@ -34,7 +34,7 @@ const credentials = {
   host: process.env.PGHOST,
   database: process.env.DATABASE,
   password: process.env.PASSWORD,
-  port: process.env.PORT
+  port: process.env.PGPORT
 };
 
 // Connect with a connection pool.
@@ -62,14 +62,6 @@ app.use('/orders', ordersRouter);
 app.use('/publishers', publishersRouter);
 app.use('/reports', reportsRouter);
 app.use('/cart', cartRouter);
-
-app.post('/login', function(req, res) {
-  if (req.body.email === "owner@gmail.com" && req.body.password === "owner") {
-    res.status(200);
-  } else {
-    res.status(400);
-  }
-})
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
