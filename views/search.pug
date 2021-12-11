@@ -17,15 +17,15 @@ body
         h4(style='padding-top: 20px;') Search
         form(action='/search/results' method="post")
           .form-group
-            label(for='exampleInputEmail1') Title
-            input#exampleInputEmail1.form-control(name='title' aria-describedby='emailHelp' placeholder='Enter title')
+            label(for='searchTitle') Title
+            input#searchTitle.form-control(name='title' aria-describedby='emailHelp' placeholder='Enter title')
           .form-group
-            label(for='exampleInputEmail1') Author
-            input#exampleInputEmail1.form-control(name='author' aria-describedby='emailHelp' placeholder='Enter author')
+            label(for='searchAuthor') Author
+            input#searchAuthor.form-control(name='author' aria-describedby='emailHelp' placeholder='Enter author')
           .form-group
-            label(for='exampleInputEmail1') ISBN
-            input#exampleInputEmail1.form-control(name='ISBN' aria-describedby='emailHelp' placeholder='Enter ISBN')
+            label(for='searchISBN') ISBN
+            input#searchISBN.form-control(name='ISBN' aria-describedby='emailHelp' placeholder='Enter ISBN')
           .form-group
-            label(for='exampleInputEmail1') Genre
-            input#exampleInputEmail1.form-control(name='genre' aria-describedby='emailHelp' placeholder='Enter genre')
+            label(for='searchGenre') Genre
+            input#searchGenre.form-control(name='genre' aria-describedby='emailHelp' placeholder='Enter genre')
           button.btn.btn-primary(type='submit') Search

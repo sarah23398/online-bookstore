@@ -52,18 +52,18 @@ body
         h5 Update (optional)
         form(action='/search/results' method="post")
           .form-group
-            label(for='exampleInputEmail1') Update destination address for order
-            input#exampleInputEmail1.form-control(name='title' aria-describedby='emailHelp' placeholder='Enter destination address')
+            label(for='cartDestinationAddress') Update destination address for order
+            input#cartDestinationAddress.form-control(name='title' aria-describedby='emailHelp' placeholder='Enter destination address')
           button.btn.btn-primary(type='submit') Update
         form(action='/search/results' method="post")
           .form-group
-            label(for='exampleInputEmail1') Update credit card number for order
-            input#exampleInputEmail1.form-control(name='title' aria-describedby='emailHelp' placeholder='Enter credit card number')
+            label(for='cartCreditCardNumber') Update credit card number for order
+            input#cartCreditCardNumber.form-control(name='title' aria-describedby='emailHelp' placeholder='Enter credit card number')
           button.btn.btn-primary(type='submit') Update
         form(action='/search/results' method="post")
           .form-group
-            label(for='exampleInputEmail1') Update billing address for order
-            input#exampleInputEmail1.form-control(name='title' aria-describedby='emailHelp' placeholder='Enter billing address')
+            label(for='cartBillingAddress') Update billing address for order
+            input#cartBillingAddress.form-control(name='title' aria-describedby='emailHelp' placeholder='Enter billing address')
           button.btn.btn-primary(type='submit') Update
         br
 
