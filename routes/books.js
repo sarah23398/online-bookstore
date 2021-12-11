@@ -17,8 +17,10 @@ router.get('/', function(req, res, next) {
   router.get('/add', function(req, res, next){
     req.app.locals.client.query('SELECT * from genre;', (err, genres) => {
       req.app.locals.client.query('SELECT * from publisher;', (error, publishers) => {
-        console.log('hello');
-        res.render('add-book', {genres: genres.rows, publishers: publishers.rows});
+        req.app.locals.client.query('SELECT * from author;', (error, authors) => {
+          console.log('hello');
+          res.render('add-book', {genres: genres.rows, publishers: publishers.rows, authors: authors.rows});
+        })
       })
     })
   })

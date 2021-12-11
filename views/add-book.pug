@@ -25,10 +25,8 @@ body
           .form-group
             label(for='bookAuthor') Author
             select.custom-select#bookAuthor
-              option(selected='') Select author
-              option(value='1') One
-              option(value='2') Two
-              option(value='3') Three
+              each a in authors
+                option(value=a.id) #{a.name}
           .form-group
             label(for='bookIsbn') ISBN
             input#bookIsbn.form-control(name='ISBN' aria-describedby='isbnHelp' placeholder='Enter ISBN')
@@ -37,7 +35,7 @@ body
             select.custom-select#bookGenre
               each g in genres
                 option(value=g.id) #{g.name}
-              
+
           .form-group
             label(for='exampleInputEmail1') Price
             input#bookPrice.form-control(type="number" name='price' aria-describedby='priceHelp' placeholder='Enter price' step=".01")
