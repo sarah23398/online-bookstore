@@ -17,11 +17,12 @@ for i in range(0, 35):
     else:
         dest = billing
 
-    print(f'''INSERT INTO public."order"(
-	    id, customer_id, order_date, bank_account, billing_address, destination, status)
-	    VALUES ('{i+1}', '{custid}', '{orderdate}', '{bankacc}', '{billing}', '{dest}', 'FULFILLED');
-    ''')
     print(f'''INSERT INTO public.shipment(
 	    tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address)
 	    VALUES ('{i+1}', '{shipment}', 'DELIVERED', '{est}', '{arr}', '{dest}');
+    ''')
+
+    print(f'''INSERT INTO public."order"(
+	    id, tracking_no, customer_id, order_date, bank_account, billing_address, destination, status)
+	    VALUES ('{i+1}', '{i+1}', '{custid}', '{orderdate}', '{bankacc}', '{billing}', '{dest}', 'FULFILLED');
     ''')
