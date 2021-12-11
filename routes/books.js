@@ -47,11 +47,13 @@ router.get('/:isbn', function(req, res, next){
 })
 
 router.post('/add', function(req, res, next) {
-  if(req.body.email === OWNER_EMAIL && req.body.password === OWNER_PASSWORD){
-    res.status(200).send();
-  }
-  else{
-    res.status(401).send('Incorrect email and/or password');
-  }
+  const { title, author, isbn, genre, price, publisher, publishDate, edition, description, printLength, stock, publisherFee } = request.body
+  pool.query('INSERT INTO books (isbn, publisher_id, title, publish_date, edition, description, price, print_length, stock, publisher_fee) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)', 
+    [isbn, publisher, title, publishDate, edition, description, price, printLength, stock, publisherFee], (error, results) => {
+    if (error) {
+      throw error
+    }
+    response.status(201).send(`Book added with ID: ${result.insertId}`)
+  })
 });
 module.exports = router;

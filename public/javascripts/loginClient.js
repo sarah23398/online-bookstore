@@ -25,7 +25,7 @@ function loginOwner(e) {
       })
 };
 
-function addBook(e) {
+function createBook(e) {
   e.preventDefault();
     const title = document.getElementById('title').value;
     const author = document.getElementById('author').value;
@@ -38,6 +38,7 @@ function addBook(e) {
     const description = document.getElementById('description').value;
     const printLength = document.getElementById('print-length').value;
     const stock = document.getElementById('stock').value;
+    const publisherFee = document.getElementById('publisher-fee').value;
     fetch('/books/add', {
         method: 'POST',
         headers: {
@@ -54,7 +55,8 @@ function addBook(e) {
             'edition': edition, 
             'description': description, 
             'printLength': printLength,
-            'stock': stock
+            'stock': stock,
+            'publisher-fee': publisherFee
         })
       })
       .then((response) => {
@@ -71,4 +73,4 @@ function addBook(e) {
 };
 
 document.getElementById('ownerLogin').addEventListener('click', loginOwner)
-document.getElementById('addBook').addEventListener('click', addBook)
+document.getElementById('addBook').addEventListener('click', createBook)
