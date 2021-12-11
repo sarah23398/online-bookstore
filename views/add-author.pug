@@ -19,5 +19,14 @@ body
         form(action='/search/results' method="post")
           .form-group
             label(for='authorName') Name
-            input#authorName.form-control(name='title' aria-describedby='emailHelp' placeholder='Enter name')
+            input#authorName.form-control(name='authorName' aria-describedby='emailHelp' placeholder='Enter name')
+          .form-group
+            label(for='authorEmail') Email
+            input#authorEmail.form-control(name='authorEmail' aria-describedby='emailHelp' placeholder='Enter email')
+          .form-group
+            label(for='authorBiography') Biography
+            input#authorBiography.form-control(name='authorBiography' aria-describedby='emailHelp' placeholder='Enter biography')
+          .form-group
+            label(for='authorWebsite') Website
+            input#authorWebsite.form-control(name='authorWebsite' aria-describedby='emailHelp' placeholder='Enter biography')
           button.btn.btn-primary(type='submit') Add author
