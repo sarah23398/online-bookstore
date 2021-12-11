@@ -51,9 +51,10 @@ router.post('/add', function(req, res, next) {
   pool.query('INSERT INTO books (isbn, publisher_id, title, publish_date, edition, description, price, print_length, stock, publisher_fee) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)', 
     [isbn, publisher, title, publishDate, edition, description, price, printLength, stock, publisherFee], (error, results) => {
     if (error) {
+      console.log(err);
       throw error
     }
-    response.status(201).send(`Book added with ID: ${result.insertId}`)
+    response.status(201).send(`Book added with ID: ${results.insertId}`)
   })
 });
 module.exports = router;
