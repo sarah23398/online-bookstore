@@ -15,27 +15,9 @@ body
   .container
     .row
       .col-sm
-        br
-        h4 Add to Database
-        p
-        a.link-primary(href='/authors/add') Add an author
-        p
-        a.link-primary(href='/publishers/add') Add a publisher
-        p
-        a.link-primary(href='/books/add') Add a book
-        br
-        br
-        h4 All Books
-        p
-        a.link-primary(href='/books/:id') Book #1: Green Eggs and Ham
-        p
-        a.link-primary(href='/books/:id') Book #2: Zero to One
-        p
-        a.link-primary(href='/books/:id') Book #3: Scythe
-        br
-        br
-        br
-        br
-
-
-
+        h4 Add an Author
+        form(action='/search/results' method="post")
+          .form-group
+            label(for='exampleInputEmail1') Name
+            input#exampleInputEmail1.form-control(name='title' aria-describedby='emailHelp' placeholder='Enter name')
+          button.btn.btn-primary(type='submit') Add author

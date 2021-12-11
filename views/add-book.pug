@@ -1,0 +1,75 @@
+html
+  head
+    link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css' integrity='sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO' crossorigin='anonymous')
+    script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js' integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo' crossorigin='anonymous')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js' integrity='sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49' crossorigin='anonymous')
+    script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js' integrity='sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy' crossorigin='anonymous')
+    link(rel='stylesheet', href='/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/css/styles.css')
+
+body
+  script(src='script.js')
+  include owner-header.pug
+
+  p
+  .container
+    .row
+      .col-sm
+        h4 Add a Book
+        p
+        form(action='/search/results' method="post")
+          h5 Public information
+          .form-group
+            label(for='exampleInputEmail1') Title
+            input#exampleInputEmail1.form-control(name='title' aria-describedby='emailHelp' placeholder='Enter title')
+          .form-group
+            label(for='exampleInputEmail1') Author
+            select.custom-select
+              option(selected='') Select author
+              option(value='1') One
+              option(value='2') Two
+              option(value='3') Three
+          .form-group
+            label(for='exampleInputEmail1') ISBN
+            input#exampleInputEmail1.form-control(name='ISBN' aria-describedby='emailHelp' placeholder='Enter ISBN')
+          .form-group
+            label(for='exampleInputEmail1') Genre
+            select.custom-select
+              option(selected='') Select genre
+              option(value='1') One
+              option(value='2') Two
+              option(value='3') Three
+          .form-group
+            label(for='exampleInputEmail1') Price
+            input#exampleInputEmail1.form-control(name='price' aria-describedby='emailHelp' placeholder='Enter price')
+          .form-group
+            label(for='exampleInputEmail1') Number of pages
+            input#exampleInputEmail1.form-control(name='number-of-pages' aria-describedby='emailHelp' placeholder='Enter number of pages')
+          .form-group
+            label(for='exampleInputEmail1') Edition
+            input#exampleInputEmail1.form-control(name='publisher' aria-describedby='emailHelp' placeholder='Enter edition')
+          .form-group
+            label(for='exampleInputEmail1') Publisher
+            select.custom-select
+              option(selected='') Select publisher
+              option(value='1') One
+              option(value='2') Two
+              option(value='3') Three
+          br
+          h5 Publish date
+          input#start(type='date' name='trip-start' value='2018-07-22' min='1000-01-01' max='2021-12-11')
+
+          p
+          br
+          h5 Private information
+          .form-group
+            label(for='exampleInputEmail1') Stock
+            input#exampleInputEmail1.form-control(name='publisher' aria-describedby='emailHelp' placeholder='Enter stock')
+
+          .form-group
+            label(for='exampleInputEmail1') Publisher fee
+            input#exampleInputEmail1.form-control(name='publisher' aria-describedby='emailHelp' placeholder='Enter publisher fee')
+
+          button.btn.btn-primary(type='submit') Add book
+        br
+        br
