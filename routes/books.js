@@ -3,11 +3,9 @@ var router = express.Router();
 
 /* GET books page. */
 router.get('/', function(req, res, next) {
+  query = '';
   if(req.query){
-    // do stuff here with your query variables, e.g. to access title you do "req.query.title"
-  }
-  else{
-    query = "SELECT * from book;"
+    query = 'SELECT * from book;'
   }
     req.app.locals.client.query(query, (err, result)=>{
       res.render('books', { title: 'Books', books: result.rows });

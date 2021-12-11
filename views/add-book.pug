@@ -45,7 +45,7 @@ body
             label(for='bookPages') Number of pages
             input#bookPages.form-control(name='number-of-pages' aria-describedby='pagesHelp' placeholder='Enter number of pages')
           .form-group
-            label(for='exampleInputEmail1') Edition
+            label(for='bookEdition') Edition
             input#bookEdition.form-control(name='publisher' aria-describedby='editionHelp' placeholder='Enter edition')
           .form-group
             label(for='bookPublisher') Publisher
@@ -54,18 +54,18 @@ body
                 option(value=p.id) #{p.name}
           br
           h5 Publish date
-          input#start(type='date' name='trip-start' value='2018-07-22' min='1000-01-01' max='2021-12-11')
+          input#bookPublishDate(type='date' name='publish' value='2018-07-22' min='1000-01-01' max='#{Date.now().toISOString().split('T')[0]}')
 
           p
           br
           h5 Private information
           .form-group
-            label(for='exampleInputEmail1') Stock
-            input#exampleInputEmail1.form-control(name='publisher' aria-describedby='emailHelp' placeholder='Enter stock')
+            label(for='bookStock') Stock
+            input#bookStock.form-control(name='stock' aria-describedby='stockHelp' placeholder='Enter stock')
 
           .form-group
-            label(for='exampleInputEmail1') Publisher fee
-            input#exampleInputEmail1.form-control(name='publisher' aria-describedby='emailHelp' placeholder='Enter publisher fee')
+            label(for='bookPublisherFee') Publisher fee
+            input#bookPublisherFee.form-control(name='publisherFee' aria-describedby='publisherFeeHelp' placeholder='Enter publisher fee')
 
           button.btn.btn-primary(type='submit') Add book
         br

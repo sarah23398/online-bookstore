@@ -26,9 +26,9 @@ body
         br
         br
         h4 All Books
-          each book in books
-            a.link-primary(href='/books/#{book.id}') #{book.title}
-            br
+        each book in books
+          a.link-primary(href='/books/' + book.isbn) #{book.title}
+          br
 
 
 
