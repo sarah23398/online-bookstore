@@ -3,7 +3,8 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const sassMiddleware = require('node-sass-middleware');
+const { Pool, Client } = require("pg");
+require('dotenv').config()
 
 const indexRouter = require('./routes/index');
 const registerRouter = require('./routes/register');
@@ -26,13 +27,31 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(sassMiddleware({
-  src: path.join(__dirname, 'public'),
-  dest: path.join(__dirname, 'public'),
-  indentedSyntax: true, // true = .sass and false = .scss
-  sourceMap: true
-}));
 app.use(express.static(path.join(__dirname, 'public')));
+
+const credentials = {
+  user: process.env.PGUSER,
+  host: process.env.PGHOST,
+  database: process.env.DATABASE,
+  password: process.env.PASSWORD,
+  port: process.env.PGPORT
+};
+
+// Connect with a connection pool.
+const pool = new Pool(credentials);
+
+// Connect with a client.
+const client = new Client(credentials);
+client.connect();
+
+pool.query('SELECT NOW()', (err, res) => {
+  console.log(err, res)
+  pool.end()
+})
+client.query('SELECT NOW()', (err, res) => {
+  console.log(err, res)
+  client.end()
+})
 
 app.use('/', indexRouter);
 app.use('/register', registerRouter);
@@ -43,14 +62,6 @@ app.use('/orders', ordersRouter);
 app.use('/publishers', publishersRouter);
 app.use('/reports', reportsRouter);
 app.use('/cart', cartRouter);
-
-app.post('/login', function(req, res) {
-  if (req.body.email === "owner@gmail.com" && req.body.password === "owner") {
-    res.status(200);
-  } else {
-    res.status(400);
-  }
-})
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
