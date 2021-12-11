@@ -4,7 +4,9 @@ html
     script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js' integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo' crossorigin='anonymous')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js' integrity='sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49' crossorigin='anonymous')
     script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js' integrity='sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy' crossorigin='anonymous')
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(type="module" src='/javascripts/loginClient.js')
+    link(rel='stylesheet', href='/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/css/styles.css')
 
 body
   
@@ -15,7 +17,7 @@ body
     .row
       .col-sm
         h4 Add an Author
-        form(action='/search/results' method="post")
+        form
           .form-group
             label(for='authorName') Name
             input#authorName.form-control(name='authorName' aria-describedby='emailHelp' placeholder='Enter name')
@@ -28,4 +30,4 @@ body
           .form-group
             label(for='authorWebsite') Website
             input#authorWebsite.form-control(name='authorWebsite' aria-describedby='emailHelp' placeholder='Enter biography')
-          button.btn.btn-primary(type='submit') Add author
+          button#addAuthor.btn.btn-primary Add author
