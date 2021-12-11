@@ -10,8 +10,10 @@ router.get('/', function(req, res, next) {
   });
 
 router.get('/add', function(req, res, next){
-  let id = req.params.id;
-  res.render('add-book');
+  req.app.locals.client.query('SELECT * from genre; ', (err, result) => {  
+    console.log(result);
+    res.render('add-book', {genres: result.rows});
+  })
 })
 
 router.get('/:id', function(req, res, next){

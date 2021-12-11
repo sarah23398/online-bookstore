@@ -20,37 +20,36 @@ body
         form(action='/search/results' method="post")
           h5 Public information
           .form-group
-            label(for='exampleInputEmail1') Title
-            input#exampleInputEmail1.form-control(name='title' aria-describedby='emailHelp' placeholder='Enter title')
+            label(for='bookTitle') Title
+            input#bookTitle.form-control(name='title' aria-describedby='titleHelp' placeholder='Enter title')
           .form-group
-            label(for='exampleInputEmail1') Author
-            select.custom-select
+            label(for='bookAuthor') Author
+            select.custom-select#bookAuthor
               option(selected='') Select author
               option(value='1') One
               option(value='2') Two
               option(value='3') Three
           .form-group
-            label(for='exampleInputEmail1') ISBN
-            input#exampleInputEmail1.form-control(name='ISBN' aria-describedby='emailHelp' placeholder='Enter ISBN')
+            label(for='bookIsbn') ISBN
+            input#bookIsbn.form-control(name='ISBN' aria-describedby='isbnHelp' placeholder='Enter ISBN')
           .form-group
-            label(for='exampleInputEmail1') Genre
-            select.custom-select
-              option(selected='') Select genre
-              option(value='1') One
-              option(value='2') Two
-              option(value='3') Three
+            label(for='bookGenre') Genre
+            select.custom-select#bookGenre
+              each g in genres
+                option(value=g.id) #{g.name}
+              
           .form-group
             label(for='exampleInputEmail1') Price
-            input#exampleInputEmail1.form-control(name='price' aria-describedby='emailHelp' placeholder='Enter price')
+            input#bookPrice.form-control(type="number" name='price' aria-describedby='priceHelp' placeholder='Enter price' step=".01")
           .form-group
-            label(for='exampleInputEmail1') Number of pages
-            input#exampleInputEmail1.form-control(name='number-of-pages' aria-describedby='emailHelp' placeholder='Enter number of pages')
+            label(for='bookPages') Number of pages
+            input#bookPages.form-control(name='number-of-pages' aria-describedby='pagesHelp' placeholder='Enter number of pages')
           .form-group
             label(for='exampleInputEmail1') Edition
-            input#exampleInputEmail1.form-control(name='publisher' aria-describedby='emailHelp' placeholder='Enter edition')
+            input#bookEdition.form-control(name='publisher' aria-describedby='editionHelp' placeholder='Enter edition')
           .form-group
-            label(for='exampleInputEmail1') Publisher
-            select.custom-select
+            label(for='bookPublisher') Publisher
+            select.custom-select#bookPublisher
               option(selected='') Select publisher
               option(value='1') One
               option(value='2') Two
