@@ -8,20 +8,9 @@ create table customer
 	 bank_account		varchar(20),
 	 primary key (ID)
 	);
-	
-create table shipment
-	(tracking_no   			varchar(8),
-	 shipment_date			date,
-	 shipping_status		varchar(10),
-	 estimated_arrival		date,
-	 arrival_date			date,
-	 current_address		varchar(80),
-	 primary key (tracking_no)
-	);
 
 create table "order"
 	(ID					varchar(8),
-	 tracking_no		varchar(8),
 	 customer_id		varchar(8),
 	 order_date			timestamp,
 	 bank_account		varchar(20),
@@ -29,12 +18,23 @@ create table "order"
 	 destination		varchar(80),
 	 status				varchar(10),
 	 primary key(ID),
-	 foreign key (tracking_no) references shipment
-	 	on delete set null,
+
 	 foreign key (customer_id) references customer (ID)
 	 	on delete cascade
 	);
 
+create table shipment
+	(tracking_no   			varchar(8),
+	 shipment_date			date,
+	 shipping_status		varchar(10),
+	 estimated_arrival		date,
+	 arrival_date			date,
+	 current_address		varchar(80),
+	 order_id				varchar(8),
+	 primary key (tracking_no),
+	 foreign key (order_id) references "order" (ID)
+	 	on delete cascade
+	);
 
 create table genre
 	(ID		varchar(8),
