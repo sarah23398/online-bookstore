@@ -29,7 +29,7 @@ function createBook(e) {
             'description': description, 
             'printLength': printLength,
             'stock': stock,
-            'publisher-fee': publisherFee
+            'publisherFee': publisherFee
         })
       })
       .then((response) => {

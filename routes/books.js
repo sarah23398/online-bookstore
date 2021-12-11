@@ -47,9 +47,10 @@ router.get('/:isbn', function(req, res, next){
 })
 
 router.post('/add', function(req, res, next) {
+  console.log(req.body);
   const { title, author, isbn, genre, price, publisher, publishDate, edition, description, printLength, stock, publisherFee } = request.body
   pool.query('INSERT INTO books (isbn, publisher_id, title, publish_date, edition, description, price, print_length, stock, publisher_fee) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)', 
-    [isbn, publisher, title, publishDate, edition, description, price, printLength, stock, publisherFee], (error, results) => {
+    [isbn, publisher, title, Date(publishDate), Number(edition), description, Number(price), Number(printLength), Number(stock), Number(publisherFee)], (error, results) => {
     if (error) {
       console.log(err);
       throw error
