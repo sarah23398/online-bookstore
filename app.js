@@ -38,19 +38,18 @@ const credentials = {
 };
 
 // Connect with a connection pool.
-const pool = new Pool(credentials);
+app.locals.pool = new Pool(credentials);
 
 // Connect with a client.
-const client = new Client(credentials);
-client.connect();
+app.locals.client = new Client(credentials);
+app.locals.client.connect();
 
-pool.query('SELECT NOW()', (err, res) => {
+app.locals.pool.query('SELECT NOW()', (err, res) => {
   console.log(err, res)
-  pool.end()
+  app.locals.pool.end()
 })
-client.query('SELECT NOW()', (err, res) => {
+app.locals.client.query('SELECT NOW()', (err, res) => {
   console.log(err, res)
-  client.end()
 })
 
 app.use('/', indexRouter);
