@@ -23,9 +23,11 @@ router.get('/', function(req, res, next) {
     })
   })
 
-router.get('/:id', function(req, res, next){
-  let id = req.params.id;
-  res.render('book');
+router.get('/:isbn', function(req, res, next){
+  req.app.locals.client.query('SELECT * from book where isbn = $1', [req.params.isbn], (err, result)=>{
+    console.log(result.rows);
+    res.render('book');
+  })  
 })
 
 module.exports = router;

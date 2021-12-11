@@ -15,14 +15,13 @@ body
   .container
     .row
       .col-sm
-        h4 Book
-        p Title:
-        p Author:
+        h3 #{book.title}
+        h4 Written by
         p ISBN:
         p Genre:
         p Price:
-        p Number of pages:
-        p Publisher:
+        p #{book.print_length} pages
+        p Published by #{book.publisher} on #{book.publish_date.toISOString().split('T')[0]}
         br
 
         h4 Order
