@@ -22,6 +22,6 @@ for i in range(0, 35):
 	    VALUES ('{i+1}', '{custid}', '{orderdate}', '{bankacc}', '{billing}', '{dest}', 'FULFILLED');
     ''')
     print(f'''INSERT INTO public.shipment(
-	    tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address, order_id)
-	    VALUES ('{i+1}', '{shipment}', 'DELIVERED', '{est}', '{arr}', '{dest}', '{i+1}');
+	    tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address)
+	    VALUES ('{i+1}', '{shipment}', 'DELIVERED', '{est}', '{arr}', '{dest}');
     ''')

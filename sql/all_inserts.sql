@@ -410,283 +410,286 @@ INSERT INTO public.customer(
 --- ORDERS AND SHIPMENTS
 INSERT INTO public."order"(
             id, customer_id, order_date, bank_account, billing_address, destination, status)
-            VALUES ('1', '16', '2018-06-29', '4628465347992678', '071 Crystal Valley Port John, AB N3S 6E2', '071 Crystal Valley Port John, AB N3S 6E2', 'FULFILLED');
+            VALUES ('1', '9', '2021-03-13', '4970457555388644', '105 Kaiser Lights Port Lori, NS N5K7A5', '105 Kaiser Lights Port Lori, NS N5K7A5', 'FULFILLED');
     
 INSERT INTO public.shipment(
-            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address, order_id)
-            VALUES ('1', '2018-07-03', 'DELIVERED', '2018-07-05', '2018-07-08', '071 Crystal Valley Port John, AB N3S 6E2', '1');
-    
-INSERT INTO public."order"(
-            id, customer_id, order_date, bank_account, billing_address, destination, status)
-            VALUES ('2', '11', '2017-03-15', '4059395268371461', '9745 Williams Harbors Apt. 198 Jonathanview, YT M2A8Y4', '9745 Williams Harbors Apt. 198 Jonathanview, YT M2A8Y4', 'FULFILLED');
-    
-INSERT INTO public.shipment(
-            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address, order_id)
-            VALUES ('2', '2017-03-22', 'DELIVERED', '2017-03-27', '2017-03-28', '9745 Williams Harbors Apt. 198 Jonathanview, YT M2A8Y4', '2');
+            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address)
+            VALUES ('1', '2021-03-17', 'DELIVERED', '2021-03-21', '2021-03-21', '105 Kaiser Lights Port Lori, NS N5K7A5');
     
 INSERT INTO public."order"(
             id, customer_id, order_date, bank_account, billing_address, destination, status)
-            VALUES ('3', '2', '2018-03-22', '4188577368126531', '35506 Flores Square Suite 340 North Anthonychester, MB L4N 4Y9', '72274 Watson Spur Apt. 808 East Whitneyport, YT E8S 5P3', 'FULFILLED');
-    
+            VALUES ('2', '3', '2020-07-09', '4167473642432496', '8374 Raymond Ports West Kristinfurt, QC B7C 8C4', '8374 Raymond Ports West Kristinfurt, QC B7C 8C4', 'FULFILLED');
+
 INSERT INTO public.shipment(
-            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address, order_id)
-            VALUES ('3', '2018-03-29', 'DELIVERED', '2018-04-01', '2018-04-01', '72274 Watson Spur Apt. 808 East Whitneyport, YT E8S 5P3', '3');
+            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address)
+            VALUES ('2', '2020-07-11', 'DELIVERED', '2020-07-12', '2020-07-15', '8374 Raymond Ports West Kristinfurt, QC B7C 8C4');
 
 INSERT INTO public."order"(
             id, customer_id, order_date, bank_account, billing_address, destination, status)
-            VALUES ('4', '9', '2017-04-28', '4502443907607441', '267 Julia Stravenue North Sarashire, ON L3C1B8', '0827 Robert Manor Knappborough, QC K8M5X3', 'FULFILLED');      
-
-INSERT INTO public.shipment(
-            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address, order_id)
-            VALUES ('4', '2017-05-04', 'DELIVERED', '2017-05-10', '2017-05-10', '0827 Robert Manor Knappborough, QC K8M5X3', '4');
-
-INSERT INTO public."order"(
-            id, customer_id, order_date, bank_account, billing_address, destination, status)
-            VALUES ('5', '2', '2018-10-11', '4829872560758602', '92639 Hughes Field Apt. 601 Lake Kathleen, ON G3M8A3', '2015 Patricia Ramp South Susan, YT P4N 3K6', 'FULFILLED');
-
-INSERT INTO public.shipment(
-            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address, order_id)
-            VALUES ('5', '2018-10-16', 'DELIVERED', '2018-10-18', '2018-10-19', '2015 Patricia Ramp South Susan, YT P4N 3K6', '5');
-
-INSERT INTO public."order"(
-            id, customer_id, order_date, bank_account, billing_address, destination, status)
-            VALUES ('6', '11', '2021-03-03', '4005129313614442', '6235 Jerry Fork Apt. 437 Perezmouth, ON R8G 5L6', '6235 Jerry Fork Apt. 437 Perezmouth, ON R8G 5L6', 'FULFILLED');
-
-INSERT INTO public.shipment(
-            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address, order_id)
-            VALUES ('6', '2021-03-08', 'DELIVERED', '2021-03-15', '2021-03-18', '6235 Jerry Fork Apt. 437 Perezmouth, ON R8G 5L6', '6');
-
-INSERT INTO public."order"(
-            id, customer_id, order_date, bank_account, billing_address, destination, status)
-            VALUES ('7', '5', '2021-04-18', '4974287857762337', '7115 Anderson Court Lake Deannaburgh, NU E3R 2X3', '7115 Anderson Court Lake Deannaburgh, NU E3R 2X3', 'FULFILLED');
-
-INSERT INTO public.shipment(
-            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address, order_id)
-            VALUES ('7', '2021-04-25', 'DELIVERED', '2021-04-30', '2021-04-30', '7115 Anderson Court Lake Deannaburgh, NU E3R 2X3', '7');
-
-INSERT INTO public."order"(
-            id, customer_id, order_date, bank_account, billing_address, destination, status)
-            VALUES ('8', '7', '2017-12-25', '4798129078689531', '609 Martin Manors Suite 380 Rachelburgh, SK S8L2J9', '514 Deborah Rue West Alexiston, NS J2H6S7', 'FULFILLED');  
-
-INSERT INTO public.shipment(
-            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address, order_id)
-            VALUES ('8', '2017-12-28', 'DELIVERED', '2018-01-02', '2018-01-05', '514 Deborah Rue West Alexiston, NS J2H6S7', '8');
-
-INSERT INTO public."order"(
-            id, customer_id, order_date, bank_account, billing_address, destination, status)
-            VALUES ('9', '7', '2020-03-24', '4898191067887103', '519 Sanchez Forge Suite 125 North Lisa, NU Y2R 7T6', '55535 Blanchard Plains Lake Ronaldtown, NS C4J 1A2', 'FULFILLED');
-
-INSERT INTO public.shipment(
-            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address, order_id)
-            VALUES ('9', '2020-03-28', 'DELIVERED', '2020-04-03', '2020-04-06', '55535 Blanchard Plains Lake Ronaldtown, NS C4J 1A2', '9');
-
-INSERT INTO public."order"(
-            id, customer_id, order_date, bank_account, billing_address, destination, status)
-            VALUES ('10', '7', '2018-10-14', '4532782931128856', '744 Rhodes Squares Terriport, AB C6E7N8', '60807 Cindy Islands Apt. 947 Lake Rachaelstad, SK B6J 3X1', 'FULFILLED');
-
-INSERT INTO public.shipment(
-            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address, order_id)
-            VALUES ('10', '2018-10-21', 'DELIVERED', '2018-10-25', '2018-10-28', '60807 Cindy Islands Apt. 947 Lake Rachaelstad, SK B6J 3X1', '10');
-
-INSERT INTO public."order"(
-            id, customer_id, order_date, bank_account, billing_address, destination, status)
-            VALUES ('11', '9', '2017-04-12', '4517062697259511', '14346 Cardenas Crescent Suite 771 East Megan, BC X8C6K4', '14346 Cardenas Crescent Suite 771 East Megan, BC X8C6K4', 'FULFILLED');
-
-INSERT INTO public.shipment(
-            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address, order_id)
-            VALUES ('11', '2017-04-15', 'DELIVERED', '2017-04-17', '2017-04-18', '14346 Cardenas Crescent Suite 771 East Megan, BC X8C6K4', '11');
-
-INSERT INTO public."order"(
-            id, customer_id, order_date, bank_account, billing_address, destination, status)
-            VALUES ('12', '10', '2021-08-11', '4925269074030805', '87883 Schroeder Ports Apt. 371 Nancytown, BC X5S 3E9', '87883 Schroeder Ports Apt. 371 Nancytown, BC X5S 3E9', 
+            VALUES ('3', '21', '2021-07-25', '4122835634823474', '28046 Skinner Lights New Jonathonville, SK L4G 8E4', '52780 Morris Knolls Apt. 469 Port Jameshaven, MB E5M1X4', 
 'FULFILLED');
 
 INSERT INTO public.shipment(
-            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address, order_id)
-            VALUES ('12', '2021-08-13', 'DELIVERED', '2021-08-14', '2021-08-16', '87883 Schroeder Ports Apt. 371 Nancytown, BC X5S 3E9', '12');
+            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address)
+            VALUES ('3', '2021-08-01', 'DELIVERED', '2021-08-08', '2021-08-11', '52780 Morris Knolls Apt. 469 Port Jameshaven, MB E5M1X4');
 
 INSERT INTO public."order"(
             id, customer_id, order_date, bank_account, billing_address, destination, status)
-            VALUES ('13', '4', '2020-10-27', '4909353416346952', '86706 Justin Square North Tammy, AB E6P7B9', '5243 Davis Brooks Brianland, NT K2L8H7', 'FULFILLED');
+            VALUES ('4', '11', '2019-12-15', '4297633859730832', '5170 Taylor Square Suite 923 Weaverchester, NS V3V9J9', '9619 Colin Extension Ashleyshire, MB P1C3N2', 'FULFILLED');
 
 INSERT INTO public.shipment(
-            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address, order_id)
-            VALUES ('13', '2020-10-28', 'DELIVERED', '2020-11-03', '2020-11-04', '5243 Davis Brooks Brianland, NT K2L8H7', '13');
+            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address)
+            VALUES ('4', '2019-12-21', 'DELIVERED', '2019-12-22', '2019-12-25', '9619 Colin Extension Ashleyshire, MB P1C3N2');
 
 INSERT INTO public."order"(
             id, customer_id, order_date, bank_account, billing_address, destination, status)
-            VALUES ('14', '3', '2020-01-09', '4452749009458925', '387 Dunn Corners Port Daltonbury, MB L2K8S8', '387 Dunn Corners Port Daltonbury, MB L2K8S8', 'FULFILLED');      
+            VALUES ('5', '14', '2017-05-26', '4996476911566271', '03976 Perez Radial Apt. 630 Mcdanielbury, NL P6M5B1', '3590 Jack Mission North Keithhaven, NT C1S5H3', 'FULFILLED');
 
 INSERT INTO public.shipment(
-            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address, order_id)
-            VALUES ('14', '2020-01-16', 'DELIVERED', '2020-01-22', '2020-01-24', '387 Dunn Corners Port Daltonbury, MB L2K8S8', '14');
+            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address)
+            VALUES ('5', '2017-05-27', 'DELIVERED', '2017-06-03', '2017-06-03', '3590 Jack Mission North Keithhaven, NT C1S5H3');
 
 INSERT INTO public."order"(
             id, customer_id, order_date, bank_account, billing_address, destination, status)
-            VALUES ('15', '14', '2021-12-02', '4957187031824782', '70981 Richardson Port Jameston, ON L8H3V5', '70981 Richardson Port Jameston, ON L8H3V5', 'FULFILLED');
+            VALUES ('6', '10', '2016-03-07', '4487371995995858', '87846 Sharon Ranch Adamport, BC H7E3R2', '04579 Campbell Bridge Josephport, SK L9N8L8', 'FULFILLED');
 
 INSERT INTO public.shipment(
-            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address, order_id)
-            VALUES ('15', '2021-12-06', 'DELIVERED', '2021-12-13', '2021-12-14', '70981 Richardson Port Jameston, ON L8H3V5', '15');
+            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address)
+            VALUES ('6', '2016-03-14', 'DELIVERED', '2016-03-21', '2016-03-24', '04579 Campbell Bridge Josephport, SK L9N8L8');
 
 INSERT INTO public."order"(
             id, customer_id, order_date, bank_account, billing_address, destination, status)
-            VALUES ('16', '13', '2021-05-02', '4427114714121577', '8827 Yang Shoals West Rachel, NS A6L6V1', '8827 Yang Shoals West Rachel, NS A6L6V1', 'FULFILLED');
+            VALUES ('7', '14', '2017-06-19', '4265456025116795', '45663 Phillip Mills Suite 422 Gaineschester, NU B7A3V3', '45663 Phillip Mills Suite 422 Gaineschester, NU B7A3V3', 'FULFILLED');
 
 INSERT INTO public.shipment(
-            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address, order_id)
-            VALUES ('16', '2021-05-06', 'DELIVERED', '2021-05-09', '2021-05-11', '8827 Yang Shoals West Rachel, NS A6L6V1', '16');
+            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address)
+            VALUES ('7', '2017-06-24', 'DELIVERED', '2017-06-29', '2017-06-29', '45663 Phillip Mills Suite 422 Gaineschester, NU B7A3V3');
 
 INSERT INTO public."order"(
             id, customer_id, order_date, bank_account, billing_address, destination, status)
-            VALUES ('17', '21', '2015-11-22', '4511893336731536', '7859 Cortez Harbor Suite 099 Port Sara, MB X5X8A6', '7859 Cortez Harbor Suite 099 Port Sara, MB X5X8A6', 'FULFILLED');
+            VALUES ('8', '6', '2019-09-21', '4307280512445115', '50076 Berg Lake West Matthew, NB R3J 8B1', '73535 Cunningham Run Apt. 287 Johnsonbury, AB Y3B6G7', 'FULFILLED'); 
 
 INSERT INTO public.shipment(
-            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address, order_id)
-            VALUES ('17', '2015-11-23', 'DELIVERED', '2015-11-26', '2015-11-29', '7859 Cortez Harbor Suite 099 Port Sara, MB X5X8A6', '17');
+            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address)
+            VALUES ('8', '2019-09-27', 'DELIVERED', '2019-10-04', '2019-10-07', '73535 Cunningham Run Apt. 287 Johnsonbury, AB Y3B6G7');
 
 INSERT INTO public."order"(
             id, customer_id, order_date, bank_account, billing_address, destination, status)
-            VALUES ('18', '21', '2018-06-15', '4762917703949847', '2664 Chase Glen West Tammyview, NL S6V1A1', '725 Brooks Islands Apt. 012 Wardfurt, NT G7A7H1', 'FULFILLED');   
+            VALUES ('9', '18', '2015-09-03', '4264514189315248', '7745 Jason Square Apt. 752 Warnerburgh, PE M4M 1G2', '99067 Valerie Turnpike Apt. 809 East George, NL S1C5Y5', 'FULFILLED');
 
 INSERT INTO public.shipment(
-            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address, order_id)
-            VALUES ('18', '2018-06-20', 'DELIVERED', '2018-06-22', '2018-06-22', '725 Brooks Islands Apt. 012 Wardfurt, NT G7A7H1', '18');
+            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address)
+            VALUES ('9', '2015-09-04', 'DELIVERED', '2015-09-10', '2015-09-11', '99067 Valerie Turnpike Apt. 809 East George, NL S1C5Y5');
 
 INSERT INTO public."order"(
             id, customer_id, order_date, bank_account, billing_address, destination, status)
-            VALUES ('19', '1', '2016-01-19', '4930645965176612', '580 Phelps River Suite 789 Raymondland, ON Y7R 1Y5', '20587 Blackwell Lane West Malik, NS T7N1A8', 'FULFILLED');
+            VALUES ('10', '8', '2017-09-06', '4733588694382029', '66552 Davis Court Woodsshire, QC B1E 5J9', '66552 Davis Court Woodsshire, QC B1E 5J9', 'FULFILLED');
+
 INSERT INTO public.shipment(
-            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address, order_id)
-            VALUES ('19', '2016-01-24', 'DELIVERED', '2016-01-31', '2016-02-02', '20587 Blackwell Lane West Malik, NS T7N1A8', '19');
+            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address)
+            VALUES ('10', '2017-09-07', 'DELIVERED', '2017-09-14', '2017-09-14', '66552 Davis Court Woodsshire, QC B1E 5J9');
 
 INSERT INTO public."order"(
             id, customer_id, order_date, bank_account, billing_address, destination, status)
-            VALUES ('20', '20', '2020-01-24', '4802557203899829', '5593 Jeffrey Stravenue Suite 242 West Curtis, BC P2A8N8', '5593 Jeffrey Stravenue Suite 242 West Curtis, BC P2A8N8', 'FULFILLED');
+            VALUES ('11', '14', '2019-12-23', '4040253361340127', '1636 Doyle Bridge Apt. 205 Joshuachester, NL C1T 1C5', '06709 Sarah Motorway Harpertown, NL P2B 6X7', 'FULFILLED');
 
 INSERT INTO public.shipment(
-            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address, order_id)
-            VALUES ('20', '2020-01-26', 'DELIVERED', '2020-01-30', '2020-02-01', '5593 Jeffrey Stravenue Suite 242 West Curtis, BC P2A8N8', '20');
+            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address)
+            VALUES ('11', '2019-12-30', 'DELIVERED', '2020-01-01', '2020-01-02', '06709 Sarah Motorway Harpertown, NL P2B 6X7');
 
 INSERT INTO public."order"(
             id, customer_id, order_date, bank_account, billing_address, destination, status)
-            VALUES ('21', '11', '2021-09-22', '4036704682361933', '5954 Thomas Mission Port Donna, BC G3A8S3', '5954 Thomas Mission Port Donna, BC G3A8S3', 'FULFILLED');
+            VALUES ('12', '19', '2018-05-22', '4620118097505665', '710 Derrick Vista Apt. 353 Jessicaview, AB R9B 1C5', '30624 Merritt Curve Williamsshire, NB K7Y 7G8', 'FULFILLED');
 
 INSERT INTO public.shipment(
-            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address, order_id)
-            VALUES ('21', '2021-09-24', 'DELIVERED', '2021-10-01', '2021-10-03', '5954 Thomas Mission Port Donna, BC G3A8S3', '21');
+            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address)
+            VALUES ('12', '2018-05-27', 'DELIVERED', '2018-06-01', '2018-06-03', '30624 Merritt Curve Williamsshire, NB K7Y 7G8');
 
 INSERT INTO public."order"(
             id, customer_id, order_date, bank_account, billing_address, destination, status)
-            VALUES ('22', '15', '2021-08-26', '4706909686328502', '189 Conner Plains Apt. 083 East Frank, YT N7R8T3', '189 Conner Plains Apt. 083 East Frank, YT N7R8T3', 'FULFILLED');
+            VALUES ('13', '16', '2020-12-03', '4176185200191269', '012 Foster Meadows Shawnburgh, SK X6J 3H7', '1201 Randy Drives Suite 745 Port Ashley, YT A5P 8A2', 'FULFILLED');
 
 INSERT INTO public.shipment(
-            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address, order_id)
-            VALUES ('22', '2021-09-01', 'DELIVERED', '2021-09-07', '2021-09-09', '189 Conner Plains Apt. 083 East Frank, YT N7R8T3', '22');
+            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address)
+            VALUES ('13', '2020-12-05', 'DELIVERED', '2020-12-10', '2020-12-13', '1201 Randy Drives Suite 745 Port Ashley, YT A5P 8A2');
 
 INSERT INTO public."order"(
             id, customer_id, order_date, bank_account, billing_address, destination, status)
-            VALUES ('23', '19', '2017-11-27', '4129621780787694', '843 Jones Hill Henrybury, QC R3X 1M4', '843 Jones Hill Henrybury, QC R3X 1M4', 'FULFILLED');
+            VALUES ('14', '5', '2020-03-03', '4557032724460391', '447 Flores Roads Suite 813 Lake Jennifer, YT J1V5L2', '270 Snyder Lights Port Roberttown, NT S9H8B7', 'FULFILLED');
 
 INSERT INTO public.shipment(
-            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address, order_id)
-            VALUES ('23', '2017-12-02', 'DELIVERED', '2017-12-09', '2017-12-12', '843 Jones Hill Henrybury, QC R3X 1M4', '23');
+            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address)
+            VALUES ('14', '2020-03-05', 'DELIVERED', '2020-03-10', '2020-03-11', '270 Snyder Lights Port Roberttown, NT S9H8B7');
 
 INSERT INTO public."order"(
             id, customer_id, order_date, bank_account, billing_address, destination, status)
-            VALUES ('24', '13', '2016-05-31', '4392060302553484', '359 Ruben Mountain Paulstad, PE T1N7N8', '359 Ruben Mountain Paulstad, PE T1N7N8', 'FULFILLED');
+            VALUES ('15', '11', '2015-07-03', '4685391700825661', '8841 Carter Keys Suite 008 Port Catherine, NT K1L 9S4', '8841 Carter Keys Suite 008 Port Catherine, NT K1L 9S4', 'FULFILLED');
 
 INSERT INTO public.shipment(
-            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address, order_id)
-            VALUES ('24', '2016-06-06', 'DELIVERED', '2016-06-09', '2016-06-12', '359 Ruben Mountain Paulstad, PE T1N7N8', '24');
+            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address)
+            VALUES ('15', '2015-07-06', 'DELIVERED', '2015-07-11', '2015-07-12', '8841 Carter Keys Suite 008 Port Catherine, NT K1L 9S4');
 
 INSERT INTO public."order"(
             id, customer_id, order_date, bank_account, billing_address, destination, status)
-            VALUES ('25', '1', '2016-09-04', '4752504030655446', '526 Lawson Gateway Suite 114 Kennethchester, NS Y6N 7X6', '526 Lawson Gateway Suite 114 Kennethchester, NS Y6N 7X6', 'FULFILLED');
+            VALUES ('16', '1', '2020-08-03', '4388831739344457', '891 Peters Street East Shannon, YT L2E6J9', '238 Lisa Plain Ronaldfort, YT J7X6V7', 'FULFILLED');
 
 INSERT INTO public.shipment(
-            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address, order_id)
-            VALUES ('25', '2016-09-05', 'DELIVERED', '2016-09-07', '2016-09-07', '526 Lawson Gateway Suite 114 Kennethchester, NS Y6N 7X6', '25');
+            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address)
+            VALUES ('16', '2020-08-10', 'DELIVERED', '2020-08-16', '2020-08-19', '238 Lisa Plain Ronaldfort, YT J7X6V7');
 
 INSERT INTO public."order"(
             id, customer_id, order_date, bank_account, billing_address, destination, status)
-            VALUES ('26', '5', '2016-08-07', '4339489785729723', '01588 Roberts Flats New Cathyfort, NS N5E 6A7', '77011 Megan Land Staceymouth, SK G1L 6J2', 'FULFILLED');       
+            VALUES ('17', '13', '2015-08-22', '4886992702681742', '914 Davidson Centers Suite 888 West Michael, QC R6Y 1A8', '914 Davidson Centers Suite 888 West Michael, QC R6Y 
+1A8', 'FULFILLED');
 
 INSERT INTO public.shipment(
-            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address, order_id)
-            VALUES ('26', '2016-08-09', 'DELIVERED', '2016-08-15', '2016-08-16', '77011 Megan Land Staceymouth, SK G1L 6J2', '26');
+            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address)
+            VALUES ('17', '2015-08-23', 'DELIVERED', '2015-08-28', '2015-08-31', '914 Davidson Centers Suite 888 West Michael, QC R6Y 1A8');
 
 INSERT INTO public."order"(
             id, customer_id, order_date, bank_account, billing_address, destination, status)
-            VALUES ('27', '18', '2017-10-19', '4685689846515751', '0601 Campbell Glens North Anthony, ON M9L3T8', '0601 Campbell Glens North Anthony, ON M9L3T8', 'FULFILLED');   
+            VALUES ('18', '8', '2021-01-28', '4128591567681413', '1712 Ian Villages Suite 905 Autumnburgh, MB C5M8N9', '1712 Ian Villages Suite 905 Autumnburgh, MB C5M8N9', 'FULFILLED');
 
 INSERT INTO public.shipment(
-            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address, order_id)
-            VALUES ('27', '2017-10-21', 'DELIVERED', '2017-10-23', '2017-10-24', '0601 Campbell Glens North Anthony, ON M9L3T8', '27');
+            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address)
+            VALUES ('18', '2021-01-29', 'DELIVERED', '2021-01-31', '2021-02-01', '1712 Ian Villages Suite 905 Autumnburgh, MB C5M8N9');
 
 INSERT INTO public."order"(
             id, customer_id, order_date, bank_account, billing_address, destination, status)
-            VALUES ('28', '15', '2021-10-27', '4264173291902912', '657 Erin Garden Apt. 839 Scottmouth, NL P6X1J4', '657 Erin Garden Apt. 839 Scottmouth, NL P6X1J4', 'FULFILLED');
+            VALUES ('19', '15', '2019-07-31', '4496320266853824', '1216 Robinson Flat Karenbury, NT J1J9G9', '1216 Robinson Flat Karenbury, NT J1J9G9', 'FULFILLED');
 
 INSERT INTO public.shipment(
-            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address, order_id)
-            VALUES ('28', '2021-10-30', 'DELIVERED', '2021-11-02', '2021-11-05', '657 Erin Garden Apt. 839 Scottmouth, NL P6X1J4', '28');
+            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address)
+            VALUES ('19', '2019-08-03', 'DELIVERED', '2019-08-09', '2019-08-09', '1216 Robinson Flat Karenbury, NT J1J9G9');
 
 INSERT INTO public."order"(
             id, customer_id, order_date, bank_account, billing_address, destination, status)
-            VALUES ('29', '10', '2019-04-12', '4166401017424054', '5859 Hopkins Locks Richmondmouth, QC B6R 1K7', '5859 Hopkins Locks Richmondmouth, QC B6R 1K7', 'FULFILLED');   
+            VALUES ('20', '17', '2019-05-12', '4246529429422672', '32454 Hamilton Roads Thomasside, SK P5L 6E2', '32454 Hamilton Roads Thomasside, SK P5L 6E2', 'FULFILLED');     
 
 INSERT INTO public.shipment(
-            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address, order_id)
-            VALUES ('29', '2019-04-14', 'DELIVERED', '2019-04-21', '2019-04-23', '5859 Hopkins Locks Richmondmouth, QC B6R 1K7', '29');
+            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address)
+            VALUES ('20', '2019-05-16', 'DELIVERED', '2019-05-21', '2019-05-22', '32454 Hamilton Roads Thomasside, SK P5L 6E2');
 
 INSERT INTO public."order"(
             id, customer_id, order_date, bank_account, billing_address, destination, status)
-            VALUES ('30', '21', '2019-06-02', '4187485527192645', '43475 Chad Stravenue Lake Matthewfurt, PE L9M 9L8', '43475 Chad Stravenue Lake Matthewfurt, PE L9M 9L8', 'FULFILLED');
+            VALUES ('21', '5', '2017-01-08', '4543663246842885', '26534 Hill Circles East Ashley, NT V4Y 9M1', '26534 Hill Circles East Ashley, NT V4Y 9M1', 'FULFILLED');        
 
 INSERT INTO public.shipment(
-            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address, order_id)
-            VALUES ('30', '2019-06-06', 'DELIVERED', '2019-06-08', '2019-06-08', '43475 Chad Stravenue Lake Matthewfurt, PE L9M 9L8', '30');
+            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address)
+            VALUES ('21', '2017-01-12', 'DELIVERED', '2017-01-16', '2017-01-19', '26534 Hill Circles East Ashley, NT V4Y 9M1');
 
 INSERT INTO public."order"(
             id, customer_id, order_date, bank_account, billing_address, destination, status)
-            VALUES ('31', '15', '2021-04-24', '4612721682462042', '074 Shannon Road Suite 315 South Manuelborough, SK T7T4M4', '1783 Watts Lock Watkinstown, QC X7L 1C8', 'FULFILLED');
+            VALUES ('22', '7', '2017-03-13', '4745682904917637', '426 Jillian Camp East Johnberg, QC X7L 4R9', '426 Jillian Camp East Johnberg, QC X7L 4R9', 'FULFILLED');        
 
 INSERT INTO public.shipment(
-            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address, order_id)
-            VALUES ('31', '2021-04-27', 'DELIVERED', '2021-04-30', '2021-04-30', '1783 Watts Lock Watkinstown, QC X7L 1C8', '31');
+            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address)
+            VALUES ('22', '2017-03-16', 'DELIVERED', '2017-03-22', '2017-03-24', '426 Jillian Camp East Johnberg, QC X7L 4R9');
 
 INSERT INTO public."order"(
             id, customer_id, order_date, bank_account, billing_address, destination, status)
-            VALUES ('32', '14', '2019-06-27', '4289598574181969', '946 Drake Lights Suite 119 Kerrtown, PE T5N 5H2', '946 Drake Lights Suite 119 Kerrtown, PE T5N 5H2', 'FULFILLED');
+            VALUES ('23', '16', '2017-07-29', '4968873080543376', '74302 Bethany Shore Port Melissa, YT Y9R5R6', '74302 Bethany Shore Port Melissa, YT Y9R5R6', 'FULFILLED');     
 
 INSERT INTO public.shipment(
-            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address, order_id)
-            VALUES ('32', '2019-06-29', 'DELIVERED', '2019-07-02', '2019-07-02', '946 Drake Lights Suite 119 Kerrtown, PE T5N 5H2', '32');
+            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address)
+            VALUES ('23', '2017-08-05', 'DELIVERED', '2017-08-07', '2017-08-10', '74302 Bethany Shore Port Melissa, YT Y9R5R6');
 
 INSERT INTO public."order"(
             id, customer_id, order_date, bank_account, billing_address, destination, status)
-            VALUES ('33', '8', '2017-11-23', '4616953375659883', '96806 Taylor Haven Suite 385 Lake Autumnshire, AB M6Y 4S9', '96806 Taylor Haven Suite 385 Lake Autumnshire, AB M6Y 4S9', 'FULFILLED');
+            VALUES ('24', '8', '2016-11-07', '4833655924726686', '1449 Brian Spring Apt. 587 East David, SK G4L5T8', '24840 Brian Roads Shawntown, NS L4A3K4', 'FULFILLED');      
 
 INSERT INTO public.shipment(
-            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address, order_id)
-            VALUES ('33', '2017-11-24', 'DELIVERED', '2017-11-26', '2017-11-29', '96806 Taylor Haven Suite 385 Lake Autumnshire, AB M6Y 4S9', '33');
+            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address)
+            VALUES ('24', '2016-11-10', 'DELIVERED', '2016-11-14', '2016-11-16', '24840 Brian Roads Shawntown, NS L4A3K4');
 
 INSERT INTO public."order"(
             id, customer_id, order_date, bank_account, billing_address, destination, status)
-            VALUES ('34', '13', '2015-11-09', '4412077274549536', '73181 Morales Passage East Amy, BC H9H5Y2', '73181 Morales Passage East Amy, BC H9H5Y2', 'FULFILLED');
+            VALUES ('25', '18', '2020-04-23', '4246059049816228', '03320 Lopez Viaduct Livingstonhaven, MB G5C 3G1', '425 Fritz Lane Port Tonya, NT N7N 8V1', 'FULFILLED');       
 
 INSERT INTO public.shipment(
-            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address, order_id)
-            VALUES ('34', '2015-11-15', 'DELIVERED', '2015-11-16', '2015-11-16', '73181 Morales Passage East Amy, BC H9H5Y2', '34');
+            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address)
+            VALUES ('25', '2020-04-25', 'DELIVERED', '2020-04-27', '2020-04-29', '425 Fritz Lane Port Tonya, NT N7N 8V1');
 
 INSERT INTO public."order"(
             id, customer_id, order_date, bank_account, billing_address, destination, status)
-            VALUES ('35', '13', '2019-09-05', '4274756204923013', '5403 Adams Streets Suite 225 West Matthewbury, YT R3R 6K5', '0725 Amanda Ports Bookerville, AB P8T4T9', 'FULFILLED');
+            VALUES ('26', '13', '2020-11-06', '4355092373514611', '939 Emily Light Ryanport, SK B9L1V2', '939 Emily Light Ryanport, SK B9L1V2', 'FULFILLED');
 
 INSERT INTO public.shipment(
-            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address, order_id)
-            VALUES ('35', '2019-09-10', 'DELIVERED', '2019-09-16', '2019-09-17', '0725 Amanda Ports Bookerville, AB P8T4T9', '35');
+            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address)
+            VALUES ('26', '2020-11-11', 'DELIVERED', '2020-11-18', '2020-11-21', '939 Emily Light Ryanport, SK B9L1V2');
+
+INSERT INTO public."order"(
+            id, customer_id, order_date, bank_account, billing_address, destination, status)
+            VALUES ('27', '20', '2020-05-13', '4600176965754066', '39268 Noble Rapids Franklinshire, NB G9L 9E3', '63488 Summers Rue Shafferbury, BC B8V 3M3', 'FULFILLED');      
+
+INSERT INTO public.shipment(
+            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address)
+            VALUES ('27', '2020-05-14', 'DELIVERED', '2020-05-19', '2020-05-22', '63488 Summers Rue Shafferbury, BC B8V 3M3');
+
+INSERT INTO public."order"(
+            id, customer_id, order_date, bank_account, billing_address, destination, status)
+            VALUES ('28', '11', '2021-02-13', '4789700471629612', '527 Khan Skyway Apt. 536 Kimberlyview, NT S3C6N9', '90619 Peggy Hollow Apt. 535 New Kimberlyview, BC R6Y 4K5', 
+'FULFILLED');
+
+INSERT INTO public.shipment(
+            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address)
+            VALUES ('28', '2021-02-20', 'DELIVERED', '2021-02-21', '2021-02-24', '90619 Peggy Hollow Apt. 535 New Kimberlyview, BC R6Y 4K5');
+
+INSERT INTO public."order"(
+            id, customer_id, order_date, bank_account, billing_address, destination, status)
+            VALUES ('29', '3', '2018-08-18', '4400600192614035', '7870 Jones Circle Suite 248 New Jennifer, QC J3N 9L9', '23109 Heather Ridges Port Michaelland, SK S3X8R8', 'FULFILLED');
+
+INSERT INTO public.shipment(
+            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address)
+            VALUES ('29', '2018-08-24', 'DELIVERED', '2018-08-29', '2018-08-30', '23109 Heather Ridges Port Michaelland, SK S3X8R8');
+
+INSERT INTO public."order"(
+            id, customer_id, order_date, bank_account, billing_address, destination, status)
+            VALUES ('30', '4', '2017-07-06', '4308722074680828', '798 Sarah Well North Tiffanyton, SK A3L5R8', '823 Paul Drive Apt. 246 Port Dylanchester, NT L7E3Y5', 'FULFILLED');
+
+INSERT INTO public.shipment(
+            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address)
+            VALUES ('30', '2017-07-13', 'DELIVERED', '2017-07-20', '2017-07-23', '823 Paul Drive Apt. 246 Port Dylanchester, NT L7E3Y5');
+
+INSERT INTO public."order"(
+            id, customer_id, order_date, bank_account, billing_address, destination, status)
+            VALUES ('31', '8', '2015-12-24', '4605815531486779', '917 Todd Estate Suite 346 Guerreroshire, YT V5B5A8', '507 Kelly Drive Port Jessicafurt, NT A5R3N7', 'FULFILLED');
+
+INSERT INTO public.shipment(
+            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address)
+            VALUES ('31', '2015-12-29', 'DELIVERED', '2015-12-30', '2015-12-31', '507 Kelly Drive Port Jessicafurt, NT A5R3N7');
+
+INSERT INTO public."order"(
+            id, customer_id, order_date, bank_account, billing_address, destination, status)
+            VALUES ('32', '14', '2021-03-25', '4871523801635813', '2891 Katherine Junctions Port Christopherchester, MB N6N 7S3', '2910 Ross Mission Apt. 666 North Rhonda, BC A3C2K1', 'FULFILLED');
+
+INSERT INTO public.shipment(
+            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address)
+            VALUES ('32', '2021-03-30', 'DELIVERED', '2021-04-01', '2021-04-01', '2910 Ross Mission Apt. 666 North Rhonda, BC A3C2K1');
+
+INSERT INTO public."order"(
+            id, customer_id, order_date, bank_account, billing_address, destination, status)
+            VALUES ('33', '11', '2017-11-26', '4181442321535434', '219 Michael Motorway Apt. 953 Lake Maria, YT T8C4K9', '219 Michael Motorway Apt. 953 Lake Maria, YT T8C4K9', 'FULFILLED');
+
+INSERT INTO public.shipment(
+            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address)
+            VALUES ('33', '2017-12-01', 'DELIVERED', '2017-12-04', '2017-12-05', '219 Michael Motorway Apt. 953 Lake Maria, YT T8C4K9');
+
+INSERT INTO public."order"(
+            id, customer_id, order_date, bank_account, billing_address, destination, status)
+            VALUES ('34', '6', '2016-09-08', '4574283166591552', '12785 Jared Corner New Danieltown, NT P2H9H7', '12785 Jared Corner New Danieltown, NT P2H9H7', 'FULFILLED');    
+
+INSERT INTO public.shipment(
+            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address)
+            VALUES ('34', '2016-09-11', 'DELIVERED', '2016-09-18', '2016-09-21', '12785 Jared Corner New Danieltown, NT P2H9H7');
+
+INSERT INTO public."order"(
+            id, customer_id, order_date, bank_account, billing_address, destination, status)
+            VALUES ('35', '14', '2021-04-29', '4223184640493537', '319 Smith Trail Apt. 015 Mejialand, YT M6K3H4', '96682 Daniel Wells Suite 355 Kingport, NL E8X1L4', 'FULFILLED');
+
+INSERT INTO public.shipment(
+            tracking_no, shipment_date, shipping_status, estimated_arrival, arrival_date, current_address)
+            VALUES ('35', '2021-05-06', 'DELIVERED', '2021-05-07', '2021-05-08', '96682 Daniel Wells Suite 355 Kingport, NL E8X1L4');
 
 --- FINANCES
 INSERT INTO public.finances(
