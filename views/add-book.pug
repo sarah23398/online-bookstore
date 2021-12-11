@@ -52,7 +52,8 @@ body
                 option(value=p.id) #{p.name}
           br
           h5 Publish date
-          input#bookPublishDate(type='date' name='publish' value='2018-07-22' min='1000-01-01' max='#{Date.now().toISOString().split('T')[0]}')
+          - date = new Date()
+          input#bookPublishDate(type='date' name='publish' value=date.toISOString().split('T')[0] min='1000-01-01' max=date.toISOString().split('T')[0])
 
           p
           br
