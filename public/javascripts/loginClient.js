@@ -26,4 +26,3 @@ function loginOwner(e) {
 };
 
 document.getElementById('ownerLogin').addEventListener('click', loginOwner)
-
