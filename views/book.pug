@@ -30,7 +30,8 @@ body
         h3 #{book.title} (#{book.edition}#{ed} edition)
         h4 Written by #{authors}
           
-        p ISBN: #{book.isbn}
+        p ISBN: 
+        span#isbn #{book.isbn}
         
         p Price: $#{book.price}
         p #{book.print_length} pages

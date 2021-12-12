@@ -69,13 +69,14 @@ router.post('/add', function(req, res, next) {
   res.status(201).send();
 })
 
-router.delete('/:isbn/remove', function(req, res, next) {
-  req.app.locals.client.query('DELETE FROM book WHERE isbn = $1;', req.params.isbn
-      .catch((error) => {
-          console.log(error);
-          res.status(500).json({success: false, data: error}).send();
-      }));
-  res.status(201).send();
+router.delete('/:isbn', function(req, res, next) {
+  console.log(req.params);
+  req.app.locals.client.query('DELETE FROM book WHERE isbn = $1;', [req.params.isbn]
+    .catch((error) => {
+      console.log(error);
+      res.status(500).json({success: false, data: error}).send();
+    }));
+  res.status(204).send();
 })
 
 module.exports = router;

@@ -1,13 +1,14 @@
 function deleteBook(e) {
+    const isbn = document.getElementById('isbn').innerHTML;
     e.preventDefault();
-      fetch('/books/:isbn/remove', {
+      fetch('/books/' + isbn, {
           method: 'DELETE',
           headers: {
             "Content-Type": "application/json"
           }
         })
         .then((response) => {
-          if(response.status == 201){
+          if(response.status == 204){
             alert('Book removed successfully.');
           }
           else{
