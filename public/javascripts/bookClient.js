@@ -10,6 +10,7 @@ function deleteBook(e) {
         .then((response) => {
           if(response.status == 204){
             alert('Book removed successfully.');
+            location.href = '/books';
           }
           else{
             alert('Book could not be removed.');
