@@ -30,9 +30,10 @@ body
         - authors = authors.slice(0, -2)
         h3 #{book.title} (#{book.edition}#{ed} edition)
         h4 Written by #{authors}
-
-        p ISBN: #{book.isbn}
-
+          
+        p ISBN: 
+        span#isbn #{book.isbn}
+        
         p Price: $#{book.price}
         p #{book.print_length} pages
         p Published by #{book.publisher} on #{book.publish_date.toISOString().split('T')[0]}
