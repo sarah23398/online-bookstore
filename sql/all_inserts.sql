@@ -84,7 +84,7 @@ INSERT INTO public.book(
 			13.99,
 			214,
 			25,
-			0.99
+			10
 		   );
 
 INSERT INTO public.book(
@@ -98,7 +98,7 @@ INSERT INTO public.book(
 			13.99,
 			245,
 			2,
-			0.99
+			6
 		   );
 
 INSERT INTO public.book(
@@ -112,7 +112,7 @@ INSERT INTO public.book(
 			24.99,
 			567,
 			5,
-			2.99
+			6.25
 		   );
 
 INSERT INTO public.book(
@@ -126,7 +126,7 @@ INSERT INTO public.book(
 			11.99,
 			113,
 			45,
-			0.13
+			4.75
 		   );
 
 INSERT INTO public.book(
@@ -140,7 +140,7 @@ INSERT INTO public.book(
 			15.99,
 			235,
 			65,
-			0.45
+			12
 		   );
 
 INSERT INTO public.book(
@@ -154,7 +154,7 @@ INSERT INTO public.book(
 			42.68,
 			548,
 			21,
-			0.10
+			10
 		   );
 
 INSERT INTO public.book(
@@ -168,7 +168,7 @@ INSERT INTO public.book(
 			21.12,
 			503,
 			74,
-			1.03
+			3.25
 		   );
 		   
 INSERT INTO public.book(
@@ -182,7 +182,7 @@ INSERT INTO public.book(
 			24.99,
 			646,
 			6,
-			1.87
+			5
 		   );
 
 --- GENRES
