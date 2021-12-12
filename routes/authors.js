@@ -12,7 +12,7 @@ router.post('/add', function(req, res, next) {
   req.app.locals.client.query('INSERT INTO author(id, name, email, bio, website) VALUES ($1, $2, $3, $4, $5);', 
     [id, req.body.name, req.body.email, req.body.bio, req.body.website], (error, results) => {
     if (error) {
-      console.log(err);
+      console.log(error);
       res.status(500).json({success: false, data: err});
     }
     res.status(201).send(`Author added with ID: ${results.insertId}`)
