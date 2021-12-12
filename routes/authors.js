@@ -18,4 +18,5 @@ router.post('/add', function(req, res, next) {
     res.status(201).send(`Author added with ID: ${results.insertId}`)
   })
 })
+
 module.exports = router;
