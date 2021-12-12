@@ -1,9 +1,10 @@
-function createAuthor(e) {
+function createPublisher(e) {
     e.preventDefault();
-      const name = document.getElementById('authorName').value;
-      const email = document.getElementById('authorEmail').value;
-      const bio = document.getElementById('authorBiography').value;
-      const website = document.getElementById('authorWebsite').value;
+      const name = document.getElementById('publisherName').value;
+      const email = document.getElementById('publisherEmail').value;
+      const phone = document.getElementById('publisherPhone').value;
+      const address = document.getElementById('publisherAddress').value;
+      const bankAccount = document.getElementById('publisherBankAccount').value;
       fetch('/authors/add', {
           method: 'POST',
           headers: {
@@ -12,16 +13,17 @@ function createAuthor(e) {
           body: JSON.stringify({
               'name': name,
               'email': email,
-              'bio': bio, 
-              'website': website
+              'phone': phone, 
+              'address': address,
+              'bankAccount': bankAccount
           })
         })
         .then((response) => {
           if(response.status == 201){
-            alert('Author successfully added.');
+            alert('Publisher successfully added.');
           }
           else{
-            alert('Author could not be added.');
+            alert('Publisher could not be added.');
           }
         })
         .catch((err)=>{
@@ -29,4 +31,4 @@ function createAuthor(e) {
         })
   };
   
-  document.getElementById('addAuthor').addEventListener('click', createAuthor);
+  document.getElementById('addPublisher').addEventListener('click', createPublisher);
