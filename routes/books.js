@@ -47,14 +47,14 @@ router.get('/:isbn', function(req, res, next){
 })
 
 router.post('/add', function(req, res, next) {
-  console.log(req.body);
-  req.app.locals.client.query('INSERT INTO books (isbn, publisher_id, title, publish_date, edition, description, price, print_length, stock, publisher_fee) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)', 
+  req.app.locals.client.query('INSERT INTO book (isbn, publisher_id, title, publish_date, edition, description, price, print_length, stock, publisher_fee) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10);', 
     [req.body.isbn, req.body.publisher, req.body.title, req.body.publishDate, req.body.edition, req.body.description, req.body.price, req.body.printLength, req.body.stock, req.body.publisherFee], (error, results) => {
     if (error) {
       console.log(error);
       res.status(500).json({success: false, data: error});
     }
-    response.status(201).send(`Book added with ID: ${results.insertId}`)
   })
+  res.status(201).send()
 });
+
 module.exports = router;

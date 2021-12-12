@@ -1,7 +1,7 @@
 function loginOwner(e) {
   e.preventDefault();
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
+    const email = document.getElementById('loginEmail').value;
+    const password = document.getElementById('loginPassword').value;
     fetch('/login/owner', {
         method: 'POST',
         headers: {

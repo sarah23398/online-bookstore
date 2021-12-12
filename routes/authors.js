@@ -15,7 +15,7 @@ router.post('/add', function(req, res, next) {
       console.log(error);
       res.status(500).json({success: false, data: error});
     }
-    res.statu(201).send(`Author added with ID: ${results.insertId}`)
+    res.status(201).send(`Author added with ID: ${results.insertId}`)
   })
 })
 
