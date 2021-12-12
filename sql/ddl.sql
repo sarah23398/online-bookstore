@@ -1,5 +1,5 @@
 create table customer
-	(ID         		bigint,
+	(ID         		SERIAL,
 	 name				varchar(40),
 	 email      		varchar(50),
 	 password			varchar(20),
@@ -10,7 +10,7 @@ create table customer
 	);
 
 create table "order"
-	(ID					bigint,
+	(ID					SERIAL,
 	 customer_id		bigint,
 	 order_date			timestamp,
 	 bank_account		varchar(20),
@@ -24,7 +24,7 @@ create table "order"
 	);
 
 create table shipment
-	(tracking_no   			bigint,
+	(tracking_no   			SERIAL,
 	 shipment_date			date,
 	 shipping_status		varchar(10),
 	 estimated_arrival		date,
@@ -37,13 +37,13 @@ create table shipment
 	);
 
 create table genre
-	(ID		bigint,
+	(ID		SERIAL,
 	 name	varchar(20),
 	 primary key(ID)
 	);
 	
 create table author
-	(ID			bigint,
+	(ID			SERIAL,
 	 name		varchar(40),
 	 email		varchar(50),
 	 bio		varchar(255),
@@ -52,7 +52,7 @@ create table author
 	);
 
 create table publisher
-	(ID				bigint,
+	(ID				SERIAL,
 	 name			varchar(40),
 	 email			varchar(50),
 	 phone			varchar(11),
