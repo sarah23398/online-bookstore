@@ -24,9 +24,25 @@ router.get('/', function(req, res, next) {
   })
 
 router.get('/:isbn', function(req, res, next){
-  req.app.locals.client.query('SELECT * from book where isbn = $1', [req.params.isbn], (err, result)=>{
-    console.log(result.rows);
-    res.render('book');
+  req.app.locals.client.query(`SELECT book.*, publisher.name as "publisher" from book inner join publisher on book.publisher_id = publisher.id where isbn = $1`, [req.params.isbn], (err, result)=>{
+      let book = {};
+      Object.assign(book, result.rows[0]);
+      console.log(book)
+      book["authors"] = [];
+      book["genres"] = [];
+      req.app.locals.client.query(`SELECT * from written_by inner join author on written_by.author_id = author.id
+      where written_by.isbn = $1`, [req.params.isbn], (error, authors)=>{
+        for (let a of authors.rows){
+          book.authors.push(a);
+        }
+        req.app.locals.client.query(`SELECT * from "contains" inner join genre on "contains".genre_id = genre.id
+          where "contains".isbn = $1`, [req.params.isbn], (error, genres)=>{
+          for (let g of genres.rows){
+           book.genres.push(g);
+          } 
+          res.render('book', {book: book});
+        })
+      })
   })  
 })
 
