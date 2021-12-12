@@ -1,5 +1,4 @@
-function loginOwner(e) {
-  e.preventDefault();
+function loginOwner() {
     const email = document.getElementById('loginEmail').value;
     const password = document.getElementById('loginPassword').value;
     fetch('/login/owner', {
@@ -25,4 +24,31 @@ function loginOwner(e) {
       })
 };
 
+function loginCustomer() {
+  const email = document.getElementById('loginEmail').value;
+  const password = document.getElementById('loginPassword').value;
+  fetch('/login/customer', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+          'email': email,
+          'password': password
+      })
+    })
+    .then((response) => {
+      if(response.status == 401){
+        alert('Invalid email and/or password');
+      }
+      else{
+        location.href="/books";
+      }
+    })
+    .catch((err)=>{
+      console.error(err)
+    })
+};
+
 document.getElementById('ownerLogin').addEventListener('click', loginOwner)
+document.getElementById('customerLogin').addEventListener('click', loginCustomer)

@@ -3,12 +3,14 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const session = require('express-session');
 const { Pool, Client } = require("pg");
 require('dotenv').config()
 
 const indexRouter = require('./routes/index');
 const registerRouter = require('./routes/register');
 const loginRouter = require('./routes/login');
+const logoutRouter = require('./routes/logout');
 const searchRouter = require('./routes/search');
 const booksRouter = require('./routes/books');
 const ordersRouter = require('./routes/orders');
@@ -29,6 +31,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(session({
+  name: 'nook-session',
+  secret: 'booknook',
+  cookie:{
+    maxAge: 1000*60*3 // 3 hrs
+  },
+  resave: true,
+  saveUninitialized: false
+}));
 
 const credentials = {
   user: process.env.PGUSER,
@@ -53,16 +65,33 @@ app.locals.client.query('SELECT NOW()', (err, res) => {
   console.log(err, res)
 })
 
+function auth(req, res, next){
+  if(!req.session.loggedIn){
+    res.status(401).redirect('/login');
+  }
+  else{
+    next();
+  }
+}
+
+app.use((req, res, next)=>{
+  if(req.session){
+    res.locals.session = req.session;
+  }
+  next();
+})
+
 app.use('/', indexRouter);
 app.use('/register', registerRouter);
 app.use('/login', loginRouter);
-app.use('/search', searchRouter);
-app.use('/books', booksRouter);
-app.use('/orders', ordersRouter);
-app.use('/publishers', publishersRouter);
-app.use('/reports', reportsRouter);
-app.use('/cart', cartRouter);
-app.use('/authors', authorsRouter);
+app.use('/logout', logoutRouter);
+app.use('/search', auth, searchRouter);
+app.use('/books', auth, booksRouter);
+app.use('/orders', auth, ordersRouter);
+app.use('/publishers', auth, publishersRouter);
+app.use('/reports', auth, reportsRouter);
+app.use('/cart', auth, cartRouter);
+app.use('/authors', auth, authorsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

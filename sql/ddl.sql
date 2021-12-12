@@ -1,5 +1,5 @@
 create table customer
-	(ID         		varchar(8),
+	(ID         		bigint,
 	 name				varchar(40),
 	 email      		varchar(50),
 	 password			varchar(20),
@@ -10,8 +10,8 @@ create table customer
 	);
 
 create table "order"
-	(ID					varchar(8),
-	 customer_id		varchar(8),
+	(ID					bigint,
+	 customer_id		bigint,
 	 order_date			timestamp,
 	 bank_account		varchar(20),
 	 billing_address	varchar(80),
@@ -24,26 +24,26 @@ create table "order"
 	);
 
 create table shipment
-	(tracking_no   			varchar(8),
+	(tracking_no   			bigint,
 	 shipment_date			date,
 	 shipping_status		varchar(10),
 	 estimated_arrival		date,
 	 arrival_date			date,
 	 current_address		varchar(80),
-	 order_id				varchar(8),
+	 order_id				bigint,
 	 primary key (tracking_no),
 	 foreign key (order_id) references "order" (ID)
 	 	on delete cascade
 	);
 
 create table genre
-	(ID		varchar(8),
+	(ID		bigint,
 	 name	varchar(20),
 	 primary key(ID)
 	);
 	
 create table author
-	(ID			varchar(8),
+	(ID			bigint,
 	 name		varchar(40),
 	 email		varchar(50),
 	 bio		varchar(255),
@@ -52,7 +52,7 @@ create table author
 	);
 
 create table publisher
-	(ID				varchar(8),
+	(ID				bigint,
 	 name			varchar(40),
 	 email			varchar(50),
 	 phone			varchar(11),
@@ -63,7 +63,7 @@ create table publisher
 
 create table book
 	(ISBN			varchar(13),
-	 publisher_id	varchar(8),
+	 publisher_id	bigint,
 	 title			varchar(50),
 	 publish_date	date,
 	 edition		numeric(2,0),
@@ -78,7 +78,7 @@ create table book
 	);
 
 create table finances
-	(order_id		varchar(8),
+	(order_id		bigint,
 	 ISBN			varchar(13),
 	 quantity		numeric(3,0),
 	 primary key (order_id, ISBN),
@@ -89,7 +89,7 @@ create table finances
 	);
 
 create table written_by
-	(author_id	varchar(8),
+	(author_id	bigint,
 	 ISBN		varchar(13),
 	 primary key(author_id, ISBN),
 	 foreign key(author_id) references author (ID)
@@ -99,7 +99,7 @@ create table written_by
 	);
 
 create table "contains"
-	(genre_id	varchar(8),
+	(genre_id	bigint,
 	 ISBN		varchar(13),
 	 primary key(genre_id, ISBN),
 	 foreign key(genre_id) references genre (ID)
