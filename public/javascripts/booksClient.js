@@ -1,17 +1,17 @@
 function createBook(e) {
   e.preventDefault();
-    const title = document.getElementById('title').value;
-    const author = document.getElementById('author').value;
-    const isbn = document.getElementById('isbn').value;
-    const genre = document.getElementById('genre').value;
-    const price = document.getElementById('price').value;
-    const publisher = document.getElementById('publisher').value;
-    const publishDate = document.getElementById('publish-date').value;
-    const edition = document.getElementById('edition').value;
-    const description = document.getElementById('description').value;
-    const printLength = document.getElementById('print-length').value;
-    const stock = document.getElementById('stock').value;
-    const publisherFee = document.getElementById('publisher-fee').value;
+    const title = document.getElementById('bookTitle').value;
+    const author = document.getElementById('bookAuthor').value;
+    const isbn = document.getElementById('bookIsbn').value;
+    const genre = document.getElementById('bookGenre').value;
+    const price = document.getElementById('bookPrice').value;
+    const publisher = document.getElementById('bookPublisher').value;
+    const publishDate = document.getElementById('bookPublishDate').value;
+    const edition = document.getElementById('bookEdition').value;
+    const description = document.getElementById('bookDescription').value;
+    const printLength = document.getElementById('bookPages').value;
+    const stock = document.getElementById('bookStock').value;
+    const publisherFee = document.getElementById('bookPublisherFee').value;
     fetch('/books/add', {
         method: 'POST',
         headers: {
@@ -33,11 +33,11 @@ function createBook(e) {
         })
       })
       .then((response) => {
-        if(response.status != 201){
-          alert('Book could not be added.');
+        if(response.status == 201){
+          alert('Book added successfully.');
         }
         else{
-          alert('Book added successfully.');
+          alert('Book could not be added.');
         }
       })
       .catch((err)=>{
