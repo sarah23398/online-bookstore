@@ -54,6 +54,20 @@ router.post('/add', function(req, res, next) {
       res.status(500).json({success: false, data: error});
     }
   })
+  req.app.locals.client.query('INSERT INTO written_by (author_id, isbn) VALUES($1, $2);', 
+    [req.body.author, req.body.isbn], (error, results) => {
+    if (error) {
+      console.log(error);
+      res.status(500).json({success: false, data: error});
+    }
+  })
+  req.app.locals.client.query('INSERT INTO contains (genre_id, isbn) VALUES($1, $2);', 
+    [req.body.genre, req.body.isbn], (error, results) => {
+    if (error) {
+      console.log(error);
+      res.status(500).json({success: false, data: error});
+    }
+  })
   res.status(201).send()
 });
 
