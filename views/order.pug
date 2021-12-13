@@ -14,29 +14,48 @@ body
   .container
     .row
       .col-sm
-        h4 Order ID:
+        - books = ""
+        each book in order.books
+          - books += book + ", "
+        - books = books.slice(0, -2)
+
+        - quantities = ""
+        each quantity in order.quantities
+          - quantities += quantity + " "
+
+        - prices = ""
+        each price in order.prices
+          - prices += price + " "
+
+        - cost = 0
+        - x = 0
+        while x < order.books.length
+          - cost += order.quantities[x] * order.prices[x]
+          - x++
+
+        h4 Order ID: #{order.id}
         p
         h5 Purchase
-        p
-        a.card-text 3 of Hunger Games
-        p
-        a.card-text 4 of Scythe
-        p
+        - index = 0
+        while index < order.books.length
+          p #{order.quantities[index]} of #{order.books[index]}
+          p
+          - index++
         h5 Details
         p
-        a.card-text Order date:
+        a.card-text Order date: #{order.order_date}
         p
-        a.card-text Total cost:
+        a.card-text Total cost: $#{cost}
         p
         h5 Shipping
         p
-        a.card-text Tracking ID:
+        a.card-text Tracking ID: #{order.tracking_no}
         p
-        a.card-text Destination address:
+        a.card-text Destination address: #{order.destination}
         p
         h5 Billing
         p
-        a.card-text Credit card number:
+        a.card-text Credit card number: #{order.bank_account}
         p
-        a.card-text Billing address:
+        a.card-text Billing address: #{order.billing_address}
         p
