@@ -6,7 +6,7 @@ head
   script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js' integrity='sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy' crossorigin='anonymous')
 header
   nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
-    a.navbar-brand.text-white(href='/') NOOK
+    a.navbar-brand.text-white(href='/owner-home') NOOK
     button.navbar-toggler.navbar-light(type='button' data-toggle='collapse' data-target='#navbarTogglerDemo02' aria-controls='navbarTogglerDemo02' aria-expanded='false' aria-label='Toggle navigation')
       span.navbar-toggler-icon
     #navbarTogglerDemo02.collapse.navbar-collapse
@@ -20,6 +20,5 @@ header
         li.nav-item
           a.nav-link.text-white(href='/publishers/add') Add a publisher
         li.nav-item
-          a.nav-link.text-white(href='/books/add') Add a book 
-      h5.text-white.float-right Hi, #{session.name}!
+          a.nav-link.text-white(href='/books/add') Add a book
       a.nav-link.text-white.float-right(href='/logout') Logout

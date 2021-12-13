@@ -37,14 +37,16 @@ body
         p Published by #{book.publisher} on #{book.publish_date.toISOString().split('T')[0]}
         br
 
-        if session.loggedInType == 'customer'
+        if session.loggedInType == 'customer' && book.stock > 0
           h4 Order
           label(for='quantity')= 'Quantity = '
           span &#32;
           span &#32;
-          input#quantity(type='number' name='quantity' min='1' max='5')
+          input#quantity(type='number' name='quantity' min='1' max=book.stock)
           p
           button.btn.btn-primary(type='submit') Add to cart
+        else if book.stock = 0
+          p OUT OF STOCK
         else
           h4 Remove from database
           button.btn.btn-primary(type='submit') Remove
