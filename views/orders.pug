@@ -18,8 +18,8 @@ body
         h4 Track an Order
         form(action='/search/results' method="post")
           .form-group
-            label(for='registerName') Tracking ID
-            input#registerName.form-control(name='tracking-id' aria-describedby='emailHelp' placeholder='Enter tracking ID')
+            label(for='registerName') Order ID
+            input#registerName.form-control(name='tracking-id' aria-describedby='emailHelp' placeholder='Enter order ID')
           button.btn.btn-primary(type='submit') Track
         br
         h4 Orders

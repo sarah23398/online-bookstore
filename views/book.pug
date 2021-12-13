@@ -29,20 +29,22 @@ body
         - authors = authors.slice(0, -2)
         h3 #{book.title} (#{book.edition}#{ed} edition)
         h4 Written by #{authors}
-          
+
         p ISBN: #{book.isbn}
-        
+
         p Price: $#{book.price}
         p #{book.print_length} pages
         p Published by #{book.publisher} on #{book.publish_date.toISOString().split('T')[0]}
         br
 
-        h4 Order
-        form(action='/search/results' method="post")
-          .form-group
-            label(for='exampleInputEmail1') Quantity
-            input#exampleInputEmail1.form-control(name='quantity' aria-describedby='emailHelp' placeholder='Enter quantity')
+        if session.loggedInType == 'customer'
+          h4 Order
+          label(for='quantity')= 'Quantity = '
+          span &#32;
+          span &#32;
+          input#quantity(type='number' name='quantity' min='1' max='5')
+          p
           button.btn.btn-primary(type='submit') Add to cart
-
-        h4 Remove from database
-        button.btn.btn-primary(type='submit') Remove
+        else
+          h4 Remove from database
+          button.btn.btn-primary(type='submit') Remove
