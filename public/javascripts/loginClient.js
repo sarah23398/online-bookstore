@@ -16,7 +16,7 @@ function loginOwner() {
           alert('Invalid email and/or password');
         }
         else{
-          location.href="/books";
+          location.href="/owner-home";
         }
       })
       .catch((err)=>{
@@ -42,7 +42,7 @@ function loginCustomer() {
         alert('Invalid email and/or password');
       }
       else{
-        location.href="/books";
+        location.href="/user-home";
       }
     })
     .catch((err)=>{
