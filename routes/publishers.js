@@ -13,11 +13,13 @@ router.get('/add', function(req, res, next){
 
 router.post('/add', function(req, res, next) {
   req.app.locals.client.query('INSERT INTO publisher(name, email, phone, address, bank_account) VALUES ($1, $2, $3, $4, $5);', 
-    [req.body.name, req.body.email, req.body.phone, req.body.address, req.body.bankAccount], (error) => {
-      if (error) {
-        throw error;
-      }
+    [req.body.name, req.body.email, req.body.phone, req.body.address, req.body.bankAccount])
+    .then(() => {
       res.status(201).send();
+    })
+    .catch((error) => {
+      console.log(error);
+      return res.status(500).json({success: false, data: error});
     });
 })
 
