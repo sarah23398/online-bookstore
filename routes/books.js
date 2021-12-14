@@ -1,15 +1,65 @@
-const e = require('express');
 var express = require('express');
 var router = express.Router();
 
 /* GET books page. */
 router.get('/', function(req, res, next) {
   query = '';
-  if(req.query){
-    query = 'SELECT * from book;'
+  extra = '';
+  filters = [];
+  if(Object.keys(req.query).length > 0){
+    if(req.query.author){
+      extra += "INNER JOIN written_by on book.isbn = written_by.isbn INNER JOIN author on written_by.author_id = author.id WHERE author.name ilike '%' || $1 || '%' "
+      filters.push(req.query.author);
+    }
+    if(req.query.title){
+      if(!extra){
+        extra += "WHERE book.TITLE ILIKE '%' || $1 || '%' "
+      }
+      else{
+        extra += "AND book.TITLE ILIKE '%' || $2 || '%' "
+      }
+      filters.push(req.query.title);
+    }
+    if(req.query.ISBN){
+      if(!extra){
+        extra += "WHERE book.ISBN ILIKE '%' || $1 || '%' "
+      }
+      else{
+        extra += `AND book.ISBN ILIKE '%' || $${filters.length+1} || '%' `;
+      }
+      filters.push(req.query.ISBN);
+    }
+    if(req.query.genre){
+      filters.push(req.query.genre);
+      extra = `INNER JOIN "contains" ON book.ISBN = "contains".ISBN ${extra}`;
+      if(filters.length == 1){
+        extra += ' WHERE ';
+      }
+      else{
+        extra += ' AND ';
+      }
+      extra += ` "contains".genre_id = $${filters.length} `
+      
+    }
+    if(req.query.publisher){
+      filters.push(req.query.publisher);
+      extra = `INNER JOIN publisher ON book.publisher_id = publisher.id ${extra}`;
+      if(filters.length == 1){
+        extra += ' WHERE ';
+      }
+      else{
+        extra += ' AND ';
+      }
+      extra += ` publisher.name ILIKE '%' || $${filters.length} || '%' `
+      
+    }
+
   }
-    req.app.locals.client.query(query, (err, result)=>{
-      res.render('books', { title: 'Books', books: result.rows });
+    query = `SELECT DISTINCT book.* from book ${extra};`;
+    console.log(query)
+    console.log(filters)
+    req.app.locals.client.query(query, filters, (err, result)=>{
+      res.render('books', { title: 'Books', books: result.rows, search: !!extra });
     })
   });
 

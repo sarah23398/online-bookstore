@@ -13,18 +13,24 @@ body
   .container
     .row
       .col-sm
-        h4(style='padding-top: 20px;') Search
-        form(action='/search/results' method="post")
+        h4(style='padding-top: 20px;') Search For Books
+        form(action='/books' method="get")
           .form-group
             label(for='searchTitle') Title
-            input#searchTitle.form-control(name='title' aria-describedby='emailHelp' placeholder='Enter title')
+            input#searchTitle.form-control(name='title' aria-describedby='titleHelp' placeholder='Enter title')
           .form-group
             label(for='searchAuthor') Author
-            input#searchAuthor.form-control(name='author' aria-describedby='emailHelp' placeholder='Enter author')
+            input#searchAuthor.form-control(name='author' aria-describedby='authorHelp' placeholder='Enter author')
           .form-group
             label(for='searchISBN') ISBN
-            input#searchISBN.form-control(name='ISBN' aria-describedby='emailHelp' placeholder='Enter ISBN')
+            input#searchISBN.form-control(name='ISBN' aria-describedby='isbnHelp' placeholder='Enter ISBN')
+          .form-group
+            label(for='searchISBN') Publisher
+            input#searchISBN.form-control(name='publisher' aria-describedby='publisherHelp' placeholder='Enter publisher')
           .form-group
             label(for='searchGenre') Genre
-            input#searchGenre.form-control(name='genre' aria-describedby='emailHelp' placeholder='Enter genre')
+            select.custom-select#bookGenre(name='genre')
+              option(value="") -- Select One --
+              each g in genres
+                option(value=g.id) #{g.name}
           button.btn.btn-primary(type='submit') Search
