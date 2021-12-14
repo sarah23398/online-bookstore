@@ -47,8 +47,9 @@ body
           input#quantity(type='number' name='quantity' min='1' max=book.stock)
           p
           button.btn.btn-primary(type='submit') Add to cart
+
         else if book.stock = 0
           p OUT OF STOCK
         else
           h4 Remove from database
-          button.btn.btn-primary(type='submit') Remove
+          button#removeBook.btn.btn-primary Remove
