@@ -24,6 +24,7 @@ body
           - ed = "nd"
         else if mod10 == 3 && mod100 % 100 != 13
           - ed = "rd"
+<<<<<<< HEAD
         - authors = ""
         each author in book.authors
             - authors += author.name + ", "
@@ -34,9 +35,38 @@ body
         p ISBN: 
         span#isbn #{book.isbn}
         
+=======
+
+        - genres = ""
+        - index = 0
+        each genre in book.genres
+          if index == book.genres.length - 1
+            - genres += genre.name + " "
+          else
+            - genres += genre.name + ", "
+          - index++
+
+        h3 #{book.title}
+        p
+        h5 Book Information
+        p ISBN: #{book.isbn}
+        p Genre: #{genres}
+        p Description: #{book.description}
+>>>>>>> 376ce56 (improved /books/:id and added author info)
         p Price: $#{book.price}
-        p #{book.print_length} pages
-        p Published by #{book.publisher} on #{book.publish_date.toISOString().split('T')[0]}
+        p Number of pages: #{book.print_length}
+        p Edition: #{book.edition}#{ed}
+        p Publisher: #{book.publisher}
+        p Publish date: #{book.publish_date.toISOString().split('T')[0]}
+        br
+        h5 Author(s) Information
+        p
+        each author in book.authors
+          h6 #{author.name}
+          ul
+            li Contact: #{author.email}
+            li Bio: #{author.bio}
+            li Website: #{author.website}
         br
 
         if session.loggedInType == 'customer' && book.stock > 0
@@ -52,4 +82,10 @@ body
           p OUT OF STOCK
         else
           h4 Remove from database
+<<<<<<< HEAD
           button#removeBook.btn.btn-primary Remove
+=======
+          button.btn.btn-primary(type='submit') Remove
+        br
+        br
+>>>>>>> 376ce56 (improved /books/:id and added author info)

@@ -14,19 +14,6 @@ body
   .container
     .row
       .col-sm
-        - books = ""
-        each book in order.books
-          - books += book + ", "
-        - books = books.slice(0, -2)
-
-        - quantities = ""
-        each quantity in order.quantities
-          - quantities += quantity + " "
-
-        - prices = ""
-        each price in order.prices
-          - prices += price + " "
-
         - cost = 0
         - x = 0
         while x < order.books.length
