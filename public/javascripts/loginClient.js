@@ -1,7 +1,7 @@
-function loginOwner() {
+function login(type) {
     const email = document.getElementById('loginEmail').value;
     const password = document.getElementById('loginPassword').value;
-    fetch('/login/owner', {
+    fetch(`/login/${type}`, {
         method: 'POST',
         headers: {
           "Content-Type": "application/json"
@@ -16,7 +16,7 @@ function loginOwner() {
           alert('Invalid email and/or password');
         }
         else{
-          location.href="/owner-home";
+          location.href=`/`;
         }
       })
       .catch((err)=>{
@@ -24,31 +24,5 @@ function loginOwner() {
       })
 };
 
-function loginCustomer() {
-  const email = document.getElementById('loginEmail').value;
-  const password = document.getElementById('loginPassword').value;
-  fetch('/login/customer', {
-      method: 'POST',
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-          'email': email,
-          'password': password
-      })
-    })
-    .then((response) => {
-      if(response.status == 401){
-        alert('Invalid email and/or password');
-      }
-      else{
-        location.href="/user-home";
-      }
-    })
-    .catch((err)=>{
-      console.error(err)
-    })
-};
-
-document.getElementById('ownerLogin').addEventListener('click', loginOwner)
-document.getElementById('customerLogin').addEventListener('click', loginCustomer)
+document.getElementById('ownerLogin').addEventListener('click', () => { login('owner'); })
+document.getElementById('customerLogin').addEventListener('click', () =>{ login('customer'); })

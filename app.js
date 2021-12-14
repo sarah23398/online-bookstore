@@ -18,8 +18,6 @@ const publishersRouter = require('./routes/publishers');
 const reportsRouter = require('./routes/reports');
 const cartRouter = require('./routes/cart');
 const authorsRouter = require('./routes/authors');
-const userHomeRouter = require('./routes/user-home');
-const ownerHomeRouter = require('./routes/owner-home');
 const { reset } = require('nodemon');
 
 const app = express();
@@ -94,8 +92,6 @@ app.use('/publishers', auth, publishersRouter);
 app.use('/reports', auth, reportsRouter);
 app.use('/cart', auth, cartRouter);
 app.use('/authors', auth, authorsRouter);
-app.use('/user-home', auth, userHomeRouter);
-app.use('/owner-home', auth, ownerHomeRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
