@@ -19,6 +19,7 @@ function createAuthor(e) {
         .then((response) => {
           if(response.status == 201){
             alert('Author successfully added.');
+            location.href = "/";
           }
           else{
             alert('Author could not be added.');

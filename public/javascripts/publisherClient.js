@@ -21,6 +21,7 @@ function createPublisher(e) {
         .then((response) => {
           if(response.status == 201){
             alert('Publisher successfully added.');
+            location.href = "/";
           }
           else{
             alert('Publisher could not be added.');

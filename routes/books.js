@@ -70,11 +70,13 @@ router.post('/add', function(req, res, next) {
 router.delete('/:isbn', function(req, res, next) {
   console.log(req.params);
   req.app.locals.client.query('DELETE FROM book WHERE isbn = $1;', [req.params.isbn])
+    .then(() => {
+      res.status(204).send();
+    })
     .catch((error) => {
       console.error(error.stack);
       res.status(500).json({success: false, data: error}).send();
     });
-  res.status(204).send();
 })
 
 module.exports = router;

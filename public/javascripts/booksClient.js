@@ -35,6 +35,7 @@ function createBook(e) {
       .then((response) => {
         if(response.status == 201){
           alert('Book added successfully.');
+          location.href='/books';
         }
         else{
           alert('Book could not be added.');
