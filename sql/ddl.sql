@@ -5,7 +5,7 @@ create table customer
 	 password			varchar(20),
 	 phone				varchar(11),
 	 address			varchar(80),
-	 bank_account		varchar(20),
+	 credit_card		varchar(20),
 	 primary key (ID)
 	);
 
@@ -13,7 +13,7 @@ create table "order"
 	(ID					SERIAL,
 	 customer_id		bigint,
 	 order_date			timestamp,
-	 bank_account		varchar(20),
+	 credit_card		varchar(20),
 	 billing_address	varchar(80),
 	 destination		varchar(80),
 	 status				varchar(10),
