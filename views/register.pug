@@ -14,26 +14,24 @@ body
     .row
       .col-sm
         h4(style='padding-top: 20px;') Register
-        form(action="/register" method="post")
+        form#registerForm(action="/customers" method="post")
           .form-group
             label(for='registerName') Name
-            input#registerName.form-control(type='text' name="username" aria-describedby='inputGroupPrepend' placeholder='Enter name' required)
+            input#registerName.form-control(type='text' name="name" aria-describedby='inputGroupPrepend' placeholder='Enter name' required)
           .form-group
             label(for='registerEmail') Email
             input#registerEmail.form-control(type='text' name="email" aria-describedby='inputGroupPrepend' placeholder='Enter email' required)
           .form-group
             label(for='registerPhoneNumber') Phone number
-            input#registerPhoneNumber.form-control(type='text' name="email" aria-describedby='inputGroupPrepend' placeholder='Enter phone number' required)
-          .form-group
-            label(for='registerDestinationAddress') Destination address
-            input#registerDestinationAddress.form-control(type='text' name="email" aria-describedby='inputGroupPrepend' placeholder='Enter destination address' required)
+            input#registerPhoneNumber.form-control(type='text' name="phone" aria-describedby='inputGroupPrepend' placeholder='Enter phone number' required)
           .form-group
             label(for='registerCreditCardNumber') Credit card number
-            input#registerCreditCardNumber.form-control(type='text' name="email" aria-describedby='inputGroupPrepend' placeholder='Enter credit card number' required)
+            input#registerCreditCardNumber.form-control(type='text' name="bank_account" aria-describedby='inputGroupPrepend' placeholder='Enter credit card number' required)
           .form-group
-            label(for='registerBillingAddress') Billing address
-            input#registerBillingAddress.form-control(type='text' name="email" aria-describedby='inputGroupPrepend' placeholder='Enter billing address' required)
+            label(for='registerDefaultAddress') Default address
+            input#registerDefaultAddress.form-control(type='text' name="address" aria-describedby='inputGroupPrepend' placeholder='Enter default address' required)
           .form-group
             label(for='registerPassword') Password
             input#registerPassword.form-control(type='password' name="password" placeholder='Enter password' required)
           button.btn.btn-primary(type='submit') Register
+        script(src="/javascripts/registerClient.js") 
