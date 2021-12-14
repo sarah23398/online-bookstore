@@ -22,7 +22,7 @@ router.post('/owner', function(req, res, next) {
       res.status(401).send('Incorrect email and/or password');
     }
   });
-  
+
 router.post('/customer', function(req, res, next) {
   req.app.locals.client.query(`SELECT id, name from customer where email = $1 and password = $2`, [req.body.email, req.body.password], (err, result)=>{
     console.log(result);
@@ -30,7 +30,7 @@ router.post('/customer', function(req, res, next) {
       req.session.loggedIn = true;
       req.session.loggedInType = "customer";
       req.session.name = result.rows[0].name;
-      req.session.id = result.rows[0].id;
+      req.session.userId = result.rows[0].id;
       res.status(200).send();
     }
     else{

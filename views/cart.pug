@@ -8,7 +8,7 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
 
 body
-  
+
   include ./partials/header.pug
 
   p
@@ -35,36 +35,19 @@ body
               td Zero to One
               td 1
               td 10
+        p Total cost:
         br
         h5 Details
         p
-        p Order ID:
-        p
-        p Total cost:
-        p
         p Destination address:
+        input#cartDestinationAddress.form-control(name='title' aria-describedby='emailHelp' value='57193 Moore Junction Suite 250 Dawnville, QC R7K 8P1')
         p
         p Credit card number:
+        input#cartCreditCardNumber.form-control(name='title' aria-describedby='emailHelp' value='4788029235292033')
         p
         p Billing address:
+        input#cartBillingAddress.form-control(name='title' aria-describedby='emailHelp' value='57193 Moore Junction Suite 250 Dawnville, QC R7K 8P1')
         br
-
-        h5 Update (optional)
-        form(action='/search/results' method="post")
-          .form-group
-            label(for='cartDestinationAddress') Update destination address for order
-            input#cartDestinationAddress.form-control(name='title' aria-describedby='emailHelp' placeholder='Enter destination address')
-          button.btn.btn-primary(type='submit') Update
-        form(action='/search/results' method="post")
-          .form-group
-            label(for='cartCreditCardNumber') Update credit card number for order
-            input#cartCreditCardNumber.form-control(name='title' aria-describedby='emailHelp' placeholder='Enter credit card number')
-          button.btn.btn-primary(type='submit') Update
-        form(action='/search/results' method="post")
-          .form-group
-            label(for='cartBillingAddress') Update billing address for order
-            input#cartBillingAddress.form-control(name='title' aria-describedby='emailHelp' placeholder='Enter billing address')
-          button.btn.btn-primary(type='submit') Update
         br
 
         h5 Place your order
