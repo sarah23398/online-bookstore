@@ -51,9 +51,15 @@ body
         each author in book.authors
           h6 #{author.name}
           ul
-            li Contact: #{author.email}
-            li Bio: #{author.bio}
-            li Website: #{author.website}
+            li
+              span.font-weight-bold Contact:
+              |  #{author.email}
+            li
+              span.font-weight-bold Bio:
+              |  #{author.bio}
+            li
+              span.font-weight-bold Website: 
+              a(href="https://www.youtube.com/watch?v=dQw4w9WgXcQ", target="_blank", rel="noopener noreferrer") #{author.website}
         br
 
         if session.loggedInType == 'customer' && book.stock > 0
