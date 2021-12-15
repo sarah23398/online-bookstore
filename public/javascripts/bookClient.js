@@ -20,5 +20,18 @@ function deleteBook(e) {
           console.error(err)
         })
   };
-  
-  document.getElementById('removeBook').addEventListener('click', deleteBook)
+  function addToCart(){
+    let qtBox = document.getElementById('quantity');
+    let max = qtBox.getAttribute('max');
+    if(qtBox.value > max || qtBox.value < 0){
+      alert(`Please enter a value between 0 and ${max}`);
+    }
+    else{
+
+    }
+
+  }
+  if(document.getElementById('removeBook'))
+    document.getElementById('removeBook').addEventListener('click', deleteBook)
+  if(document.getElementById('addToCart'))
+    document.getElementById('addToCart').addEventListener('click', addToCart)

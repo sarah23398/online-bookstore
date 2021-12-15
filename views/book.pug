@@ -37,14 +37,30 @@ body
         h3 #{book.title}
         p
         h5 Book Information
-        p ISBN: #{book.isbn}
-        p Genre: #{genres}
-        p Description: #{book.description}
-        p Price: $#{book.price}
-        p Number of pages: #{book.print_length}
-        p Edition: #{book.edition}#{ed}
-        p Publisher: #{book.publisher}
-        p Publish date: #{book.publish_date.toISOString().split('T')[0]}
+        p 
+          span.font-weight-bold ISBN: 
+          | #{book.isbn}
+        p 
+          span.font-weight-bold Genre: 
+          | #{genres}
+        p 
+          span.font-weight-bold Description: 
+          | #{book.description}
+        p 
+          span.font-weight-bold Price: 
+          | $#{book.price}
+        p 
+          span.font-weight-bold Number of pages: 
+          | #{book.print_length}
+        p 
+          span.font-weight-bold Edition: 
+          | #{book.edition}#{ed}
+        p 
+          span.font-weight-bold Publisher: 
+          | #{book.publisher}
+        p 
+          span.font-weight-bold Publish date: 
+          | #{book.publish_date.toISOString().split('T')[0]}
         br
         h5 Author(s) Information
         p
@@ -69,7 +85,7 @@ body
           span &#32;
           input#quantity(type='number' name='quantity' min='1' max=book.stock)
           p
-          button.btn.btn-primary(type='submit') Add to cart
+          button#addToCart.btn.btn-primary Add to cart
 
         else if book.stock = 0
           p OUT OF STOCK
