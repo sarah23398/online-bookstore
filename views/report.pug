@@ -19,47 +19,36 @@ body
         p
         h5 Sales per author report
 
-        //- p #{report.authors.length}
-        //- p #{report.authors[0]}
-
-        //- p #{report.sales.length}
-        //- p #{report.sales[0]}
-
-        //- each author in report.authors
-        //-   p #{author}
-
         table.table
           thead
             tr
-              th(scope='col') Authors
+              th(scope='col') Author
               th(scope='col') Sales
           tbody
             - index = 0
-            while index < report.authors.length 
+            while index < report.authors.length
               tr
                 td #{report.authors[index]}
                 td $#{report.sales[index]}
               - index++
 
-        //- - index = 0
-        //- while index < order.books.length
-        //-   p #{order.quantities[index]} of #{order.books[index]}
-        //-   p
-        //-   - index++
-
-
-        //- each author in book.authors
-        //-   h6 #{author.name}
-        //-   ul
-        //-     li Contact: #{author.email}
-        //-     li Bio: #{author.bio}
-        //-     li Website: #{author.website}
-        //- br
-
         br
         h5 Sales vs expenditures report
-        p Total sales:
-        p Total expenditures:
+        table.table
+          thead
+            tr
+              th(scope='col') Publisher
+              th(scope='col') Sales
+              th(scope='col') Publisher Earnings
+              th(scope='col') Bookstore Revenue
+          tbody
+            - index = 0
+            while index < report.authors.length
+              tr
+                td #{report.authors[index]}
+                td $#{report.sales[index]}
+              - index++
+
         br
         h5 Sales per genre report
         table.table
@@ -77,5 +66,8 @@ body
             tr
               td 3
               td Larry
+
+        br
+        br
 
 
