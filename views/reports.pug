@@ -13,13 +13,38 @@ body
   .container
     .row
       .col-sm
-        h4 Reports
+        h4 General Reports
+        p These encompass all authors, expenditures, and genres in Nook's history.
         p
         a.link-primary(href='/reports/author') Sales per author report
         p
-        a.link-primary(href='/reports/expenditures') Sales vs expenditures report
+        a.link-primary(href='/reports/:id') Sales per expenditure report
         p
         a.link-primary(href='/reports/genre') Sales per genre report
+        br
+        br
+        br
+        br
+        h4 Custom Reports
+        p These encompass all authors, expenditures, or genres within a specified date range.
+        p
+        form
+          p Start Date
+          - date = new Date()
+          input#customReportStartDate(type='date' name='publish' value=date.toISOString().split('T')[0] min='1000-01-01' max=date.toISOString().split('T')[0])
+          p
+          p End Date
+          - date = new Date()
+          input#customReportEndDate(type='date' name='publish' value=date.toISOString().split('T')[0] min='1000-01-01' max=date.toISOString().split('T')[0])
+          p
+          .form-group
+              label(for='customReport') Report
+              select.custom-select#report
+                option(value='author') Sales per author report
+                option(value='expenditure') Sales per expenditure report
+                option(value='genre') Sales per genre report
+          br
+          button#generateCustomReport.btn.btn-primary Generate Report
 
 
 

@@ -54,15 +54,39 @@ router.get('/genre', function(req, res, next){
   })
 });
 
+router.get('/genre', function(req, res, next){
+  req.app.locals.client.query(`SELECT genre.name, SUM(book.price*finances.quantity)
+  FROM genre
+  INNER JOIN "contains" ON "contains".genre_id = genre.id
+  INNER JOIN book on "contains".ISBN = book.ISBN
+  INNER JOIN finances ON finances.ISBN = book.ISBN
+  GROUP BY genre.name`, [], (err, result)=>{
+    let report = [];
+
+    for (let genre of result.rows){
+      report.push([genre.name, `$${genre.sum}`])
+    }
+    console.log(report)
+    res.render('report', {title: 'Report', report: report, report_title: 'Sales per Genre Report', headers: ['Genre', 'Sales'] })
+  })
+});
+
+router.get('/expenditure', function(req, res, next){
+  req.app.locals.client.query(`SELECT genre.name, SUM(book.price*finances.quantity)
+  FROM genre
+  INNER JOIN "contains" ON "contains".genre_id = genre.id
+  INNER JOIN book on "contains".ISBN = book.ISBN
+  INNER JOIN finances ON finances.ISBN = book.ISBN
+  GROUP BY genre.name`, [], (err, result)=>{
+    let report = [];
+
+    for (let expenditure of result.rows){
+      report.push([expenditure.name, `$${expenditure.round}`])
+    }
+    console.log(report)
+    res.render('report', {title: 'Report', report: report, report_title: 'Sales per Expenditure Report', headers: ['Expenditure', 'Sales'] })
+  })
+});
+
 module.exports = router;
 
-  // req.app.locals.client.query(`SELECT genre.name, SUM(book.price*finances.quantity)
-  // FROM genre
-  // INNER JOIN "contains" ON "contains".genre_id = genre.id
-  // INNER JOIN book on "contains".ISBN = book.ISBN
-  // INNER JOIN finances ON finances.ISBN = book.ISBN
-  // GROUP BY genre.name`, [], (err, result)=>{
-
-  //   }
-  //   res.render('report')
-  // })
