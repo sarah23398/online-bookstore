@@ -72,10 +72,16 @@ router.get('/:id', function(req, res, next) {
       res.render('order', {title: 'Order', order: order });
     })
   })
-  .catch((error) => {
-    console.log(error);
-    return res.status(500).json({success: false, data: error});
-  });
 });
+
+router.get('/track/:id', function(req, res, nexr) {
+  req.app.locals.client.query('SELECT EXISTS(SELECT 1 FROM "order" WHERE id = $1);', [req.params.id], (err, result) => {
+    if (result.rows[0].exists) {
+      res.status(200).send();
+    } else {
+      res.status(404).send();
+    }
+  })
+})
 
 module.exports = router;
