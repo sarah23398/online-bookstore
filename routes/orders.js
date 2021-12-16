@@ -1,4 +1,5 @@
 var express = require('express');
+const pgf = require('pg-format');
 var router = express.Router();
 
 /* GET orders page. */
@@ -9,7 +10,50 @@ router.get('/', function(req, res, next) {
   })
 });
 
-// router.post('/', )
+router.post('/', function(req, res, next){
+  let ord = new Date();
+  req.app.locals.client.query(`INSERT INTO public."order"(
+    customer_id, order_date, credit_card, billing_address, destination, status)
+    VALUES ($1, $2, $3, $4, $5, $6) RETURNING id; `, [req.session.userId, ord, req.body.credit_card, req.body.billing_address, req.body.destination, 'PROCESSED'], (err, result)=>{
+      if(err){
+        console.log(err);
+        return res.status(500).send();
+      }
+      else{
+        let vals = [];
+        console.log(req.body);
+        for(let i in req.session.cart){
+          vals.push([result.rows[0].id, i, req.session.cart[i]]);
+        }
+        req.app.locals.client.query(pgf(`INSERT INTO public.finances(
+          order_id, isbn, quantity)
+          VALUES %L`, vals), [], (err, fin)=>{
+            if(err){
+              console.log(err);
+              return res.status(500).send();
+            }
+            else{
+              let eta = new Date();
+              let sd = new Date();
+              eta.setDate(ord.getDate() + 4);
+              sd.setDate(ord.getDate() + 1);
+              req.app.locals.client.query(`INSERT INTO public.shipment(
+                shipment_date, shipping_status, estimated_arrival, current_address, order_id)
+                VALUES ($1, $2, $3, $4, $5);`, [sd, 'ORDERED', eta, 'Nook Warehouse, 123 Nook Rd. Ottawa, ON. K2P6U8', result.rows[0].id], (err, ship)=>{
+                  if(err){
+                    console.log(err);
+                    res.status(500);
+                  }
+                  else{
+                    res.status(201).send(`${result.rows[0].id}`);
+                  }
+                })
+            }
+          })
+      }
+
+    });
+})
 
 router.get('/:id', function(req, res, next) {
   req.app.locals.client.query('SELECT "order".*, shipment.* from "order" inner join shipment on shipment.order_id = "order".id where "order".id = $1;', [req.params.id], (err, result)=>{

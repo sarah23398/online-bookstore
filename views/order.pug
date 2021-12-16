@@ -28,33 +28,58 @@ body
           p #{order.quantities[index]} of #{order.books[index]}
           p
           - index++
+        hr
         h5 Details
         p
-        a.card-text Order date: #{order.order_date}
+        p.card-text 
+          span.font-weight-bold Order date: 
+          | #{order.order_date.toLocaleDateString('en-US',{ weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour:'numeric', minute:'numeric', second:'numeric' })}
         p
-        a.card-text Total cost: $#{cost}
+        p.card-text 
+          span.font-weight-bold Total cost: 
+          | $#{cost}
         p
+        hr
         h5 Shipping
         p
-        a.card-text Tracking Number: #{order.tracking_no}
+        p.card-text
+          span.font-weight-bold Tracking Number: 
+          | #{order.tracking_no}
         p
-        a.card-text Shipment Date: #{order.shipment_date}
+        p.card-text 
+          span.font-weight-bold Shipment Date: 
+          | #{order.shipment_date.toLocaleDateString('en-US',{ weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
         p
-        a.card-text Destination address: #{order.destination}
+        p.card-text
+          span.font-weight-bold Destination address: 
+          | #{order.destination}
         p
-        a.card-text Status: #{order.status}
+        p.card-text
+          span.font-weight-bold Status: 
+          | #{order.status}
         p
         //- if order.status == "FULFILLED"
-        a.card-text Arrival Date: #{order.arrival_date}
+        p.card-text 
+          span.font-weight-bold Arrival Date: 
+          | #{order.arrival_date}
         p
         //- if order.status != "FULFILLED"
-        a.card-text Estimated Arrival: #{order.estimated_arrival}
+        p.card-text
+          span.font-weight-bold Estimated Arrival: 
+          | #{order.estimated_arrival.toLocaleDateString('en-US',{ weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
         p
-        a.card-text Current Address: #{order.current_address}
+        p.card-text
+          span.font-weight-bold Current Address: 
+          |#{order.current_address}
         p
+        hr
         h5 Billing
         p
-        a.card-text Credit card number: #{order.bank_account}
+        p.card-text 
+          span.font-weight-bold Credit card number: 
+          | #{order.credit_card}
         p
-        a.card-text Billing address: #{order.billing_address}
+        p.card-text 
+          span.font-weight-bold Billing address: 
+          | #{order.billing_address}
         p

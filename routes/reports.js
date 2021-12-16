@@ -14,7 +14,38 @@ router.get('/author', function(req, res, next){
   WHERE book.ISBN = written_by.ISBN
   GROUP BY author_id`, [], (err, result)=>{
     let report = [];
+    for (let author of result.rows){
+      report.push([author.author_id, `$${author.sum}`])
+    }
+    console.log(report)
+    res.render('report', {title: 'Report', report: report, report_title: 'Sales per Author Report', headers: ['Author', 'Sales'] })
+  })
+});
 
+router.get('/expenditures', function(req, res, next){
+  req.app.locals.client.query(`SELECT author_id, SUM(price*quantity)
+  FROM written_by
+  INNER JOIN book ON book.ISBN = written_by.ISBN
+  INNER JOIN finances on finances.ISBN = written_by.ISBN
+  WHERE book.ISBN = written_by.ISBN
+  GROUP BY author_id`, [], (err, result)=>{
+    let report = [];
+    for (let author of result.rows){
+      report.push([author.author_id, `$${author.sum}`])
+    }
+    console.log(report)
+    res.render('report', {title: 'Report', report: report, report_title: 'Sales per Author Report', headers: ['Author', 'Sales'] })
+  })
+});
+
+router.get('/genre', function(req, res, next){
+  req.app.locals.client.query(`SELECT author_id, SUM(price*quantity)
+  FROM written_by
+  INNER JOIN book ON book.ISBN = written_by.ISBN
+  INNER JOIN finances on finances.ISBN = written_by.ISBN
+  WHERE book.ISBN = written_by.ISBN
+  GROUP BY author_id`, [], (err, result)=>{
+    let report = [];
     for (let author of result.rows){
       report.push([author.author_id, `$${author.sum}`])
     }

@@ -43,18 +43,18 @@ body
           h5 Details
           p
           p.font-weight-bold Destination address:
-          input#cartDestinationAddress.form-control(name='title' aria-describedby='emailHelp' value='57193 Moore Junction Suite 250 Dawnville, QC R7K 8P1')
+          input#cartDestinationAddress.form-control(name='destination' aria-describedby='destHelp' value=user.address)
           p
           p.font-weight-bold Credit card number:
-          input#cartCreditCardNumber.form-control(name='title' aria-describedby='emailHelp' value='4788029235292033')
+          input#cartCreditCardNumber.form-control(name='credit_card' aria-describedby='creditHelp' value=user.credit_card)
           p
           p.font-weight-bold Billing address:
-          input#cartBillingAddress.form-control(name='title' aria-describedby='emailHelp' value='57193 Moore Junction Suite 250 Dawnville, QC R7K 8P1')
+          input#cartBillingAddress.form-control(name='billing' aria-describedby='billingHelp' value=user.address)
           br
           br
 
           h5 Place your order
-          button.btn.btn-primary(type='submit') Ka-ching!
+          button.btn.btn-primary#placeOrder Ka-ching! 💸
           br
           br
           br

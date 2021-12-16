@@ -9,7 +9,13 @@ router.get('/', function(req, res, next) {
         console.log(err);
         return res.status(500).send();
       }
-      res.render('cart', { books: result.rows });
+      req.app.locals.client.query('SELECT credit_card, address from customer where id=$1;', [req.session.userId], (err, users)=>{
+        if(err){
+          console.log(err);
+          return res.status(500).send();
+        }
+        res.status(200).render('cart', { books: result.rows, user:users.rows[0] });
+      })
     })
   else
     res.render('cart')

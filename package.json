@@ -17,6 +17,7 @@
     "morgan": "~1.9.1",
     "node-sass-middleware": "0.11.0",
     "pg": "^8.7.1",
+    "pg-format": "^1.0.4",
     "pug": "2.0.0-beta11"
   },
   "devDependencies": {

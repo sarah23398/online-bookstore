@@ -60,7 +60,7 @@ body
           | #{book.publisher}
         p 
           span.font-weight-bold Publish date: 
-          | #{book.publish_date.toISOString().split('T')[0]}
+          | #{book.publish_date.toLocaleDateString()}
         br
         h5 Author(s) Information
         p
