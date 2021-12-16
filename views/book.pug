@@ -39,7 +39,7 @@ body
         h5 Book Information
         p 
           span.font-weight-bold ISBN: 
-          | #{book.isbn}
+          span#isbn #{book.isbn}
         p 
           span.font-weight-bold Genre: 
           | #{genres}
@@ -83,12 +83,13 @@ body
           label(for='quantity')= 'Quantity = '
           span &#32;
           span &#32;
-          input#quantity(type='number' name='quantity' min='1' max=book.stock)
+          input#quantity(type='number' name='quantity' min='1' max=book.stock value=(session.cart && session.cart[book.isbn])?session.cart[book.isbn]:1)
           p
-          button#addToCart.btn.btn-primary Add to cart
-
+          button#addToCart.btn.btn-success Add to cart  
+          if session.cart && session.cart[book.isbn]
+            span.text-success  You have #{session.cart[book.isbn]} of these in your cart
         else if book.stock = 0
           p OUT OF STOCK
         else
           h4 Remove from database
-          button#removeBook.btn.btn-primary Remove
+          button#removeBook.btn.btn-danger Remove

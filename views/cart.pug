@@ -16,42 +16,47 @@ body
     .row
       .col-sm
         h4 Cart
-        table.table
-          thead
-            tr
-              th(scope='col') Book
-              th(scope='col') Quantity
-              th(scope='col') Price
-          tbody
-            tr
-              td Hunger Games
-              td 1
-              td 10
-            tr
-              td Green Eggs and Ham
-              td 1
-              td 10
-            tr
-              td Zero to One
-              td 1
-              td 10
-        p Total cost:
-        br
-        h5 Details
-        p
-        p Destination address:
-        input#cartDestinationAddress.form-control(name='title' aria-describedby='emailHelp' value='57193 Moore Junction Suite 250 Dawnville, QC R7K 8P1')
-        p
-        p Credit card number:
-        input#cartCreditCardNumber.form-control(name='title' aria-describedby='emailHelp' value='4788029235292033')
-        p
-        p Billing address:
-        input#cartBillingAddress.form-control(name='title' aria-describedby='emailHelp' value='57193 Moore Junction Suite 250 Dawnville, QC R7K 8P1')
-        br
-        br
+        if session.cart && Object.keys(session.cart).length > 0
+          table.table
+            thead
+              tr
+                th(scope='col') Book
+                th(scope='col') Quantity
+                th(scope='col') Unit Price
+                th(scope='col') Overall Price
+                th(scope='col') Remove from Cart
+            tbody#cart
+              each book in books 
+                tr 
+                  td 
+                    a(href=`/books/${book.isbn}`) #{book.title}
+                  td #{session.cart[book.isbn]}
+                  td $#{book.price}
+                  td $#{book.price*session.cart[book.isbn]}
+                  td 
+                    button.remove.btn.btn-outline-danger(id=book.isbn) &times;
 
-        h5 Place your order
-        button.btn.btn-primary(type='submit') Ka-ching!
-        br
-        br
-        br
+          p
+            span.font-weight-bold Total cost: 
+          br
+          h5 Details
+          p
+          p.font-weight-bold Destination address:
+          input#cartDestinationAddress.form-control(name='title' aria-describedby='emailHelp' value='57193 Moore Junction Suite 250 Dawnville, QC R7K 8P1')
+          p
+          p.font-weight-bold Credit card number:
+          input#cartCreditCardNumber.form-control(name='title' aria-describedby='emailHelp' value='4788029235292033')
+          p
+          p.font-weight-bold Billing address:
+          input#cartBillingAddress.form-control(name='title' aria-describedby='emailHelp' value='57193 Moore Junction Suite 250 Dawnville, QC R7K 8P1')
+          br
+          br
+
+          h5 Place your order
+          button.btn.btn-primary(type='submit') Ka-ching!
+          br
+          br
+          br
+        else 
+          p There are currently no items in your cart! 
+            a(href="/search") Search for items

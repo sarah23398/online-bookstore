@@ -1,5 +1,6 @@
+let isbn = document.getElementById('isbn').innerHTML;
+
 function deleteBook(e) {
-    const isbn = document.getElementById('isbn').innerHTML;
     e.preventDefault();
       fetch('/books/' + isbn, {
           method: 'DELETE',
@@ -23,11 +24,31 @@ function deleteBook(e) {
   function addToCart(){
     let qtBox = document.getElementById('quantity');
     let max = qtBox.getAttribute('max');
-    if(qtBox.value > max || qtBox.value < 0){
+    if(parseInt(qtBox.value.trim()) > parseInt(max.trim()) || parseInt(qtBox.value.trim()) < 0){
       alert(`Please enter a value between 0 and ${max}`);
     }
     else{
-
+      fetch('/cart', {
+        method: 'POST',
+        body: JSON.stringify({
+          "isbn": isbn,
+          "quantity": qtBox.value
+        }),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+      .then((response) => {
+        if(response.status == 200){
+          location.reload();
+        }
+        else{
+          alert('Error adding to cart');
+        }
+      })
+      .catch((err)=>{
+        console.error(err)
+      })
     }
 
   }

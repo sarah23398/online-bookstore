@@ -37,7 +37,7 @@ app.use(session({
   name: 'nook-session',
   secret: 'booknook',
   cookie:{
-    maxAge: 1000*60*3 // 3 hrs
+    maxAge: 1000*60*60*3 // 3 hrs
   },
   resave: true,
   saveUninitialized: false
