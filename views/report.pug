@@ -8,7 +8,7 @@ html
     link(rel='stylesheet', href='/stylesheets/styles.css')
 
 body
-  
+
   include ./partials/header.pug
 
   p
@@ -18,6 +18,37 @@ body
         h4 Reports
         p
         h5 Sales per author report
+
+        p #{report.authors.length}
+        p #{report.authors[0]}
+
+        p #{report.sales.length}
+        p #{report.sales[0]}
+
+        each author in report.authors
+          p #{author}
+
+        - index = 0
+        while index < report.authors.length
+          p #{report.authors[index]}
+          - index++
+
+        //- - index = 0
+        //- while index < order.books.length
+        //-   p #{order.quantities[index]} of #{order.books[index]}
+        //-   p
+        //-   - index++
+
+
+        //- each author in book.authors
+        //-   h6 #{author.name}
+        //-   ul
+        //-     li Contact: #{author.email}
+        //-     li Bio: #{author.bio}
+        //-     li Website: #{author.website}
+        //- br
+
+
         table.table
           thead
             tr

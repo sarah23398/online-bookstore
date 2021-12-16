@@ -11,7 +11,6 @@ router.get('/', function(req, res, next) {
 
 router.get('/:id', function(req, res, next) {
   req.app.locals.client.query('SELECT "order".*, shipment.tracking_no from "order" inner join shipment on shipment.order_id = "order".id where "order".id = $1;', [req.params.id], (err, result)=>{
-  // req.app.locals.client.query('SELECT "order".*, shipment.tracking_no from "order" inner join shipment on shipment.order_id = "order".id where "order".id = 2;', (err, result)=>{
     let order = {}
     Object.assign(order, result.rows[0]);
     console.log(order);
