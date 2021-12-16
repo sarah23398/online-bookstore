@@ -36,9 +36,21 @@ body
         p
         h5 Shipping
         p
-        a.card-text Tracking ID: #{order.tracking_no}
+        a.card-text Tracking Number: #{order.tracking_no}
+        p
+        a.card-text Shipment Date: #{order.shipment_date}
         p
         a.card-text Destination address: #{order.destination}
+        p
+        a.card-text Status: #{order.status}
+        p
+        //- if order.status == "FULFILLED"
+        a.card-text Arrival Date: #{order.arrival_date}
+        p
+        //- if order.status != "FULFILLED"
+        a.card-text Estimated Arrival: #{order.estimated_arrival}
+        p
+        a.card-text Current Address: #{order.current_address}
         p
         h5 Billing
         p
