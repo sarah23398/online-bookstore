@@ -72,6 +72,10 @@ router.get('/:id', function(req, res, next) {
       res.render('order', {title: 'Order', order: order });
     })
   })
+  .catch((error) => {
+    console.log(error);
+    return res.status(500).json({success: false, data: error});
+  });
 });
 
 module.exports = router;

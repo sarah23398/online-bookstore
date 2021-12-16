@@ -16,11 +16,11 @@ body
     .row
       .col-sm
         h4 Track an Order
-        form(action='/search/results' method="post")
+        form
           .form-group
             label(for='registerName') Order ID
-            input#registerName.form-control(name='tracking-id' aria-describedby='emailHelp' placeholder='Enter order ID')
-          button.btn.btn-primary(type='submit') Track
+            input#orderId.form-control(name='tracking-id' aria-describedby='emailHelp' placeholder='Enter order ID')
+          button#trackOrder.btn.btn-primary Track
         br
         h4 Orders
         each order in orders
