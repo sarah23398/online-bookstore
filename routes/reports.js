@@ -6,26 +6,20 @@ router.get('/', function(req, res, next) {
   res.render('reports', { title: 'Finance Reports' });
 });
 
-router.get('/sales', function(req, res, next){
+router.get('/author', function(req, res, next){
   req.app.locals.client.query(`SELECT author_id, SUM(price*quantity)
   FROM written_by
   INNER JOIN book ON book.ISBN = written_by.ISBN
   INNER JOIN finances on finances.ISBN = written_by.ISBN
   WHERE book.ISBN = written_by.ISBN
   GROUP BY author_id`, [], (err, result)=>{
-    let report = {}
-    Object.assign(report, result.rows[0]);
-    console.log(report);
-    report["authors"] = [];
-    report["sales"] = [];
+    let report = [];
 
     for (let author of result.rows){
-      report.authors.push(author.author_id);
-      console.log(author.author_id);
-      report.sales.push(author.sum);
-      console.log(author.sum);
+      report.push([author.author_id, `$${author.sum}`])
     }
-    res.render('report', {title: 'Report', report: report })
+    console.log(report)
+    res.render('report', {title: 'Report', report: report, report_title: 'Sales per Author Report', headers: ['Author', 'Sales'] })
   })
 });
 

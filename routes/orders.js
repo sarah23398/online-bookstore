@@ -9,6 +9,8 @@ router.get('/', function(req, res, next) {
   })
 });
 
+// router.post('/', )
+
 router.get('/:id', function(req, res, next) {
   req.app.locals.client.query('SELECT "order".*, shipment.tracking_no from "order" inner join shipment on shipment.order_id = "order".id where "order".id = $1;', [req.params.id], (err, result)=>{
     let order = {}

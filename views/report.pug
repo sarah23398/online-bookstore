@@ -17,57 +17,15 @@ body
       .col-sm
         h4 Reports
         p
-        h5 Sales per author report
+        h5 #{report_title}
 
         table.table
           thead
             tr
-              th(scope='col') Author
-              th(scope='col') Sales
+              each h in headers
+                th(scope='col') #{h}
           tbody
-            - index = 0
-            while index < report.authors.length
+            each r in report
               tr
-                td #{report.authors[index]}
-                td $#{report.sales[index]}
-              - index++
-
-        br
-        h5 Sales vs expenditures report
-        table.table
-          thead
-            tr
-              th(scope='col') Publisher
-              th(scope='col') Sales
-              th(scope='col') Publisher Earnings
-              th(scope='col') Bookstore Revenue
-          tbody
-            - index = 0
-            while index < report.authors.length
-              tr
-                td #{report.authors[index]}
-                td $#{report.sales[index]}
-              - index++
-
-        br
-        h5 Sales per genre report
-        table.table
-          thead
-            tr
-              th(scope='col') Sales
-              th(scope='col') Genre
-          tbody
-            tr
-              td 1
-              td Mark
-            tr
-              td 2
-              td Jacob
-            tr
-              td 3
-              td Larry
-
-        br
-        br
-
-
+              each item in r
+                td #{item}
