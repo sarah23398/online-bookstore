@@ -22,4 +22,10 @@ router.post('/', function(req, res, next){
   res.status(200).send();
 })
 
+router.delete('/:isbn', function(req, res, next){
+  if(req.session.cart && req.session.cart[req.params.isbn])
+    delete req.session.cart[req.params.isbn];
+  res.status(204).send();
+})
+
 module.exports = router;
