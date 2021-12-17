@@ -18,7 +18,7 @@ for i in range(0, 35):
         dest = billing
 
     print(f'''INSERT INTO public."order"(
-	    id, customer_id, order_date, bank_account, billing_address, destination, status)
+	    id, customer_id, order_date, credit_card, billing_address, destination, status)
 	    VALUES ('{i+1}', '{custid}', '{orderdate}', '{bankacc}', '{billing}', '{dest}', 'FULFILLED');
     ''')
 

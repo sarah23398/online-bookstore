@@ -10,6 +10,6 @@ for i in range(0, 21):
     bankacc = fake.credit_card_number('visa16')
     password = email[0:email.find("@")].lower()
     print(f'''INSERT INTO public.customer(
-	    id, name, email, password, phone, address, bank_account)
+	    id, name, email, password, phone, address, credit_card)
 	    VALUES ('{i+1}','{name}', '{email}', '{password}', '{phone}', '{address}', '{bankacc}');
     ''')
