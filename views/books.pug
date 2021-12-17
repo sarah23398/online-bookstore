@@ -31,19 +31,21 @@ body
           a.link-primary(href='/books/add') Add a book
           br
           br
+        //- if there are recommended books
+        //- h4 Recommended Books
+        //- each book in books
+        //-   a.link-primary(href='/books/' + book.isbn) #{book.title}
+        //-   p
+        //- br
+        //- br
         if !search
           h4 All Books
-          //- if there is at least one recommended book
-          //- p Books highlighted in green are recommended by us :) Enjoy!
         else
           h4 Search Results
         if books.length == 0
           p No Results Found
         each book in books
-          //- if not recommended
           a.link-primary(href='/books/' + book.isbn) #{book.title}
-          //- if recommended
-          //- a.text-success(href='/books/' + book.isbn) #{book.title}
           p
 
 
