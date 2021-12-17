@@ -33,13 +33,18 @@ body
           br
         if !search
           h4 All Books
-        else 
+          //- if there is at least one recommended book
+          //- p Books highlighted in green are recommended by us :) Enjoy!
+        else
           h4 Search Results
         if books.length == 0
           p No Results Found
         each book in books
+          //- if not recommended
           a.link-primary(href='/books/' + book.isbn) #{book.title}
-          br
+          //- if recommended
+          //- a.text-success(href='/books/' + book.isbn) #{book.title}
+          p
 
 
 
