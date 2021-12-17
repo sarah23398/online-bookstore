@@ -29,13 +29,14 @@ router.post('/custom/author', function(req, res, next){
   INNER JOIN finances on finances.ISBN = written_by.ISBN
   INNER JOIN "order" on finances.order_id = "order".id
   WHERE book.ISBN = written_by.ISBN
-  AND "order".order_date BETWEEN $1 AND $1
+  AND "order".order_date BETWEEN $1 AND $2
   GROUP BY author_id;`, [req.body.start, req.body.end], (err, result)=>{
     let report = [];
+    console.log(req.body, result)
     for (let author of result.rows){
       report.push([author.author_id, `$${author.sum}`])
     }
-    console.log(report)
+    console.log(report);
     res.render('report', {report: report, report_title: 'Sales per Author Report', headers: ['Author', 'Sales'] })
   })
 });
