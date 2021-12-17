@@ -66,11 +66,12 @@ router.get('/:id', function(req, res, next) {
     order["quantities"] = [];
     order["books"] = [];
     order["prices"] = [];
-    req.app.locals.client.query('SELECT finances.quantity, book.title, book.price from "order" inner join finances on finances.order_id = "order".id inner join book on finances.isbn = book.isbn where "order".id = $1;', [req.params.id], (err, quantities)=>{
+    req.app.locals.client.query('SELECT finances.quantity, book.title, book.price, book.isbn from "order" inner join finances on finances.order_id = "order".id inner join book on finances.isbn = book.isbn where "order".id = $1;', [req.params.id], (err, quantities)=>{
       for (let quantity of quantities.rows){
         order.quantities.push(quantity.quantity);
         order.books.push(quantity.title);
         order.prices.push(quantity.price);
+        order.isbn.push(quantity.isbn);
       }
       res.render('order', {title: 'Order', order: order });
     })

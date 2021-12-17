@@ -38,29 +38,37 @@ body
         h3 #{book.title}
         p
         h5 Book Information
-        p 
-          span.font-weight-bold ISBN: 
+        p
+          span.font-weight-bold ISBN:
+          span &#32;
           span#isbn #{book.isbn}
-        p 
-          span.font-weight-bold Genre: 
+        p
+          span.font-weight-bold Genre:
+          span &#32;
           | #{genres}
-        p 
-          span.font-weight-bold Description: 
+        p
+          span.font-weight-bold Description:
+          span &#32;
           | #{book.description}
-        p 
-          span.font-weight-bold Price: 
+        p
+          span.font-weight-bold Price:
+          span &#32;
           | $#{book.price}
-        p 
-          span.font-weight-bold Number of pages: 
+        p
+          span.font-weight-bold Number of pages:
+          span &#32;
           | #{book.print_length}
-        p 
-          span.font-weight-bold Edition: 
+        p
+          span.font-weight-bold Edition:
+          span &#32;
           | #{book.edition}#{ed}
-        p 
-          span.font-weight-bold Publisher: 
+        p
+          span.font-weight-bold Publisher:
+          span &#32;
           | #{book.publisher}
-        p 
-          span.font-weight-bold Publish date: 
+        p
+          span.font-weight-bold Publish date:
+          span &#32;
           | #{book.publish_date.toLocaleDateString()}
         br
         h5 Author(s) Information
@@ -75,22 +83,49 @@ body
               span.font-weight-bold Bio:
               |  #{author.bio}
             li
-              span.font-weight-bold Website: 
+              span.font-weight-bold Website:
+              span &#32;
               a(href="https://www.youtube.com/watch?v=dQw4w9WgXcQ", target="_blank", rel="noopener noreferrer") #{author.website}
         br
 
-        if session.loggedInType == 'customer' && book.stock > 0
+        if session.loggedInType == 'customer'
+          if book.stock > 0
           h4 Order
           label(for='quantity')= 'Quantity = '
           span &#32;
           span &#32;
           input#quantity(type='number' name='quantity' min='1' max=book.stock value=(session.cart && session.cart[book.isbn])?session.cart[book.isbn]:1)
           p
-          button#addToCart.btn.btn-success Add to cart  
+          button#addToCart.btn.btn-success Add to cart
           if session.cart && session.cart[book.isbn]
             span.text-success  You have #{session.cart[book.isbn]} of these in your cart
+          br
+          br
+          hr
+          br
+          h4 Ratings
+          p
+          //- if there are ratings
+          p 5 ratings total
+          p Average rating of 4.5/5
+          //- if no ratings
+          p There aren't any ratings yet! Be the first to add one below:
+          p
+          h5 Add a Rating
+          label(for='rating')= 'Rating = '
+          span &#32;
+          span &#32;
+          input#quantity(type='number' name='quantity' min='1' max='5')
+          p
+          button#addToCart.btn.btn-primary Add rating
+          if session.cart && session.cart[book.isbn]
+            span.text-success  Added rating
         else if book.stock = 0
           p OUT OF STOCK
         else
           h4 Remove from database
           button#removeBook.btn.btn-danger Remove
+        br
+        br
+        br
+        br
