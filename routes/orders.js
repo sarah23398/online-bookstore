@@ -45,6 +45,7 @@ router.post('/', function(req, res, next){
                     res.status(500);
                   }
                   else{
+                    delete req.session.cart;
                     res.status(201).send(`${result.rows[0].id}`);
                   }
                 })
