@@ -5,7 +5,7 @@ function createPublisher(e) {
       const phone = document.getElementById('publisherPhone').value;
       const address = document.getElementById('publisherAddress').value;
       const bankAccount = document.getElementById('publisherBankAccount').value;
-      fetch('/publishers/add', {
+      fetch('/publishers', {
           method: 'POST',
           headers: {
             "Content-Type": "application/json"

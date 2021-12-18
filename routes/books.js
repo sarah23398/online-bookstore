@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var pgf = require('pg-format');
 
 /* GET books page. */
 router.get('/', function(req, res, next) {
@@ -96,16 +97,24 @@ router.get('/:isbn', function(req, res, next){
   })
 })
 
-router.post('/add', function(req, res, next) {
+router.post('/', function(req, res, next) {
   req.app.locals.client.query('INSERT INTO book (isbn, publisher_id, title, publish_date, edition, description, price, print_length, stock, publisher_fee) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10);', 
     [req.body.isbn, req.body.publisher, req.body.title, req.body.publishDate, req.body.edition, req.body.description, req.body.price, req.body.printLength, req.body.stock, req.body.publisherFee])
     .then(() => {
-      req.app.locals.client.query('INSERT INTO written_by (author_id, isbn) VALUES($1, $2);', 
-        [req.body.author, req.body.isbn])
+      let authors = [];
+      for(let a of req.body.authors){
+        authors.push([a, req.body.isbn]);
+      }
+      req.app.locals.client.query(pgf('INSERT INTO written_by (author_id, isbn) VALUES %L', authors), 
+        [])
     })
     .then(() => {
-      req.app.locals.client.query('INSERT INTO contains (genre_id, isbn) VALUES($1, $2);', 
-        [req.body.genre, req.body.isbn])
+      let gen = [];
+      for(let g of req.body.genres){
+        gen.push([g, req.body.isbn]);
+      }
+      req.app.locals.client.query(pgf('INSERT INTO "contains" (genre_id, isbn) VALUES %L', gen), 
+        [])
     })
     .then(() => {
       res.status(201).send();

@@ -4,7 +4,7 @@ function createAuthor(e) {
       const email = document.getElementById('authorEmail').value;
       const bio = document.getElementById('authorBiography').value;
       const website = document.getElementById('authorWebsite').value;
-      fetch('/authors/add', {
+      fetch('/authors', {
           method: 'POST',
           headers: {
             "Content-Type": "application/json"

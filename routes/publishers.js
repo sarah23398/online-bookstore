@@ -11,7 +11,7 @@ router.get('/add', function(req, res, next){
   res.render('add-publisher');
 })
 
-router.post('/add', function(req, res, next) {
+router.post('/', function(req, res, next) {
   req.app.locals.client.query('INSERT INTO publisher(name, email, phone, address, bank_account) VALUES ($1, $2, $3, $4, $5);', 
     [req.body.name, req.body.email, req.body.phone, req.body.address, req.body.bankAccount])
     .then(() => {

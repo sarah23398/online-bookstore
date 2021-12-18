@@ -27,16 +27,20 @@ body
           .form-group
             label(for='bookAuthor') Author
             select.custom-select#bookAuthor
+              option(value=-1, disabled, selected) --Select One--
               each a in authors
                 option(value=a.id) #{a.name}
+            h4#authors
           .form-group
             label(for='bookIsbn') ISBN
             input#bookIsbn.form-control(name='ISBN' aria-describedby='isbnHelp' placeholder='Enter ISBN')
           .form-group
             label(for='bookGenre') Genre
             select.custom-select#bookGenre
+              option(value=-1, disabled, selected) --Select One--
               each g in genres
                 option(value=g.id) #{g.name}
+            h4#genres
           .form-group
             label(for='bookDescription') Description
             input#bookDescription.form-control(name='description' aria-describedby='descriptionHelp' placeholder='Enter description')
