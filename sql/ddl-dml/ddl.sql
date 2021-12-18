@@ -107,3 +107,17 @@ create table "contains"
 	 foreign key(ISBN) references book
 	 	on delete cascade
 	);
+
+create table rating
+	(ID				SERIAL,
+	 customer_id	bigint,
+	 ISBN			varchar(13),
+	 rating			numeric(1,0),
+	 review			varchar(255),
+	 review_date	date,
+	 primary key(ID),
+	 foreign key(customer_id) references customer (ID)
+	 	on delete cascade,
+	 foreign key(ISBN) references book
+	 	on delete cascade
+	);
