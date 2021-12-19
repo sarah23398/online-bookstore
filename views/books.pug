@@ -38,6 +38,21 @@ body
         //- br
         //- br
         if !search
+          if session.loggedInType == 'customer'
+            h4 Recommended Books 
+            .books
+              each book in books
+                a.book(href='/books/' + book.isbn)
+                  .bookin
+                    .cover 
+                      h2 #{book.title}
+                    .flip
+                      div
+                        h4 #{book.title}
+                        p 
+                        p #{book.description}
+                        p
+                        p $#{book.price}
           h4 All Books
         else
           h4 Search Results
@@ -48,7 +63,7 @@ body
             a.book(href='/books/' + book.isbn)
               .bookin
                 .cover 
-                  h1 #{book.title}
+                  h2 #{book.title}
                 .flip
                   div
                     h4 #{book.title}

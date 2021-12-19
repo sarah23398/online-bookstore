@@ -55,11 +55,11 @@ a {
   align-items: center;
   justify-content: center;
   color: black;
+  padding: 0.5em;
 }
 
 .flip {
   color: white;
-  padding: 0.5em;
   transform: rotateY(180deg);
 }
 
@@ -90,7 +90,7 @@ a {
 }
 
 .book:nth-child(6n) .cover{
-  background-color:#d0ce7c;
+  background-color:#CBF7ED;
 }
 
 .book:nth-child(6n) .flip{
@@ -111,7 +111,7 @@ a {
 
 @media all and (min-width: 1024px){
   .books{
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto auto auto auto;
   }
 }
 
