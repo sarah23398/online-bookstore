@@ -16,7 +16,34 @@ body
   p
   .container
     .row
-      .col-sm
+      .component
+        ul.align
+          li
+            figure.book(style='margin-left: 90px; margin-top: -30px;')
+              ul.hardcover_front
+                li
+                  div
+                    .books
+                      .cover
+                        h6 #{book.title}
+                li
+              ul.page
+                li
+                li
+                  br
+                  br
+                  br
+                  br
+                  p Read me! :)
+                li
+                li
+                li
+              ul.hardcover_back
+                li
+                li
+              ul.book_spine
+                li
+                li
         - ed = "th"
         - mod100 = book.edition % 100
         - mod10 = book.edition % 10
@@ -36,10 +63,10 @@ body
             - genres += genre.name + ", "
           - index++
 
+      .col-sm
         br
-        h3 #{book.title}
+        h3 #{book.title}, #{book.edition}#{ed} Edition
         p
-        h5 Book Information
         p
           span.font-weight-bold ISBN:
           span &#32;
@@ -61,10 +88,6 @@ body
           span &#32;
           | #{book.print_length}
         p
-          span.font-weight-bold Edition:
-          span &#32;
-          | #{book.edition}#{ed}
-        p
           span.font-weight-bold Publisher:
           span &#32;
           | #{book.publisher}
@@ -72,6 +95,8 @@ body
           span.font-weight-bold Publish date:
           span &#32;
           | #{book.publish_date.toLocaleDateString()}
+    .row
+      .col-sm(style='margin-top: -60px;')
         br
         h5 Author(s) Information
         p
@@ -139,6 +164,7 @@ body
                   .rating-box(style="margin-top:20px;")
                     h1.pt-4 #{book.avgRating}
                     p out of 5
+                  - book
                   div
                     span.fa.fa-star.star-active.mx-1
                     span.fa.fa-star.star-active.mx-1
@@ -210,6 +236,7 @@ body
                     p.text-muted.pt-5.pt-sm-3 #{rating.review_date.toLocaleDateString('en-US',{ weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
                 .row.text-left
                   p.content #{rating.review}
+            br
             br
             br
     else
