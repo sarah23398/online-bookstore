@@ -2,6 +2,14 @@ var express = require('express');
 var router = express.Router();
 var pgf = require('pg-format');
 
+function average(array) {
+  sum = 0;
+  for (a in array) {
+    sum += a;
+  }
+  return sum / array.length;
+}
+
 /* GET books page. */
 router.get('/', function(req, res, next) {
   query = '';
