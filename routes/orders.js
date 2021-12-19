@@ -4,9 +4,9 @@ var router = express.Router();
 
 /* GET orders page. */
 router.get('/', function(req, res, next) {
-  req.app.locals.client.query('SELECT * from "order" where customer_id = $1;', [parseInt(req.session.userId)], (err, result)=>{
+  req.app.locals.client.query('SELECT * from "order" where customer_id = $1 order by order_date desc;', [parseInt(req.session.userId)], (err, result)=>{
     console.log(result);
-    res.render('orders', { title: 'Orders', orders: result.rows });
+    res.render('orders', { orders: result.rows });
   })
 });
 
