@@ -9,13 +9,13 @@ For all steps involving `node` and `npm` described below, ensure to `cd` into th
 ### Install Dependencies
 1. Run `npm install`
 
-### Initializing Database
+### Initialize Database
 1. Create a database for the project. This can be done through pgAdmin.
 2. In the `sql/ddl-dml` directory, run the provided `DDL.sql` file on the created database
 3. Once the tables have been created, run the provided `all_inserts.sql` file to insert the mock data
 4. Once that is done, navigate to the `sql/triggers` directory, and run the `all_triggers.sql` file to create the required triggers for the database that takes care of keeping the stock up-to-date (reducing on order and automatically reordering once reaching a given threshold)
 
-### Connecting Database to Application
+### Connect Database to Application
 1. Once the database has been initialized, create a file by the name of `.env`
 2. In the file, write the database information in the following format by replacing the `<...>` with the appropriate information:
 ```
