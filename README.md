@@ -30,7 +30,7 @@ PGPORT = <port the database is running on>
 Ensure that the database has been initialized before running server.
 #### Run server without auto-restart on changes to `.js` files
 1. Run `npm start` or `npm run start`
-
+\
     1.1. Optionally, you may also choose to run `node app.js`
 
 #### Run server with auto-restart on changes to `.js` 
