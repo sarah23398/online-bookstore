@@ -107,14 +107,14 @@ body
               span.text-success  You have #{session.cart[book.isbn]} of these in your cart
           else
             p OUT OF STOCK
-        .col-sm
-          h5 Add a Rating
-          label(for='rating')= 'Rating = '
-          span &#32;
-          span &#32;
-          input#rating(type='number' name='rating' min='1' max='5' required)
-          p
-          button#addRating.btn.btn-primary Add rating
+        //- .col-sm
+        //-   h5 Add a Review
+        //-   label(for='rating')= 'Rating = '
+        //-   span &#32;
+        //-   span &#32;
+        //-   input#rating(type='number' name='rating' min='1' max='5' required)
+        //-   p
+        //-   button#addRating.btn.btn-primary Add rating
 
         .col-sm
           h5 Add a Review
@@ -123,7 +123,7 @@ body
           span &#32;
           input#rating(type='number' name='rating' min='1' max='5' required)
           br
-          label(for='review')= 'Review: '
+          label(for='review')= 'Review (optional):'
           br
           textarea#review(maxlength='255' cols='50' rows='3')
           p
