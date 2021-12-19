@@ -106,7 +106,7 @@ router.get('/:isbn', function(req, res, next){
         }
         req.app.locals.client.query(`SELECT rating.*, customer.name as "customer" from rating
         INNER JOIN customer on rating.customer_id = customer.id
-        WHERE isbn = $1`, [req.params.isbn], (error, ratings)=> {
+        WHERE isbn = $1 ORDER BY rating.review_date`, [req.params.isbn], (error, ratings)=> {
           sum = 0;
           for (let r of ratings.rows) {
             book.ratings.push(r);
