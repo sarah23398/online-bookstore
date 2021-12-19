@@ -65,6 +65,9 @@ router.get('/', function(req, res, next) {
   });
 
   router.get('/add', function(req, res, next){
+    if(req.session.loggedInType != 'owner'){
+      return res.status(403).send('Sorry buddy, this area is off limits...');
+    }
     req.app.locals.client.query('SELECT * from genre;', (err, genres) => {
       req.app.locals.client.query('SELECT * from publisher;', (error, publishers) => {
         req.app.locals.client.query('SELECT * from author;', (error, authors) => {
@@ -98,6 +101,9 @@ router.get('/:isbn', function(req, res, next){
 })
 
 router.post('/', function(req, res, next) {
+  if(req.session.loggedInType != 'owner'){
+    return res.status(403).send('Sorry buddy, this area is off limits...');
+  }
   req.app.locals.client.query('INSERT INTO book (isbn, publisher_id, title, publish_date, edition, description, price, print_length, stock, publisher_fee) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10);', 
     [req.body.isbn, req.body.publisher, req.body.title, req.body.publishDate, req.body.edition, req.body.description, req.body.price, req.body.printLength, req.body.stock, req.body.publisherFee])
     .then(() => {
@@ -127,6 +133,9 @@ router.post('/', function(req, res, next) {
     
 
 router.delete('/:isbn', function(req, res, next) {
+  if(req.session.loggedInType != 'owner'){
+    return res.status(403).send('Sorry buddy, this area is off limits...');
+  }
   console.log(req.params);
   req.app.locals.client.query('DELETE FROM book WHERE isbn = $1;', [req.params.isbn])
     .then(() => {

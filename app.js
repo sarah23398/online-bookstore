@@ -75,6 +75,24 @@ function auth(req, res, next){
   }
 }
 
+function verifyOwner(req, res, next){
+  if(req.session.loggedInType != 'owner'){
+    res.status(403).send('Sorry buddy, this area is off limits...');
+  }
+  else{
+    next();
+  }
+}
+
+function verifyCustomer(req, res, next){
+  if(req.session.loggedInType == 'owner'){
+    res.status(403).send('Sorry, you can\'t access this resource as the owner...');
+  }
+  else{
+    next();
+  }
+}
+
 app.use((req, res, next)=>{
   if(req.session){
     res.locals.session = req.session;
@@ -88,11 +106,11 @@ app.use('/login', loginRouter);
 app.use('/logout', logoutRouter);
 app.use('/search', auth, searchRouter);
 app.use('/books', auth, booksRouter);
-app.use('/orders', auth, ordersRouter);
-app.use('/publishers', auth, publishersRouter);
-app.use('/reports', auth, reportsRouter);
-app.use('/cart', auth, cartRouter);
-app.use('/authors', auth, authorsRouter);
+app.use('/orders', auth, verifyCustomer, ordersRouter);
+app.use('/publishers', auth, verifyOwner, publishersRouter);
+app.use('/reports', auth, verifyOwner, reportsRouter);
+app.use('/cart', auth, verifyCustomer, cartRouter);
+app.use('/authors', auth, verifyOwner, authorsRouter);
 app.use('/customers', customersRouter);
 
 // catch 404 and forward to error handler
