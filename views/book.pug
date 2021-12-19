@@ -115,16 +115,14 @@ body
           label(for='rating')= 'Rating = '
           span &#32;
           span &#32;
-          input#quantity(type='number' name='quantity' min='1' max='5' required)
+          input#rating(type='number' name='rating' min='1' max='5' required)
           br
           br
           label(for='review')= 'Review: '
           br
           textarea#review(maxlength='255' cols='50' rows='5')
           p
-          button#addToCart.btn.btn-primary Add rating
-          if session.cart && session.cart[book.isbn]
-            span.text-success  Added rating
+          button#addRating.btn.btn-primary Add rating
         else if book.stock = 0
           p OUT OF STOCK
         else
