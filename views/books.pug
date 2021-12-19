@@ -30,30 +30,27 @@ body
           a.link-primary(href='/books/add') Add a book
           br
           br
-        //- if there are recommended books
-        //- h4 Recommended Books
-        //- each book in books
-        //-   a.link-primary(href='/books/' + book.isbn) #{book.title}
-        //-   p
-        //- br
-        //- br
         if !search
           if session.loggedInType == 'customer'
-            h4 Recommended Books 
+            //- omit if there are no recommended books
+            h4 Recommended Books
+            p
             .books
               each book in books
                 a.book(href='/books/' + book.isbn)
                   .bookin
-                    .cover 
+                    .cover
                       h2 #{book.title}
                     .flip
                       div
                         h4 #{book.title}
-                        p 
+                        p
                         p #{book.description}
                         p
                         p $#{book.price}
+          br
           h4 All Books
+          p
         else
           h4 Search Results
         if books.length == 0
@@ -62,14 +59,17 @@ body
           each book in books
             a.book(href='/books/' + book.isbn)
               .bookin
-                .cover 
+                .cover
                   h2 #{book.title}
                 .flip
                   div
                     h4 #{book.title}
-                    p 
+                    p
                     p #{book.description}
                     p
                     p $#{book.price}
+        br
+        br
+        br
 
 

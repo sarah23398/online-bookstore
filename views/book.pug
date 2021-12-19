@@ -35,6 +35,7 @@ body
             - genres += genre.name + ", "
           - index++
 
+        br
         h3 #{book.title}
         p
         h5 Book Information
@@ -88,47 +89,131 @@ body
               a(href="https://www.youtube.com/watch?v=dQw4w9WgXcQ", target="_blank", rel="noopener noreferrer") #{author.website}
         br
 
-        if session.loggedInType == 'customer'
+  if session.loggedInType == 'customer'
+    .container
+      hr(style='border: 1px solid grey;')
+      br
+      .row
+        .col-sm
           if book.stock > 0
-          h4 Order
-          label(for='quantity')= 'Quantity = '
-          span &#32;
-          span &#32;
-          input#quantity(type='number' name='quantity' min='1' max=book.stock value=(session.cart && session.cart[book.isbn])?session.cart[book.isbn]:1)
-          p
-          button#addToCart.btn.btn-success Add to cart
-          if session.cart && session.cart[book.isbn]
-            span.text-success  You have #{session.cart[book.isbn]} of these in your cart
-          br
-          br
-          hr
-          br
-          h4 Ratings
-          p
-          //- if there are ratings
-          p 5 ratings total
-          p Average rating of 4.5/5
-          //- if no ratings
-          p There aren't any ratings yet! Be the first to add one below:
-          p
+            h5 Order
+            label(for='quantity')= 'Quantity = '
+            span &#32;
+            span &#32;
+            input#quantity(type='number' name='quantity' min='1' max=book.stock value=(session.cart && session.cart[book.isbn])?session.cart[book.isbn]:1)
+            p
+            button#addToCart.btn.btn-success Add to cart
+            if session.cart && session.cart[book.isbn]
+              span.text-success  You have #{session.cart[book.isbn]} of these in your cart
+          else
+            p OUT OF STOCK
+        .col-sm
           h5 Add a Rating
           label(for='rating')= 'Rating = '
           span &#32;
           span &#32;
           input#rating(type='number' name='rating' min='1' max='5' required)
-          br
+          p
+          button#addRating.btn.btn-primary Add rating
+
+        .col-sm
+          h5 Add a Review
+          label(for='rating')= 'Rating = '
+          span &#32;
+          span &#32;
+          input#rating(type='number' name='rating' min='1' max='5' required)
           br
           label(for='review')= 'Review: '
           br
-          textarea#review(maxlength='255' cols='50' rows='5')
+          textarea#review(maxlength='255' cols='50' rows='3')
           p
-          button#addRating.btn.btn-primary Add rating
-        else if book.stock = 0
-          p OUT OF STOCK
-        else
+          button#addRating.btn.btn-primary Add review
+          br
+          br
+          br
+      hr(style='border: 1px solid grey;')
+  //- also add if there are ratings
+  if session.loggedInType == 'customer'
+    .container
+      .row
+        .col
+          br
+          h4 Ratings &amp; Reviews
+      .row
+        .col.col-12.text-center.mb-5
+          .card
+            .row
+              .col
+                .rating-box(style="margin-top:20px;")
+                  h1.pt-4 4.0
+                  p out of 5
+                div
+                  span.fa.fa-star.star-active.mx-1
+                  span.fa.fa-star.star-active.mx-1
+                  span.fa.fa-star.star-active.mx-1
+                  span.fa.fa-star.star-active.mx-1
+                  span.fa.fa-star.star-inactive.mx-1
+              .col-md-8
+                .rating-bar0.justify-content-center
+                  table.text-left.mx-auto
+                    tr
+                      td.rating-label ☆☆☆☆☆
+                      td.rating-bar
+                        .bar-container
+                          .bar-5
+                      td.text-right 123
+                    tr
+                      td.rating-label ☆☆☆☆
+                      td.rating-bar
+                        .bar-container
+                          .bar-4
+                      td.text-right 23
+                    tr
+                      td.rating-label ☆☆☆
+                      td.rating-bar
+                        .bar-container
+                          .bar-3
+                      td.text-right 10
+                    tr
+                      td.rating-label ☆☆
+                      td.rating-bar
+                        .bar-container
+                          .bar-2
+                      td.text-right 3
+                    tr
+                      td.rating-label ☆
+                      td.rating-bar
+                        .bar-container
+                          .bar-1
+                      td.text-right 0
+        .col
+          .card(style="margin-top: -17px;")
+            .row.d-flex
+              .d-flex.flex-column
+                h5.mt-2.mb-0 Vikram jit Singh
+                p.text-left
+                  span.text-muted 4.0
+                  span.fa.fa-star.star-active.ml-3
+                  span.fa.fa-star.star-active
+                  span.fa.fa-star.star-active
+                  span.fa.fa-star.star-active
+                  span.fa.fa-star.star-inactive
+              .ml-auto
+                p.text-muted.pt-5.pt-sm-3 9/10/2021
+            .row.text-left
+              p.content
+                | If you really enjoy spending your vacation &apos;on water&apos; or would like to try something new and exciting for the first time.
+          br
+          br
+          br
+  //- else if ratings are empty
+  else
+    .container
+      .row
+        .col
           h4 Remove from database
           button#removeBook.btn.btn-danger Remove
-        br
-        br
-        br
-        br
+          br
+          br
+          br
+          br
