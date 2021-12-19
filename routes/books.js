@@ -155,7 +155,7 @@ router.post('/', function(req, res, next) {
 });
 
 router.post('/:isbn/ratings', function(req, res, next){
-  req.app.locals.client.query('INSERT INTO rating(customer_id, isbn, rating, review) VALUES ($1, $2, $3, $4);', 
+  req.app.locals.client.query('INSERT INTO rating(customer_id, isbn, rating, review, review_date) VALUES ($1, $2, $3, $4, NOW());', 
   [req.session.userId, req.params.isbn, req.body.rating, req.body.review])
   .then(() => {
     res.status(201).send();

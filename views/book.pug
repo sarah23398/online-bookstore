@@ -200,7 +200,7 @@ body
                       span.fa.fa-star.star-active
                       span.fa.fa-star.star-inactive
                   .ml-auto
-                    p.text-muted.pt-5.pt-sm-3 #{rating.review_date}
+                    p.text-muted.pt-5.pt-sm-3 #{rating.review_date.toLocaleDateString('en-US',{ weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
                 .row.text-left
                   p.content #{rating.review}
             br
