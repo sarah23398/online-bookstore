@@ -68,7 +68,25 @@ router.get('/', function(req, res, next) {
     console.log(query)
     console.log(filters)
     req.app.locals.client.query(query, filters, (err, result)=>{
-      res.render('books', { title: 'Books', books: result.rows, search: !!extra });
+      if (req.session.loggedInType == 'customer') {
+        req.app.locals.client.query(`SELECT DISTINCT book.* from book
+        INNER JOIN "contains" ON book.isbn = "contains".isbn
+        INNER JOIN genre ON "contains".genre_id = genre.id
+        WHERE genre.name IN
+        (SELECT DISTINCT genre.name from rating
+        INNER JOIN book ON rating.isbn = book.isbn
+        INNER JOIN "contains" ON book.isbn = "contains".isbn
+        INNER JOIN genre on "contains".genre_id = genre.id
+        WHERE rating > 3
+        AND customer_id = $1)
+        AND book.isbn NOT IN 
+		    (SELECT isbn FROM rating
+		    WHERE customer_id = $1);;`, [req.session.userId], (err, recommended) => {
+          res.render('books', { title: 'Books', books: result.rows, recommended: recommended.rows, search: !!extra });
+        });
+      } else {
+          res.render('books', { title: 'Books', books: result.rows, search: !!extra });
+      }
     })
   });
 

@@ -33,8 +33,27 @@ body
         if !search
           if session.loggedInType == 'customer'
             //- omit if there are no recommended books
-            h4 Recommended Books
-            p
+            if recommended && recommended.length > 0
+              h4 Recommended Books
+              p
+              .books
+                each book in recommended
+                  a.book(href='/books/' + book.isbn)
+                    .bookin
+                      .cover
+                        h2 #{book.title}
+                      .flip
+                        div
+                          h4 #{book.title}
+                          p
+                          p #{book.description}
+                          p
+                          p $#{book.price}
+            else 
+              h4 Rate books so we can make recommendations!
+          br
+          h4 All Books
+          p
             .books
               each book in books
                 a.book(href='/books/' + book.isbn)
@@ -48,8 +67,6 @@ body
                         p #{book.description}
                         p
                         p $#{book.price}
-          br
-          h4 All Books
           p
         else
           h4 Search Results
