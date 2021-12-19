@@ -37,4 +37,4 @@ Ensure that the database has been initialized before running server.
 1. Run `npm run devstart`
 
 ### View application
-1. Once the server is running, navigate to https://localhost:3000/ on the browser of choice to view the different pages
+1. Once the server is running, navigate to http://localhost:3000/ on the browser of choice to view the different pages

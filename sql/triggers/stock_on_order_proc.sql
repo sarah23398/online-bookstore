@@ -1,3 +1,5 @@
+--- This trigger ensures that when an order is placed, the stock of a specific book in that orer is reduced by the quantity
+
 create or replace function update_stock_on_order() RETURNS trigger as $update_stock_on_order$
 declare
 	cstock  INTEGER := 0;

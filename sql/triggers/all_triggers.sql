@@ -1,4 +1,5 @@
 --- STOCK UPDATE ON ORDER TRIGGER
+--- This trigger ensures that when an order is placed, the stock of a specific book in that orer is reduced by the quantity
 create or replace function update_stock_on_order() RETURNS trigger as $update_stock_on_order$
 declare
 	cstock  INTEGER := 0;
@@ -17,6 +18,8 @@ CREATE TRIGGER update_stock_on_order BEFORE INSERT on finances
 	FOR EACH ROW EXECUTE PROCEDURE update_stock_on_order();
 
 --- AUTO REORDER TRIGGER
+--- This trigger ensures that when the stock of a book reaches 3 or below, it is automatically reordered/restocked
+
 create or replace function auto_reorder() RETURNS trigger as $auto_reorder$
 begin
 	if NEW.stock < 3 then

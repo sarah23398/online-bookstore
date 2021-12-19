@@ -1,3 +1,5 @@
+--- This trigger ensures that when the stock of a book reaches 3 or below, it is automatically reordered/restocked
+
 create or replace function auto_reorder() RETURNS trigger as $auto_reorder$
 begin
 	if NEW.stock < 3 then

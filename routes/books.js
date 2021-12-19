@@ -81,7 +81,7 @@ router.get('/', function(req, res, next) {
         AND customer_id = $1)
         AND book.isbn NOT IN 
 		    (SELECT isbn FROM rating
-		    WHERE customer_id = $1);;`, [req.session.userId], (err, recommended) => {
+		    WHERE customer_id = $1) LIMIT 4;`, [req.session.userId], (err, recommended) => {
           res.render('books', { title: 'Books', books: result.rows, recommended: recommended.rows, search: !!extra });
         });
       } else {
