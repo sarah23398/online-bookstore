@@ -2,6 +2,14 @@ var express = require('express');
 var router = express.Router();
 var pgf = require('pg-format');
 
+function average(array) {
+  sum = 0;
+  for (a in array) {
+    sum += a;
+  }
+  return sum / array.length;
+}
+
 /* GET books page. */
 router.get('/', function(req, res, next) {
   query = '';
@@ -84,6 +92,8 @@ router.get('/:isbn', function(req, res, next){
     console.log(book)
     book["authors"] = [];
     book["genres"] = [];
+    book["ratings"] = [];
+    book["ratingCounts"] = [0, 0, 0, 0, 0];
     req.app.locals.client.query(`SELECT * from written_by inner join author on written_by.author_id = author.id
     where written_by.isbn = $1`, [req.params.isbn], (error, authors)=>{
       for (let a of authors.rows){
@@ -94,7 +104,20 @@ router.get('/:isbn', function(req, res, next){
         for (let g of genres.rows){
           book.genres.push(g);
         }
-        res.render('book', {book: book});
+        req.app.locals.client.query(`SELECT rating.*, customer.name as "customer" from rating
+        INNER JOIN customer on rating.customer_id = customer.id
+        WHERE isbn = $1`, [req.params.isbn], (error, ratings)=> {
+          sum = 0;
+          for (let r of ratings.rows) {
+            book.ratings.push(r);
+            sum += Number(r.rating);
+            book.ratingCounts[r.rating - 1] += 1;
+          }
+          book.countRatings = book.ratings.length;
+          console.log(book.ratings);
+          book.avgRating = (sum / book.countRatings).toFixed(2);
+          res.render('book', {book: book});
+        })
       })
     })
   })

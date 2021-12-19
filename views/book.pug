@@ -145,7 +145,7 @@ body
             .row
               .col
                 .rating-box(style="margin-top:20px;")
-                  h1.pt-4 4.0
+                  h1.pt-4 #{book.avgRating}
                   p out of 5
                 div
                   span.fa.fa-star.star-active.mx-1
@@ -160,50 +160,49 @@ body
                       td.rating-label ☆☆☆☆☆
                       td.rating-bar
                         .bar-container
-                          .bar-5(style="width: 70%")
-                      td.text-right 123
+                          .bar-5
+                      td.text-right #{book.ratingCounts[4]}
                     tr
                       td.rating-label ☆☆☆☆
                       td.rating-bar
                         .bar-container
-                          .bar-4(style="width: 70%")
-                      td.text-right 23
+                          .bar-4
+                      td.text-right #{book.ratingCounts[3]}
                     tr
                       td.rating-label ☆☆☆
                       td.rating-bar
                         .bar-container
-                          .bar-3(style="width: 70%")
-                      td.text-right 10
+                          .bar-3
+                      td.text-right #{book.ratingCounts[2]}
                     tr
                       td.rating-label ☆☆
                       td.rating-bar
                         .bar-container
-                          .bar-2(style="width: 70%")
-                      td.text-right 3
+                          .bar-2
+                      td.text-right #{book.ratingCounts[1]}
                     tr
                       td.rating-label ☆
                       td.rating-bar
                         .bar-container
-                          .bar-1(style="width: 70%")
-                      td.text-right 0
+                          .bar-1
+                      td.text-right #{book.ratingCounts[0]}
         .col
-          .card(style="margin-top: -17px;")
-            .row.d-flex
-              .d-flex.flex-column
-                h5.mt-2.mb-0 Vikram jit Singh
-                p.text-left
-                  span.text-muted 4.0
-                  span.fa.fa-star.star-active.ml-3
-                  span.fa.fa-star.star-active
-                  span.fa.fa-star.star-active
-                  span.fa.fa-star.star-active
-                  span.fa.fa-star.star-inactive
-              .ml-auto
-                p.text-muted.pt-5.pt-sm-3 9/10/2021
-            .row.text-left
-              p.content
-                | If you really enjoy spending your vacation &apos;on water&apos; or would like to try something new and exciting for the first time.
-          br
+          each rating in book.ratings
+            .card(style="margin-top: -17px;")
+              .row.d-flex
+                .d-flex.flex-column
+                  h5.mt-2.mb-0 #{rating.customer}
+                  p.text-left
+                    span.text-muted #{rating.rating}
+                    span.fa.fa-star.star-active.ml-3
+                    span.fa.fa-star.star-active
+                    span.fa.fa-star.star-active
+                    span.fa.fa-star.star-active
+                    span.fa.fa-star.star-inactive
+                .ml-auto
+                  p.text-muted.pt-5.pt-sm-3 #{rating.review_date}
+              .row.text-left
+                p.content #{rating.review}
           br
           br
   //- else if ratings are empty
