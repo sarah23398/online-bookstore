@@ -133,7 +133,7 @@ body
             h4 Ratings &amp; Reviews
         .row
           .col.col-12.text-center.mb-5
-            .card
+            .card(style="margin-bottom:-15GOOD px;")
               .row
                 .col
                   .rating-box(style="margin-top:20px;")
@@ -147,40 +147,52 @@ body
                     span.fa.fa-star.star-inactive.mx-1
                 .col-md-8
                   .rating-bar0.justify-content-center
+                    - index = 0
+                    - ratingsTotal = 0
+                    while index < 5
+                      - ratingsTotal += book.ratingCounts[index]
+                      - index++
+
+                    - fiveStars = 100 * (book.ratingCounts[4] / ratingsTotal)
+                    - fourStars = 100 * (book.ratingCounts[3] / ratingsTotal)
+                    - threeStars = 100 * (book.ratingCounts[2] / ratingsTotal)
+                    - twoStars = 100 * (book.ratingCounts[1] / ratingsTotal)
+                    - oneStar = 100 * (book.ratingCounts[0] / ratingsTotal)
+
                     table.text-left.mx-auto
                       tr
                         td.rating-label ☆☆☆☆☆
                         td.rating-bar
                           .bar-container
-                            .bar-5
+                            .bar-5(style=`width: ${fiveStars}%`)
                         td.text-right #{book.ratingCounts[4]}
                       tr
                         td.rating-label ☆☆☆☆
                         td.rating-bar
                           .bar-container
-                            .bar-4
+                            .bar-4(style=`width: ${fourStars}%`)
                         td.text-right #{book.ratingCounts[3]}
                       tr
                         td.rating-label ☆☆☆
                         td.rating-bar
                           .bar-container
-                            .bar-3
+                            .bar-3(style=`width: ${threeStars}%`)
                         td.text-right #{book.ratingCounts[2]}
                       tr
                         td.rating-label ☆☆
                         td.rating-bar
                           .bar-container
-                            .bar-2
+                            .bar-2(style=`width: ${twoStars}%`)
                         td.text-right #{book.ratingCounts[1]}
                       tr
                         td.rating-label ☆
                         td.rating-bar
                           .bar-container
-                            .bar-1
+                            .bar-1(style=`width: ${oneStar}%`)
                         td.text-right #{book.ratingCounts[0]}
           .col
             each rating in book.ratings
-              .card(style="margin-top: -17px;")
+              .card
                 .row.d-flex
                   .d-flex.flex-column
                     h5.mt-2.mb-0 #{rating.customer}
@@ -202,92 +214,6 @@ body
             br
     else
       h4 There are no ratings or reviews.
-    .container
-      .row
-        .col
-          br
-          h4 Ratings &amp; Reviews
-      .row
-        .col.col-12.text-center.mb-5
-          .card(style="margin-bottom:-15GOOD px;")
-            .row
-              .col
-                .rating-box(style="margin-top:20px;")
-                  h1.pt-4 #{book.avgRating}
-                  p out of 5
-                div
-                  span.fa.fa-star.star-active.mx-1
-                  span.fa.fa-star.star-active.mx-1
-                  span.fa.fa-star.star-active.mx-1
-                  span.fa.fa-star.star-active.mx-1
-                  span.fa.fa-star.star-inactive.mx-1
-              .col-md-8
-                .rating-bar0.justify-content-center
-                  - index = 0
-                  - ratingsTotal = 0
-                  while index < 5
-                    - ratingsTotal += book.ratingCounts[index]
-                    - index++
-
-                  - fiveStars = 100 * (book.ratingCounts[4] / ratingsTotal)
-                  - fourStars = 100 * (book.ratingCounts[3] / ratingsTotal)
-                  - threeStars = 100 * (book.ratingCounts[2] / ratingsTotal)
-                  - twoStars = 100 * (book.ratingCounts[1] / ratingsTotal)
-                  - oneStar = 100 * (book.ratingCounts[0] / ratingsTotal)
-
-                  table.text-left.mx-auto
-                    tr
-                      td.rating-label ☆☆☆☆☆
-                      td.rating-bar
-                        .bar-container
-                          .bar-5(style=`width: ${fiveStars}%`)
-                      td.text-right #{book.ratingCounts[4]}
-                    tr
-                      td.rating-label ☆☆☆☆
-                      td.rating-bar
-                        .bar-container
-                          .bar-4(style=`width: ${fourStars}%`)
-                      td.text-right #{book.ratingCounts[3]}
-                    tr
-                      td.rating-label ☆☆☆
-                      td.rating-bar
-                        .bar-container
-                          .bar-3(style=`width: ${threeStars}%`)
-                      td.text-right #{book.ratingCounts[2]}
-                    tr
-                      td.rating-label ☆☆
-                      td.rating-bar
-                        .bar-container
-                          .bar-2(style=`width: ${twoStars}%`)
-                      td.text-right #{book.ratingCounts[1]}
-                    tr
-                      td.rating-label ☆
-                      td.rating-bar
-                        .bar-container
-                          .bar-1(style=`width: ${oneStar}%`)
-                      td.text-right #{book.ratingCounts[0]}
-        .col
-          each rating in book.ratings
-            //- .card(style="margin-top: -17px;")
-            .card
-              .row.d-flex
-                .d-flex.flex-column
-                  h5.mt-2.mb-0 #{rating.customer}
-                  p.text-left
-                    span.text-muted #{rating.rating}
-                    span.fa.fa-star.star-active.ml-3
-                    span.fa.fa-star.star-active
-                    span.fa.fa-star.star-active
-                    span.fa.fa-star.star-active
-                    span.fa.fa-star.star-inactive
-                .ml-auto
-                  p.text-muted.pt-5.pt-sm-3 #{rating.review_date}
-              .row.text-left
-                p.content #{rating.review}
-          br
-          br
-          br
-          br
   //- else if ratings are empty
   else
     .container
