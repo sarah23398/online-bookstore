@@ -54,39 +54,26 @@ body
           br
           h4 All Books
           p
-            .books
-              each book in books
-                a.book(href='/books/' + book.isbn)
-                  .bookin
-                    .cover
-                      h2 #{book.title}
-                    .flip
-                      div
-                        h4 #{book.title}
-                        p
-                        p #{book.description}
-                        p
-                        p $#{book.price}
-          p
         else
           h4 Search Results
         if books.length == 0
           p No Results Found
-        .books
-          each book in books
-            a.book(href='/books/' + book.isbn)
-              .bookin
-                .cover
-                  h2 #{book.title}
-                .flip
-                  div
-                    h4 #{book.title}
-                    p
-                    p #{book.description}
-                    p
-                    p $#{book.price}
-        br
-        br
-        br
+        else
+          .books
+            each book in books
+              a.book(href='/books/' + book.isbn)
+                .bookin
+                  .cover
+                    h2 #{book.title}
+                  .flip
+                    div
+                      h4 #{book.title}
+                      p
+                      p #{book.description}
+                      p
+                      p $#{book.price}
+          br
+          br
+          br
 
 
