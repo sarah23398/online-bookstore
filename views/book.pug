@@ -125,7 +125,6 @@ body
           br
       hr(style='border: 1px solid grey;')
   if session.loggedInType == 'customer'
-<<<<<<< HEAD
     if book.countRatings > 0
       .container
         .row
@@ -186,11 +185,11 @@ body
                   .d-flex.flex-column
                     h5.mt-2.mb-0 #{rating.customer}
                     p.text-left
-                      span.text-muted #{rating.rating} 
+                      span.text-muted #{rating.rating}
                       span.ml-3
                       - var i = 0
                       while i < rating.rating
-                        span.fa.fa-star.star-active 
+                        span.fa.fa-star.star-active
                         - i++
                       while i < 5
                         span.fa.fa-star.star-inactive
@@ -203,7 +202,6 @@ body
             br
     else
       h4 There are no ratings or reviews.
-=======
     .container
       .row
         .col
@@ -291,7 +289,6 @@ body
           br
           br
   //- else if ratings are empty
->>>>>>> 8713031 (updated ratings bars)
   else
     .container
       .row
