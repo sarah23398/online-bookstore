@@ -11,16 +11,18 @@ function average(array) {
   return sum / array.length;
 }
 
-// Allows owner to add a new book to the database
+// Generates search results for the customer
 router.get('/', function(req, res, next) {
   query = '';
   extra = '';
   filters = [];
   if(Object.keys(req.query).length > 0){
+    // If they were searching for the author
     if(req.query.author){
       extra += "INNER JOIN written_by on book.isbn = written_by.isbn INNER JOIN author on written_by.author_id = author.id WHERE author.name ilike '%' || $1 || '%' "
       filters.push(req.query.author);
     }
+    // Or the title
     if(req.query.title){
       if(!extra){
         extra += "WHERE book.TITLE ILIKE '%' || $1 || '%' "
@@ -30,6 +32,7 @@ router.get('/', function(req, res, next) {
       }
       filters.push(req.query.title);
     }
+    // Or the ISBN
     if(req.query.ISBN){
       if(!extra){
         extra += "WHERE book.ISBN ILIKE '%' || $1 || '%' "
@@ -39,6 +42,7 @@ router.get('/', function(req, res, next) {
       }
       filters.push(req.query.ISBN);
     }
+    // Or the genre
     if(req.query.genre){
       filters.push(req.query.genre);
       extra = `INNER JOIN "contains" ON book.ISBN = "contains".ISBN ${extra}`;
@@ -49,8 +53,8 @@ router.get('/', function(req, res, next) {
         extra += ' AND ';
       }
       extra += ` "contains".genre_id = $${filters.length} `
-
     }
+    // Or the publisher
     if(req.query.publisher){
       filters.push(req.query.publisher);
       extra = `INNER JOIN publisher ON book.publisher_id = publisher.id ${extra}`;
@@ -61,15 +65,17 @@ router.get('/', function(req, res, next) {
         extra += ' AND ';
       }
       extra += ` publisher.name ILIKE '%' || $${filters.length} || '%' `
-
     }
-
   }
+    // Generates the query for the search results
     query = `SELECT DISTINCT book.* from book ${extra};`;
     console.log(query)
     console.log(filters)
     req.app.locals.client.query(query, filters, (err, result)=>{
+      // Ensures that only the customer can access recommended books
       if (req.session.loggedInType == 'customer') {
+        // Generates the query to determine books to recommend
+        // There can only be a maximum of 4 recommended books
         req.app.locals.client.query(`SELECT DISTINCT book.* from book
         INNER JOIN "contains" ON book.isbn = "contains".isbn
         INNER JOIN genre ON "contains".genre_id = genre.id
@@ -86,6 +92,7 @@ router.get('/', function(req, res, next) {
           res.render('books', { title: 'Books', books: result.rows, recommended: recommended.rows, search: !!extra });
         });
       } else {
+          // If it's the owner who's logged in instead, do not include recommended books
           res.render('books', { title: 'Books', books: result.rows, search: !!extra });
       }
     })
