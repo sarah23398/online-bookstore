@@ -62,10 +62,10 @@ router.get('/expenditures', function(req, res, next){
     INNER JOIN finances on finances.ISBN = book.ISBN
     ${extra}
     GROUP BY publisher.name,
-    book.publisher_fee) as earnings_per_book group by publisher_name;`, [req.query.start, req.query.end], (err, result)=>{
+    book.publisher_fee) as earnings_per_book group by publisher_name;`, params, (err, result)=>{
     let report = [];
-    for (let res of result.rows){
-      report.push([res.publisher, `$${res.sales}`, `$${res.publisher_earnings}`, `$${res.net_revenue}`])
+    for (let r of result.rows){
+      report.push([r.publisher, `$${r.sales}`, `$${r.publisher_earnings}`, `$${r.net_revenue}`])
     }
     console.log(report)
     res.render('report', {report: report, report_title: title, headers: ['Publisher', 'Total Sales', 'Total Publisher Earnings (paid to publisher)', 'Net Revenue'] })
