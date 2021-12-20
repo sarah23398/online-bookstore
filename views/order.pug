@@ -24,13 +24,13 @@ body
 
         h4 Order ID: #{order.id}
         p
-        //- if order.status == "FULFILLED"
-        .alert.alert-warning.alert-dismissible.fade.show(role='alert')
-          strong Hey there!
-          |  If you've finished reading any of the books, please leave ratings by navigating to the bottom of each book's page :) Thank you!
-          button.close(type='button' data-dismiss='alert' aria-label='Close')
-            span(aria-hidden='true') &times;
-        p
+        if order.status == "FULFILLED"
+          .alert.alert-warning.alert-dismissible.fade.show(role='alert')
+            strong Hey there!
+            |  If you've finished reading any of the books, please leave ratings by navigating to the bottom of each book's page :) Thank you!
+            button.close(type='button' data-dismiss='alert' aria-label='Close')
+              span(aria-hidden='true') &times;
+          p
         h5 Purchase
         - index = 0
         while index < order.books.length
@@ -48,7 +48,7 @@ body
         p.card-text
           span.font-weight-bold Total cost:
           span &#32;
-          | $#{cost}
+          | $#{cost.toFixed(2)}
         p
         hr
         h5 Shipping
@@ -73,18 +73,18 @@ body
           span &#32;
           | #{order.status}
         p
-        //- if order.status == "FULFILLED"
-        p.card-text
-          span.font-weight-bold Arrival Date:
-          span &#32;
-          | #{order.arrival_date}
-        p
-        //- if order.status != "FULFILLED"
-        p.card-text
-          span.font-weight-bold Estimated Arrival:
-          span &#32;
-          | #{order.estimated_arrival.toLocaleDateString('en-US',{ weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
-        p
+        if order.status == "FULFILLED"
+          p.card-text
+            span.font-weight-bold Arrival Date:
+            span &#32;
+            | #{order.arrival_date}
+          p
+        if order.status != "FULFILLED"
+          p.card-text
+            span.font-weight-bold Estimated Arrival:
+            span &#32;
+            | #{order.estimated_arrival.toLocaleDateString('en-US',{ weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
+          p
         p.card-text
           span.font-weight-bold Current Address:
           span &#32;

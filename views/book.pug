@@ -164,13 +164,16 @@ body
                   .rating-box(style="margin-top:20px;")
                     h1.pt-4 #{book.avgRating}
                     p out of 5
-                  - book
                   div
-                    span.fa.fa-star.star-active.mx-1
-                    span.fa.fa-star.star-active.mx-1
-                    span.fa.fa-star.star-active.mx-1
-                    span.fa.fa-star.star-active.mx-1
-                    span.fa.fa-star.star-inactive.mx-1
+                    - avgRatingRounded = Math.round(book.avgRating)
+                    - count = 0
+                    while count < avgRatingRounded
+                      span.fa.fa-star.star-active.mx-1
+                      - count++
+                    - count = 0
+                    while count < 5-(avgRatingRounded)
+                      span.fa.fa-star.star-inactive.mx-1
+                      - count++
                 .col-md-8
                   .rating-bar0.justify-content-center
                     - index = 0
