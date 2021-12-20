@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var pgf = require('pg-format');
 
+// Calculates the average value within the passed in array
 function average(array) {
   sum = 0;
   for (a in array) {
@@ -10,7 +11,7 @@ function average(array) {
   return sum / array.length;
 }
 
-/* GET books page. */
+// Allows owner to add a new book to the database
 router.get('/', function(req, res, next) {
   query = '';
   extra = '';
@@ -48,7 +49,7 @@ router.get('/', function(req, res, next) {
         extra += ' AND ';
       }
       extra += ` "contains".genre_id = $${filters.length} `
-      
+
     }
     if(req.query.publisher){
       filters.push(req.query.publisher);
@@ -60,7 +61,7 @@ router.get('/', function(req, res, next) {
         extra += ' AND ';
       }
       extra += ` publisher.name ILIKE '%' || $${filters.length} || '%' `
-      
+
     }
 
   }
@@ -79,7 +80,7 @@ router.get('/', function(req, res, next) {
         INNER JOIN genre on "contains".genre_id = genre.id
         WHERE rating > 3
         AND customer_id = $1)
-        AND book.isbn NOT IN 
+        AND book.isbn NOT IN
 		    (SELECT isbn FROM rating
 		    WHERE customer_id = $1) LIMIT 4;`, [req.session.userId], (err, recommended) => {
           res.render('books', { title: 'Books', books: result.rows, recommended: recommended.rows, search: !!extra });
@@ -103,8 +104,11 @@ router.get('/', function(req, res, next) {
     })
   })
 
+// Generates the /book/:isbn page
 router.get('/:isbn', function(req, res, next){
+  // Fetches all book information and the publisher name
   req.app.locals.client.query(`SELECT book.*, publisher.name as "publisher" from book inner join publisher on book.publisher_id = publisher.id where isbn = $1`, [req.params.isbn], (err, result)=>{
+    // Creates arrays to contain certain book information (there can be more than one author, for example )
     let book = {};
     Object.assign(book, result.rows[0]);
     console.log(book)
@@ -112,23 +116,29 @@ router.get('/:isbn', function(req, res, next){
     book["genres"] = [];
     book["ratings"] = [];
     book["ratingCounts"] = [0, 0, 0, 0, 0];
+    // Fetches authors
     req.app.locals.client.query(`SELECT * from written_by inner join author on written_by.author_id = author.id
     where written_by.isbn = $1`, [req.params.isbn], (error, authors)=>{
+      // Adds each author to book["authors"]
       for (let a of authors.rows){
         book.authors.push(a);
       }
+      // Fetches book genres
       req.app.locals.client.query(`SELECT * from "contains" inner join genre on "contains".genre_id = genre.id
         where "contains".isbn = $1`, [req.params.isbn], (error, genres)=>{
         for (let g of genres.rows){
           book.genres.push(g);
         }
+        // Fetches book ratings
         req.app.locals.client.query(`SELECT rating.*, customer.name as "customer" from rating
         INNER JOIN customer on rating.customer_id = customer.id
         WHERE isbn = $1 ORDER BY rating.review_date desc`, [req.params.isbn], (error, ratings)=> {
           sum = 0;
           for (let r of ratings.rows) {
             book.ratings.push(r);
+            // Calculates sum of all ratings
             sum += Number(r.rating);
+            // Calculates the number of ratings per kind of rating (1 to 5 stars)
             book.ratingCounts[r.rating - 1] += 1;
           }
           book.countRatings = book.ratings.length;
@@ -141,18 +151,22 @@ router.get('/:isbn', function(req, res, next){
   })
 })
 
+// Allows the owner to add a new book to the database
 router.post('/', function(req, res, next) {
+  // Ensures that customers can't access this functionality
   if(req.session.loggedInType != 'owner'){
     return res.status(403).send('Sorry buddy, this area is off limits...');
   }
-  req.app.locals.client.query('INSERT INTO book (isbn, publisher_id, title, publish_date, edition, description, price, print_length, stock, publisher_fee) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10);', 
+  // Adds the book information which only contains a maximum of one value
+  req.app.locals.client.query('INSERT INTO book (isbn, publisher_id, title, publish_date, edition, description, price, print_length, stock, publisher_fee) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10);',
     [req.body.isbn, req.body.publisher, req.body.title, req.body.publishDate, req.body.edition, req.body.description, req.body.price, req.body.printLength, req.body.stock, req.body.publisherFee])
     .then(() => {
       let authors = [];
       for(let a of req.body.authors){
         authors.push([a, req.body.isbn]);
       }
-      req.app.locals.client.query(pgf('INSERT INTO written_by (author_id, isbn) VALUES %L', authors), 
+      // Adds author(s)
+      req.app.locals.client.query(pgf('INSERT INTO written_by (author_id, isbn) VALUES %L', authors),
         [])
     })
     .then(() => {
@@ -160,7 +174,8 @@ router.post('/', function(req, res, next) {
       for(let g of req.body.genres){
         gen.push([g, req.body.isbn]);
       }
-      req.app.locals.client.query(pgf('INSERT INTO "contains" (genre_id, isbn) VALUES %L', gen), 
+      // Adds genre(s)
+      req.app.locals.client.query(pgf('INSERT INTO "contains" (genre_id, isbn) VALUES %L', gen),
         [])
     })
     .then(() => {
@@ -172,8 +187,10 @@ router.post('/', function(req, res, next) {
     });
 });
 
+// Allows the customer to add a rating/review to the database
 router.post('/:isbn/ratings', function(req, res, next){
-  req.app.locals.client.query('INSERT INTO rating(customer_id, isbn, rating, review, review_date) VALUES ($1, $2, $3, $4, NOW());', 
+  // Runs an SQl query to add the rating
+  req.app.locals.client.query('INSERT INTO rating(customer_id, isbn, rating, review, review_date) VALUES ($1, $2, $3, $4, NOW());',
   [req.session.userId, req.params.isbn, req.body.rating, req.body.review])
   .then(() => {
     res.status(201).send();
@@ -183,13 +200,15 @@ router.post('/:isbn/ratings', function(req, res, next){
     return res.status(500).json({success: false, data: error});
   });
 })
-    
 
+// Allows owner to delete a book from the database
 router.delete('/:isbn', function(req, res, next) {
+  // Ensures that only the owner can access this functionality
   if(req.session.loggedInType != 'owner'){
     return res.status(403).send('Sorry buddy, this area is off limits...');
   }
   console.log(req.params);
+  // Runs an SQL query to delete the book
   req.app.locals.client.query('DELETE FROM book WHERE isbn = $1;', [req.params.isbn])
     .then(() => {
       res.status(204).send();
