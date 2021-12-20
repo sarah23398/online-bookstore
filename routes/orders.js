@@ -24,7 +24,6 @@ router.post('/', function(req, res, next){
       }
       else{
         let vals = [];
-        console.log(req.body);
         for(let i in req.session.cart){
           vals.push([result.rows[0].id, i, req.session.cart[i]]);
         }
@@ -71,7 +70,6 @@ router.get('/:id', function(req, res, next) {
       return res.status(404).send('That order cannot be found!');
     }
     Object.assign(order, result.rows[0]);
-    console.log(order);
     order["quantities"] = [];
     order["books"] = [];
     order["prices"] = [];

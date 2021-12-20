@@ -30,7 +30,6 @@ router.get('/author', function(req, res, next){
   book.ISBN = written_by.ISBN
   GROUP BY author.name;`, params, (err, result)=>{
     let report = [];
-    console.log(req.body, result)
     for (let author of result.rows){
       report.push([author.name, `$${author.sum}`])
     }

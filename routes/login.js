@@ -30,7 +30,6 @@ router.post('/owner', function(req, res, next) {
 router.post('/customer', function(req, res, next) {
   // Writes an SQL query to check if the email and corresponding password are in the database
   req.app.locals.client.query(`SELECT id, name from customer where email = $1 and password = $2`, [req.body.email, req.body.password], (err, result)=>{
-    console.log(result);
     if(result.rowCount == 1){
       req.session.loggedIn = true;
       req.session.loggedInType = "customer";

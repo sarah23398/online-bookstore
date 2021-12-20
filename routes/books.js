@@ -69,8 +69,6 @@ router.get('/', function(req, res, next) {
   }
   // Generates the query for the search results
   query = `SELECT DISTINCT book.* from book ${extra};`;
-  console.log(query)
-  console.log(filters)
   req.app.locals.client.query(query, filters, (err, result)=>{
     // Ensures that only the customer can access recommended books
     if (req.session.loggedInType == 'customer') {
@@ -121,7 +119,6 @@ router.get('/:isbn', function(req, res, next){
     // Creates arrays to contain certain book information (there can be more than one author, for example)
     let book = {};
     Object.assign(book, result.rows[0]);
-    console.log(book)
     book["authors"] = [];
     book["genres"] = [];
     book["ratings"] = [];
@@ -152,7 +149,6 @@ router.get('/:isbn', function(req, res, next){
             book.ratingCounts[r.rating - 1] += 1;
           }
           book.countRatings = book.ratings.length;
-          console.log(book.ratings);
           book.avgRating = (sum / book.countRatings).toFixed(2);
           res.render('book', {book: book});
         })
@@ -217,7 +213,6 @@ router.delete('/:isbn', function(req, res, next) {
   if(req.session.loggedInType != 'owner'){
     return res.status(403).send('Sorry buddy, this area is off limits...');
   }
-  console.log(req.params);
   // Runs an SQL query to delete the book
   req.app.locals.client.query('DELETE FROM book WHERE isbn = $1;', [req.params.isbn])
     .then(() => {
