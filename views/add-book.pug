@@ -50,7 +50,7 @@ body
             input#bookPrice.form-control(type="number" name='price' aria-describedby='priceHelp' placeholder='Enter price' step=".01")
           .form-group
             label(for='bookPages') Number of pages
-            input#bookPages.form-control(name='number-of-pages' aria-describedby='pagesHelp' placeholder='Enter number of pages')
+            input#bookPages.form-control(type='number' max='9999' maxlength='4' name='number-of-pages' aria-describedby='pagesHelp' placeholder='Enter number of pages')
           .form-group
             label(for='bookEdition') Edition
             input#bookEdition.form-control(name='publisher' aria-describedby='editionHelp' placeholder='Enter edition')
@@ -62,7 +62,7 @@ body
           br
           h5 Publish date
           - date = new Date()
-          input#bookPublishDate(type='date' name='publish' value=date.toISOString().split('T')[0] min='1000-01-01' max=date.toISOString().split('T')[0])
+          input#bookPublishDate(type='date' required name='publish' value=date.toISOString().split('T')[0] min='1000-01-01' max=date.toISOString().split('T')[0])
 
           p
           br

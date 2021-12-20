@@ -15,13 +15,29 @@ function createBook(e) {
     const title = document.getElementById('bookTitle').value;
     const isbn = document.getElementById('bookIsbn').value;
     const price = document.getElementById('bookPrice').value;
+    if(parseFloat(price) > 999.99){
+      alert('Please enter a price less than or equal to $999.99')
+      return;
+    }
     const publisher = document.getElementById('bookPublisher').value;
     const publishDate = document.getElementById('bookPublishDate').value;
     const edition = document.getElementById('bookEdition').value;
     const description = document.getElementById('bookDescription').value;
     const printLength = document.getElementById('bookPages').value;
+    if(parseInt(printLength) > 9999){
+      alert('Please enter a number of pages that is less than or equal to 9999')
+      return;
+    }
     const stock = document.getElementById('bookStock').value;
+    if(parseInt(stock) > 999){
+      alert('Please enter a stock that is less than or equal to 999');
+      return;
+    }
     const publisherFee = document.getElementById('bookPublisherFee').value;
+    if(parseFloat(publisherFee) > 100){
+      alert('Please enter a publisher fee percentage that is less than or equal to 100%');
+      return;
+    }
     fetch('/books', {
         method: 'POST',
         headers: {
@@ -48,7 +64,7 @@ function createBook(e) {
           location.href='/books';
         }
         else{
-          alert('Book could not be added.');
+          alert('Book could not be added. Please ensure that all the info is there or try again later.');
         }
       })
       .catch((err)=>{
