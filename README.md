@@ -15,7 +15,7 @@ For all steps involving `node` and `npm` described below, ensure to `cd` into th
 3. Once the tables have been created, run the provided `all_inserts.sql` file to insert the mock data
 4. Once that is done, navigate to the `sql/triggers` directory, and run the `all_triggers.sql` file to create the required triggers for the database that takes care of keeping the stock up-to-date (reducing on order and automatically reordering once reaching a given threshold)
 \
-    4.1. Alternatively, you ca first run `stock_on_order_proc.sql` and then run `auto_reorder.sql`
+    4.1. Alternatively, you can first run `stock_on_order_proc.sql` and then run `auto_reorder.sql`
 
 ### Connect Database to Application
 1. Once the database has been initialized, create a file by the name of `.env`
