@@ -6,6 +6,7 @@ html
     script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js' integrity='sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49' crossorigin='anonymous')
     script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js' integrity='sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy' crossorigin='anonymous')
     link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css")
     link(rel="icon" type="image/png" href="https://static.vecteezy.com/system/resources/previews/002/268/088/original/man-reading-a-book-and-sitting-on-stack-of-books-illustration-free-vector.jpg")
 
 
@@ -77,18 +78,48 @@ body
           p.card-text
             span.font-weight-bold Arrival Date:
             span &#32;
-            | #{order.arrival_date}
+            | #{order.arrival_date.toLocaleDateString('en-US',{ weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
           p
+          div 
+            h2
+              span.fas.fa-store
+              | =============
+              span.fas.fa-car-side
+              span.fas.fa-house-user
         if order.status != "FULFILLED"
           p.card-text
             span.font-weight-bold Estimated Arrival:
             span &#32;
             | #{order.estimated_arrival.toLocaleDateString('en-US',{ weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
           p
-        p.card-text
-          span.font-weight-bold Current Address:
-          span &#32;
-          |#{order.current_address}
+          p.card-text
+            span.font-weight-bold Current Address:
+            span &#32;
+            |#{order.current_address}
+          p
+          if order.status == "INPROGRESS"
+            div 
+              h2
+                span.fas.fa-store
+                | =======
+                span.fas.fa-car-side
+                | ======
+                span.fas.fa-house-user
+          else if order.status == "RECEIVED"
+            div 
+              h2
+                span.fas.fa-store
+                span.fas.fa-car-side
+                | =============
+                span.fas.fa-house-user
+          else 
+            div 
+              h2
+                span.fas.fa-store
+                | =============
+                span.fas.fa-house-user
+            
+            
         p
         hr
         h5 Billing

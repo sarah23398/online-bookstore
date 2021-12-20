@@ -28,7 +28,7 @@ body
         h4 Orders
         p Latest to earliest
         each order in orders
-          a.link-primary(href='/orders/' + order.id) Order #{order.id}: #{order.order_date.toLocaleDateString('en-US',{ weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour:'numeric', minute:'numeric', second:'numeric' })}
+          a.link-primary(href='/orders/' + order.id) Order #{order.id}: #{order.order_date.toLocaleDateString('en-US',{ weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour:'numeric', minute:'numeric', second:'numeric' })} (#{order.status})
           p
 
 
