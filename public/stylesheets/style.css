@@ -668,6 +668,9 @@ Table of Contents
 	-moz-transition-duration: 0.6s;
 	transition-duration: 0.6s;
 }
+ul.default{
+  list-style-type: circle;
+}
 
 /*
 	5. events
