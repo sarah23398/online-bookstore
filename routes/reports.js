@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
+// All routes follow a similar structure, in that they set the report page's title and  as well as table headers
+
 // Get the /reports page
 router.get('/', function(req, res, next) {
   res.render('reports', { title: 'Finance Reports' });
@@ -10,6 +12,8 @@ router.get('/', function(req, res, next) {
 router.get('/author', function(req, res, next){
   let extra = 'WHERE';
   let title = 'Sales per Author Report';
+  // this adds a specific start date and end date for custom reports
+  // extra will be only have WHERE if there is no start and end date defined, which would mean that the report is default
   params = [];
   if(req.query.start && req.query.end){
     extra = `INNER JOIN "order" on finances.order_id = "order".id
@@ -40,6 +44,8 @@ router.get('/expenditures', function(req, res, next){
   let extra = '';
   let title = 'Sales vs. Expenditures Report';
   params = [];
+  // this adds a specific start date and end date for custom reports
+  // extra will be empty if there is no start and end date defined, which would mean that the report is default
   if(req.query.start && req.query.end){
     extra = `INNER JOIN "order" on finances.order_id = "order".id
     WHERE "order".order_date BETWEEN $1 AND $2`;
@@ -71,6 +77,8 @@ router.get('/genre', function(req, res, next){
   let extra = '';
   let title = 'Sales per Genre Report';
   params = [];
+  // this adds a specific start date and end date for custom reports
+  // extra will be empty if there is no start and end date defined, which would mean that the report is default
   if(req.query.start && req.query.end){
     extra = `INNER JOIN "order" on finances.order_id = "order".id
     WHERE "order".order_date BETWEEN $1 AND $2`;
