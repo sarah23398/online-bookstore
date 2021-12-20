@@ -19,6 +19,7 @@ body
       .component
         ul.align
           li
+            br
             figure.book(style='margin-left: 90px; margin-top: -30px;')
               ul.hardcover_front
                 li
@@ -96,7 +97,7 @@ body
           span &#32;
           | #{book.publish_date.toLocaleDateString()}
     .row
-      .col-sm(style='margin-top: -60px;')
+      .col-sm
         br
         h5 Author(s) Information
         p
@@ -118,10 +119,10 @@ body
   if session.loggedInType == 'customer'
     .container
       hr(style='border: 1px solid grey;')
-      br
       .row
         .col-sm
           if book.stock > 0
+            br
             h5 Order
             label(for='quantity')= 'Quantity = '
             span &#32;
@@ -134,6 +135,7 @@ body
           else
             p OUT OF STOCK
         .col-sm
+          br
           h5 Add a Review
           label(for='rating')= 'Rating = '
           span &#32;

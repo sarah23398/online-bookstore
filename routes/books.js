@@ -98,7 +98,7 @@ router.get('/', function(req, res, next) {
   })
 });
 
-// Generates the /books/add page
+// Creates the /books/add page
 router.get('/add', function(req, res, next){
   // Ensures that this is off limits for customers
   if(req.session.loggedInType != 'owner'){
@@ -118,7 +118,7 @@ router.get('/add', function(req, res, next){
 router.get('/:isbn', function(req, res, next){
   // Fetches all book information and the publisher name
   req.app.locals.client.query(`SELECT book.*, publisher.name as "publisher" from book inner join publisher on book.publisher_id = publisher.id where isbn = $1`, [req.params.isbn], (err, result)=>{
-    // Creates arrays to contain certain book information (there can be more than one author, for example )
+    // Creates arrays to contain certain book information (there can be more than one author, for example)
     let book = {};
     Object.assign(book, result.rows[0]);
     console.log(book)

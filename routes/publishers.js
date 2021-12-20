@@ -1,18 +1,16 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET publishers page. */
-router.get('/', function(req, res, next) {
-  res.render('publishers', { title: 'Publishers' });
-});
-
+// Get the /publishers/add page
 router.get('/add', function(req, res, next){
   let id = req.params.id;
   res.render('add-publisher');
 })
 
+// Allows the owner to create a new publisher
 router.post('/', function(req, res, next) {
-  req.app.locals.client.query('INSERT INTO publisher(name, email, phone, address, bank_account) VALUES ($1, $2, $3, $4, $5);', 
+  // Runs an SQL query to create a new publisher in the database
+  req.app.locals.client.query('INSERT INTO publisher(name, email, phone, address, bank_account) VALUES ($1, $2, $3, $4, $5);',
     [req.body.name, req.body.email, req.body.phone, req.body.address, req.body.bankAccount])
     .then(() => {
       res.status(201).send();
