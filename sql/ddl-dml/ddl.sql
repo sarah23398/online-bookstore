@@ -44,7 +44,7 @@ create table genre
 	
 create table author
 	(ID			SERIAL,
-	 name		varchar(40),
+	 name		varchar(40) NOT NULL,
 	 email		varchar(50),
 	 bio		varchar(255),
 	 website	varchar(50),
