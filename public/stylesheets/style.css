@@ -673,7 +673,7 @@ Table of Contents
 	5. events
 */
 
-@media all and(hover: hover){
+@media all and (hover:hover){
   .book:hover > .hardcover_front {
     -webkit-transform: rotateY(-145deg) translateZ(0);
     -moz-transform: rotateY(-145deg) translateZ(0);
