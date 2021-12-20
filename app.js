@@ -33,6 +33,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Creating sessions for logged in users
 app.use(session({
   name: 'nook-session',
   secret: 'booknook',
@@ -43,6 +44,7 @@ app.use(session({
   saveUninitialized: false
 }));
 
+// PostgreSQL credentials
 const credentials = {
   user: process.env.PGUSER,
   host: process.env.PGHOST,
@@ -58,14 +60,7 @@ app.locals.pool = new Pool(credentials);
 app.locals.client = new Client(credentials);
 app.locals.client.connect();
 
-app.locals.pool.query('SELECT NOW()', (err, res) => {
-  console.log(err, res)
-  app.locals.pool.end()
-})
-app.locals.client.query('SELECT NOW()', (err, res) => {
-  console.log(err, res)
-})
-
+// Check if user is logged in
 function auth(req, res, next){
   if(!req.session.loggedIn){
     res.status(401).redirect('/login');
@@ -75,6 +70,7 @@ function auth(req, res, next){
   }
 }
 
+// Verify if logged in user is owner
 function verifyOwner(req, res, next){
   if(req.session.loggedInType != 'owner'){
     res.status(403).send('Sorry buddy, this area is off limits...');
@@ -84,6 +80,7 @@ function verifyOwner(req, res, next){
   }
 }
 
+// Verify if logged in user is customer
 function verifyCustomer(req, res, next){
   if(req.session.loggedInType == 'owner'){
     res.status(403).send('Sorry, you can\'t access this resource as the owner...');

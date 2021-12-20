@@ -1,3 +1,4 @@
+// Add new publisher to database
 function createPublisher(e) {
     e.preventDefault();
       const name = document.getElementById('publisherName').value;

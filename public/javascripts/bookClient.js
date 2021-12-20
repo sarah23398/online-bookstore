@@ -1,5 +1,6 @@
 let isbn = document.getElementById('isbn').innerHTML;
 
+// Remove book from database
 function deleteBook(e) {
   e.preventDefault();
     fetch('/books/' + isbn, {
@@ -22,6 +23,7 @@ function deleteBook(e) {
       })
 };
 
+// Add book to shopping cart
 function addToCart(){
   let qtBox = document.getElementById('quantity');
   let max = qtBox.getAttribute('max');
@@ -53,6 +55,7 @@ function addToCart(){
   }
 }
 
+// Add review to book
 function addRating(){
   let rating = document.getElementById('rating');
   if(parseInt(rating.value.trim()) > 5 || parseInt(rating.value.trim()) < 0){

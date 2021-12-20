@@ -1,3 +1,4 @@
+// Add new customer to database
 document.getElementById('registerForm').addEventListener('submit', (e)=>{
     e.preventDefault();
     let data = new URLSearchParams(new FormData(document.getElementById('registerForm')));

@@ -1,3 +1,4 @@
+// Create custom report with user inputted dates
 function getCustomReport(e) {
     e.preventDefault();
     const type = document.getElementById('report').value;

@@ -1,6 +1,7 @@
 let authors = [];
 let genres = [];
 
+// Add new book to database
 function createBook(e) {
   e.preventDefault();
   if(authors.length == 0){
@@ -55,6 +56,7 @@ function createBook(e) {
       })
 };
 
+// Add badges for authors in add book form
 function addAuthorSelection(){
   let el = document.getElementById('bookAuthor');
   if(!authors.includes(el.value)){
@@ -72,6 +74,7 @@ function addAuthorSelection(){
   el.value = -1;
 };
 
+// Add badges for genres in add book form
 function addGenreSelection(){
   let el = document.getElementById('bookGenre');
   if(!genres.includes(el.value)){
@@ -89,6 +92,7 @@ function addGenreSelection(){
   el.value = -1;
 };
 
+// Remove badges for author in add book form
 function removeAuthor(id){
   let ind = authors.indexOf(id);
   if(ind > -1){
@@ -97,6 +101,7 @@ function removeAuthor(id){
   }
 }
 
+// Remove badges for genre in add book form
 function removeGenre(id){
   let ind = genres.indexOf(id);
   if(ind > -1){
