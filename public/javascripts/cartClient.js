@@ -1,3 +1,4 @@
+// Confirm removing book from cart
 document.querySelectorAll('.remove').forEach((e)=>{
     e.addEventListener('click', ()=>{
         let conf = confirm('Are you sure you would like to remove this from your cart?');
@@ -15,6 +16,7 @@ document.querySelectorAll('.remove').forEach((e)=>{
     })
 })
 
+// Confirm placing order
 document.getElementById('placeOrder').addEventListener('click', ()=>{
     let conf = confirm('Is this order confirmed?');
     if(conf){

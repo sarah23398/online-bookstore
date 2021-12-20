@@ -1,3 +1,4 @@
+// Add a new author to the database
 function createAuthor(e) {
     e.preventDefault();
       const name = document.getElementById('authorName').value;

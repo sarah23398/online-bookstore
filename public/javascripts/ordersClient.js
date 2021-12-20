@@ -1,3 +1,4 @@
+// Track order by order number
 function trackOrder(e) {
     e.preventDefault();
     let id = document.getElementById('orderId').value;

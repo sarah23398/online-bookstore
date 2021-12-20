@@ -1,3 +1,4 @@
+// Login user as either customer or owner
 function login(type) {
     const email = document.getElementById('loginEmail').value;
     const password = document.getElementById('loginPassword').value;
