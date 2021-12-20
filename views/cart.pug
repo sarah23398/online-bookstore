@@ -28,18 +28,20 @@ body
                 th(scope='col') Overall Price
                 th(scope='col') Remove from Cart
             tbody#cart
-              each book in books 
-                tr 
-                  td 
+              - cost = 0
+              each book in books
+                - cost += book.price*session.cart[book.isbn]
+                tr
+                  td
                     a(href=`/books/${book.isbn}`) #{book.title}
                   td #{session.cart[book.isbn]}
                   td $#{book.price}
                   td $#{book.price*session.cart[book.isbn]}
-                  td 
+                  td
                     button.remove.btn.btn-outline-danger(id=book.isbn) &times;
 
           p
-            span.font-weight-bold Total cost: 
+            span.font-weight-bold Total cost: $#{cost}
           br
           h5 Details
           p
@@ -59,6 +61,6 @@ body
           br
           br
           br
-        else 
-          p There are currently no items in your cart! 
+        else
+          p There are currently no items in your cart!
             a(href="/search") Search for items
