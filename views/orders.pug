@@ -25,6 +25,22 @@ body
             input#orderId.form-control(name='tracking-id' aria-describedby='emailHelp' placeholder='Enter order ID')
           button#trackOrder.btn.btn-primary Track
         br
+        h5 Order Statuses 
+        p This is what each order status means: 
+        ul.default 
+          li PROCESSED = Order has been received and is being processed
+          li RECEIVED = Order shipment has been received at the shipping facility from the Nook Warehouse
+          li INPROGRESS = Order is being shipped to you
+          li FULFILLED = Order is complete!
+        br
+        h5 Shipping Statuses 
+        p This is what each shipping status means: 
+        ul.default 
+          li ORDERED = Order has been placed for Nook Warehouse and is being processed to send to shipping facility
+          li SHIPPED = Shipment has been shipped from Nook Warehouse to shipping facility
+          li INROUTE = Order is in route to you
+          li DELIVERED = Order has been delivered to you!
+        br
         h4 Orders
         p Latest to earliest
         each order in orders

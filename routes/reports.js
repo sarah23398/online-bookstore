@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
+// All routes follow a similar structure, in that they set the report page's title and  as well as table headers
+
 // Get the /reports page
 router.get('/', function(req, res, next) {
   res.render('reports', { title: 'Finance Reports' });
@@ -10,6 +12,8 @@ router.get('/', function(req, res, next) {
 router.get('/author', function(req, res, next){
   let extra = 'WHERE';
   let title = 'Sales per Author Report';
+  // this adds a specific start date and end date for custom reports
+  // extra will be only have WHERE if there is no start and end date defined, which would mean that the report is default
   params = [];
   if(req.query.start && req.query.end){
     extra = `INNER JOIN "order" on finances.order_id = "order".id
@@ -40,6 +44,8 @@ router.get('/expenditures', function(req, res, next){
   let extra = '';
   let title = 'Sales vs. Expenditures Report';
   params = [];
+  // this adds a specific start date and end date for custom reports
+  // extra will be empty if there is no start and end date defined, which would mean that the report is default
   if(req.query.start && req.query.end){
     extra = `INNER JOIN "order" on finances.order_id = "order".id
     WHERE "order".order_date BETWEEN $1 AND $2`;
@@ -56,10 +62,10 @@ router.get('/expenditures', function(req, res, next){
     INNER JOIN finances on finances.ISBN = book.ISBN
     ${extra}
     GROUP BY publisher.name,
-    book.publisher_fee) as earnings_per_book group by publisher_name;`, [req.query.start, req.query.end], (err, result)=>{
+    book.publisher_fee) as earnings_per_book group by publisher_name;`, params, (err, result)=>{
     let report = [];
-    for (let res of result.rows){
-      report.push([res.publisher, `$${res.sales}`, `$${res.publisher_earnings}`, `$${res.net_revenue}`])
+    for (let r of result.rows){
+      report.push([r.publisher, `$${r.sales}`, `$${r.publisher_earnings}`, `$${r.net_revenue}`])
     }
     console.log(report)
     res.render('report', {report: report, report_title: title, headers: ['Publisher', 'Total Sales', 'Total Publisher Earnings (paid to publisher)', 'Net Revenue'] })
@@ -71,6 +77,8 @@ router.get('/genre', function(req, res, next){
   let extra = '';
   let title = 'Sales per Genre Report';
   params = [];
+  // this adds a specific start date and end date for custom reports
+  // extra will be empty if there is no start and end date defined, which would mean that the report is default
   if(req.query.start && req.query.end){
     extra = `INNER JOIN "order" on finances.order_id = "order".id
     WHERE "order".order_date BETWEEN $1 AND $2`;
