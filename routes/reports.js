@@ -1,12 +1,13 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET reports page. */
+// Get the /reports page
 router.get('/', function(req, res, next) {
   res.render('reports', { title: 'Finance Reports' });
 });
 
-router.get('/author', function(req, res, next){ 
+// Get the /reports/author page for the sales per author report
+router.get('/author', function(req, res, next){
   let extra = 'WHERE';
   let title = 'Sales per Author Report';
   params = [];
@@ -34,7 +35,7 @@ router.get('/author', function(req, res, next){
   })
 });
 
-
+// Get the /reports/expenditures page for the sales vs expenditures report
 router.get('/expenditures', function(req, res, next){
   let extra = '';
   let title = 'Sales vs. Expenditures Report';
@@ -45,16 +46,16 @@ router.get('/expenditures', function(req, res, next){
     params = [req.query.start, req.query.end];
     title += ` (custom from ${req.query.start} to ${req.query.end})`;
   }
-  req.app.locals.client.query(`SELECT publisher_name as publisher, SUM(publisher_earnings) as publisher_earnings, SUM(sales) as sales ,SUM(revenue) as net_revenue FROM (SELECT 
-    publisher.name as publisher_name, 
-    ROUND((book.publisher_fee*(SUM(book.price*finances.quantity))/100),2) AS publisher_earnings, 
+  req.app.locals.client.query(`SELECT publisher_name as publisher, SUM(publisher_earnings) as publisher_earnings, SUM(sales) as sales ,SUM(revenue) as net_revenue FROM (SELECT
+    publisher.name as publisher_name,
+    ROUND((book.publisher_fee*(SUM(book.price*finances.quantity))/100),2) AS publisher_earnings,
     SUM(book.price*finances.quantity) AS sales,
     SUM(book.price*finances.quantity)-(ROUND((book.publisher_fee*(SUM(book.price*finances.quantity))/100),2)) AS revenue
     FROM publisher
     INNER JOIN book on publisher.id = book.publisher_id
     INNER JOIN finances on finances.ISBN = book.ISBN
     ${extra}
-    GROUP BY publisher.name, 
+    GROUP BY publisher.name,
     book.publisher_fee) as earnings_per_book group by publisher_name;`, [req.query.start, req.query.end], (err, result)=>{
     let report = [];
     for (let res of result.rows){
@@ -65,6 +66,7 @@ router.get('/expenditures', function(req, res, next){
   })
 });
 
+// Get the /reports/genre page for the sales per genre report
 router.get('/genre', function(req, res, next){
   let extra = '';
   let title = 'Sales per Genre Report';
