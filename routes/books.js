@@ -67,49 +67,52 @@ router.get('/', function(req, res, next) {
       extra += ` publisher.name ILIKE '%' || $${filters.length} || '%' `
     }
   }
-    // Generates the query for the search results
-    query = `SELECT DISTINCT book.* from book ${extra};`;
-    console.log(query)
-    console.log(filters)
-    req.app.locals.client.query(query, filters, (err, result)=>{
-      // Ensures that only the customer can access recommended books
-      if (req.session.loggedInType == 'customer') {
-        // Generates the query to determine books to recommend
-        // There can only be a maximum of 4 recommended books
-        req.app.locals.client.query(`SELECT DISTINCT book.* from book
-        INNER JOIN "contains" ON book.isbn = "contains".isbn
-        INNER JOIN genre ON "contains".genre_id = genre.id
-        WHERE genre.name IN
-        (SELECT DISTINCT genre.name from rating
-        INNER JOIN book ON rating.isbn = book.isbn
-        INNER JOIN "contains" ON book.isbn = "contains".isbn
-        INNER JOIN genre on "contains".genre_id = genre.id
-        WHERE rating > 3
-        AND customer_id = $1)
-        AND book.isbn NOT IN
-		    (SELECT isbn FROM rating
-		    WHERE customer_id = $1) LIMIT 4;`, [req.session.userId], (err, recommended) => {
-          res.render('books', { title: 'Books', books: result.rows, recommended: recommended.rows, search: !!extra });
-        });
-      } else {
-          // If it's the owner who's logged in instead, do not include recommended books
-          res.render('books', { title: 'Books', books: result.rows, search: !!extra });
-      }
-    })
-  });
-
-  router.get('/add', function(req, res, next){
-    if(req.session.loggedInType != 'owner'){
-      return res.status(403).send('Sorry buddy, this area is off limits...');
+  // Generates the query for the search results
+  query = `SELECT DISTINCT book.* from book ${extra};`;
+  console.log(query)
+  console.log(filters)
+  req.app.locals.client.query(query, filters, (err, result)=>{
+    // Ensures that only the customer can access recommended books
+    if (req.session.loggedInType == 'customer') {
+      // Generates the query to determine books to recommend
+      // There can only be a maximum of 4 recommended books
+      req.app.locals.client.query(`SELECT DISTINCT book.* from book
+      INNER JOIN "contains" ON book.isbn = "contains".isbn
+      INNER JOIN genre ON "contains".genre_id = genre.id
+      WHERE genre.name IN
+      (SELECT DISTINCT genre.name from rating
+      INNER JOIN book ON rating.isbn = book.isbn
+      INNER JOIN "contains" ON book.isbn = "contains".isbn
+      INNER JOIN genre on "contains".genre_id = genre.id
+      WHERE rating > 3
+      AND customer_id = $1)
+      AND book.isbn NOT IN
+      (SELECT isbn FROM rating
+      WHERE customer_id = $1) LIMIT 4;`, [req.session.userId], (err, recommended) => {
+        res.render('books', { title: 'Books', books: result.rows, recommended: recommended.rows, search: !!extra });
+      });
+    } else {
+        // If it's the owner who's logged in instead, do not include recommended books
+        res.render('books', { title: 'Books', books: result.rows, search: !!extra });
     }
-    req.app.locals.client.query('SELECT * from genre;', (err, genres) => {
-      req.app.locals.client.query('SELECT * from publisher;', (error, publishers) => {
-        req.app.locals.client.query('SELECT * from author;', (error, authors) => {
-          res.render('add-book', {genres: genres.rows, publishers: publishers.rows, authors: authors.rows});
-        })
+  })
+});
+
+// Generates the /books/add page
+router.get('/add', function(req, res, next){
+  // Ensures that this is off limits for customers
+  if(req.session.loggedInType != 'owner'){
+    return res.status(403).send('Sorry buddy, this area is off limits...');
+  }
+  // Fetches genre(s), publisher(s), and author(s) information for the dropdown lists in the add book form
+  req.app.locals.client.query('SELECT * from genre;', (err, genres) => {
+    req.app.locals.client.query('SELECT * from publisher;', (error, publishers) => {
+      req.app.locals.client.query('SELECT * from author;', (error, authors) => {
+        res.render('add-book', {genres: genres.rows, publishers: publishers.rows, authors: authors.rows});
       })
     })
   })
+})
 
 // Generates the /book/:isbn page
 router.get('/:isbn', function(req, res, next){
