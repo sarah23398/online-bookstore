@@ -71,7 +71,7 @@ create table book
 	 price			numeric(5,2),
 	 print_length	numeric(4,0),
 	 stock			numeric(3,0) NOT NULL,
-	 publisher_fee	numeric(5,2),
+	 publisher_fee	numeric(5,2) NOT NULL,
 	 primary key (ISBN),
 	 foreign key (publisher_id) references publisher (ID)
 	 	on delete set null

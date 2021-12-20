@@ -69,11 +69,11 @@ body
           h5 Private information
           .form-group
             label(for='bookStock') Stock
-            input#bookStock.form-control(type='number' max='999' name='stock' aria-describedby='stockHelp' placeholder='Enter stock')
+            input#bookStock.form-control(type='number' max='999' name='stock' aria-describedby='stockHelp' placeholder='Enter stock' required)
 
           .form-group
-            label(for='bookPublisherFee') Publisher fee
-            input#bookPublisherFee.form-control(name='publisherFee' max='100' step='0.01' aria-describedby='publisherFeeHelp' placeholder='Enter publisher fee')
+            label(for='bookPublisherFee') Publisher fee (in percentage)
+            input#bookPublisherFee.form-control(name='publisherFee' max='100' step='0.01' aria-describedby='publisherFeeHelp' placeholder='Enter publisher fee' required)
 
           button#addBook.btn.btn-primary Add book
         br
